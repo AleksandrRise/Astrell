@@ -13,8 +13,8 @@ ai = MetaAI()
 model = whisper.load_model("base")
 result = model.transcribe("test.mp4")
 
-message = "Explain here what this video is about in a few words. Transcript: " + result["text"]
-response = ai.prompt(message=message)
+msg = "Explain here what this video is about in a few words. Transcript: " + result["text"]
+response = ai.prompt(message=msg)
 
-print(response)
+print(response['message'])
 
