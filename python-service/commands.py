@@ -8,28 +8,28 @@ class Commands:
 
     def getQuizJSON(self):
         msg = ((
-                  'Make a single quiz according to a transcript and following the format without adding any your comments at all: '
-                  '{"question": "(your question)", "answer1": "(your answer 1)", "answer2": "(your answer 2)", '
-                  '"answer3": "(your answer 3)", "answer4": "(your answer 4)"} . Transcript you use: ') +
+                  'Make a single quiz with only one possible answer strictly according to a transcript and following the format without adding any your comments at all: '
+                  '{"question": "(your question)", "answer1": {"answer": "(your answer 1)", "correct": "(true/false)}, "answer2": {"answer": "(your answer 2)", "correct": "(true/false)}, '
+                  '"answer3": {"answer": "(your answer 3)", "correct": "(true/false)}, "answer4": {"answer": "(your answer 4)", "correct": "(true/false)}} . Transcript of a lecture you use: ') +
                self.result["text"])
         return self.convertToJSON(msg)
 
     def getCardJSON(self):
         msg = (
-                  'Make a single question and answer according to a transcript and following the format without adding any of your comments at all: '
-                  '{"question": "(the question)", "answer": "(the answer to the question)" . Transcript you use: ') + \
+                  'Make a single question and answer strictly according to a transcript and following the format without adding any of your comments at all: '
+                  '{"question": "(the question)", "answer": "(the answer to the question)" . Transcript of a lecture you use: ') + \
               self.result["text"]
         return self.convertToJSON(msg)
 
     def getHighlightStr(self) -> str:
         msg = (
-                  'Highlight key concepts according to a transcript. The text must be comprehensive enough for a student at a college. Transcript you use: ') + \
+                  'Highlight key concepts strictly according to a transcript. The text must be comprehensive enough for a student at a college. Transcript of a lecture you use: ') + \
               self.result["text"]
         return self.convertToStr(msg)
 
     def getSummarizeStr(self) -> str:
         msg = (
-                  'Make a summarization of a transcript in 200-300 words without adding any of your comments at all. The text must be comprehensive enough for a student at a college. Transcript you use: ') + \
+                  'Make a summarization of a transcript in 0-200 words. The text must be comprehensive enough for a student at a college. Transcript of a lecture you use: ') + \
               self.result["text"]
         return self.convertToStr(msg)
 

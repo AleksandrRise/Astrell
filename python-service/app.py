@@ -16,7 +16,7 @@ result = model.transcribe("test.mp4")
 
 commands = Commands(result, ai)
 
-print(commands.getHighlightStr())
+print(commands.getQuizJSON())
 
 
 
