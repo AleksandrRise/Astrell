@@ -12,9 +12,9 @@ def index():
 ai = MetaAI()
 
 model = whisper.load_model("base")
-result = model.transcribe("test.mp4")
+transcript = model.transcribe("test.mp4")
 
-commands = Commands(result, ai)
+commands = Commands(transcript, ai)
 
 print(commands.getQuizJSON())
 
