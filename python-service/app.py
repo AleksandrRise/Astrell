@@ -12,7 +12,7 @@ def index():
 ai = MetaAI()
 
 model = whisper.load_model("base")
-transcript = model.transcribe("test.mp4")
+transcript = model.transcribe("videos/test.mp4")
 
 commands = Commands(transcript, ai)
 
