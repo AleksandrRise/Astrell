@@ -1,2 +1,2 @@
-# Scholex
+# Astrell
 --> 🏫 AI For Online Lectures
