@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+@layer utilities {
+    .hero-bg {
+        background: url("../assets/Background.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
