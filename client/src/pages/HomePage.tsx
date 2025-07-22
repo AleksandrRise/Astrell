@@ -1,9 +1,12 @@
-import MenuBtn from "../shared/components/MenuBtn"
+import Navbar from "../features/home/components/Navbar"
 
 export default function HomePage() {
     return (
         <main className="w-full h-screen hero-bg">
-            <MenuBtn></MenuBtn>
+            <Navbar>
+                <Navbar.MenuBtn />
+                <Navbar.Logo />
+            </Navbar>
         </main>
     )
 }
