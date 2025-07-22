@@ -9,3 +9,7 @@
         position: relative;
     }
 }
+
+html {
+    background-color: #000;
+}
