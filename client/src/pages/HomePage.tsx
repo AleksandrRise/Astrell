@@ -6,6 +6,7 @@ export default function HomePage() {
             <Navbar>
                 <Navbar.MenuBtn />
                 <Navbar.Logo />
+                <Navbar.Info />
             </Navbar>
         </main>
     )
