@@ -1,5 +1,9 @@
+import MenuBtn from "../shared/components/MenuBtn"
+
 export default function HomePage() {
     return (
-        <h1 className="text-5xl">Hi Wold!</h1>
+        <main className="w-full h-screen bg-black">
+            <MenuBtn></MenuBtn>
+        </main>
     )
 }
