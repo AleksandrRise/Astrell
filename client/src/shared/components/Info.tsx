@@ -2,13 +2,13 @@ import infoSrc from "../../assets/Information.png"
 
 export default function Info() {
     const infoAlt = "Info"
-    const wrapperClasses = "rounded-full bg-white/30 w-20 h-20 flex cursor-pointer \
+    const wrapperClasses = "rounded-full bg-white/30 w-17.5 h-17.5 flex cursor-pointer \
     hover:bg-white/50 transition"
-    const imgClasses = "w-12.5 h-12.5 m-auto"
+    const imgClasses = "w-10 h-10 m-auto"
 
     return (
-        <div className={wrapperClasses}>
+        <button className={wrapperClasses}>
             <img className={imgClasses} src={infoSrc} alt={infoAlt} />
-        </div>
+        </button>
     )
 }
