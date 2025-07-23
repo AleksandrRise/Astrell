@@ -19,6 +19,13 @@
         animation-iteration-count: infinite;
         animation-direction: alternate;
     }
+
+    .fadeIn {
+        animation-name: fadeIn;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+        animation-fill-mode: towards;
+    }
 }
 
 @theme {
@@ -38,5 +45,16 @@ html {
 
     100% {
         transform: rotate(10deg);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        margin-top: translateY(0px);
     }
 }
