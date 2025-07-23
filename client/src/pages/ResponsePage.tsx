@@ -6,6 +6,13 @@ import Navbar from "../shared/components/Navbar";
 export default function ResponsePage() {
     const mainClasses = "h-screen w-full hero-bg text-white flex flex-col justify-start"
 
+    const cardTexts: string[] = [
+        "Make a Quiz",
+        "Highlight Key Concepts",
+        "Generate Flashcards",
+        "Summarize",
+    ]
+
     return (
         <main className={mainClasses}>
             <Navbar>
@@ -17,7 +24,9 @@ export default function ResponsePage() {
                 <VideoSection.Player/>
             </VideoSection>
 
-            <Commands />
+            <Commands>
+                {cardTexts.map((text) => <Commands.Card text={text} />)}
+            </Commands>
         </main>
     )
 }
