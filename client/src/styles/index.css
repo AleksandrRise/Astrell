@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import url("../assets/fonts/Open_Sans/OpenSans-VariableFont_wdth\,wght.ttf");
+@import url("../assets/fonts/Lato/Lato-Regular.ttf");
 
 
 @layer utilities {
@@ -21,11 +23,12 @@
 
 @theme {
     --color-lightblue: #00C3FF;
-    --font-sans: 
+    --font-lato: "Lato," sans-serif;
 }
 
 html {
     background-color: #000;
+    font-family: "Open Sans", sans-serif;
 }
 
 @keyframes aiball-keyframes {

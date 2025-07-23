@@ -1,16 +1,17 @@
 import Navbar from "../features/home/components/Navbar"
-import AiBall from "../features/home/components/AIBall"
+import AiBall from "../features/home/components/AiBall"
 
 export default function HomePage() {
     return (
-        <main className="w-full h-screen hero-bg">
+        <main className="w-full h-screen hero-bg flex flex-col pb-30">
             <Navbar>
                 <Navbar.MenuBtn />
-                <Navbar.Logo />
                 <Navbar.Info />
             </Navbar>
 
-            <AiBall />
+            <AiBall>
+                <AiBall.Text />
+            </AiBall>
         </main>
     )
 }
