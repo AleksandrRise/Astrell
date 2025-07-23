@@ -6,8 +6,10 @@ type VideoSectionProps = {
 }
 
 export default function VideoSection({ children }: VideoSectionProps) {
+    const sectionClasses = "m-auto"
+
     return (
-        <section>
+        <section className={sectionClasses}>
             {children}
         </section>
     )

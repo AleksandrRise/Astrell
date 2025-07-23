@@ -4,7 +4,7 @@ import Navbar from "../shared/components/Navbar";
 
 
 export default function ResponsePage() {
-    const mainClasses = "h-screen w-full hero-bg"
+    const mainClasses = "h-screen w-full hero-bg text-white flex flex-col justify-start"
 
     return (
         <main className={mainClasses}>
