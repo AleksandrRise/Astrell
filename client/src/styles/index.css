@@ -8,8 +8,30 @@
         background-position: center;
         position: relative;
     }
+
+    .aiball-animation {
+        animation-name: aiball-keyframes;
+        animation-duration: 5s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    }
+}
+
+@theme {
+    --color-lightblue: #00C3FF;
 }
 
 html {
     background-color: #000;
+}
+
+@keyframes aiball-keyframes {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(10deg);
+    }
 }

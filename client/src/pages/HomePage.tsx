@@ -1,4 +1,5 @@
 import Navbar from "../features/home/components/Navbar"
+import AiBall from "../features/home/components/AIBall"
 
 export default function HomePage() {
     return (
@@ -8,6 +9,8 @@ export default function HomePage() {
                 <Navbar.Logo />
                 <Navbar.Info />
             </Navbar>
+
+            <AiBall />
         </main>
     )
 }
