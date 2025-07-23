@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 @layer utilities {
     .hero-bg {
         background: url("../assets/Background.png");
@@ -20,6 +21,7 @@
 
 @theme {
     --color-lightblue: #00C3FF;
+    --font-sans: 
 }
 
 html {
