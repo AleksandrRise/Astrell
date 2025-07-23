@@ -20,6 +20,14 @@
         border-radius: 50px 0px 50px 50px;
     }
 
+    .hint-animation {
+        animation-name: popOut;
+        animation-duration: 0.75s;
+        animation-timing-function: ease-out;
+        animation-direction: alternate;
+        animation-fill-mode: both;
+    }
+
     .aiball-animation {
         animation-name: aiball-keyframes;
         animation-duration: 5s;
@@ -91,5 +99,16 @@ html {
     100% {
         opacity: 1;
         transform: scale(1);
+    }
+}
+
+@keyframes popOut {
+    0% {
+        opacity: 0;
+        transform: translate(10px, -10px)
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0px, 0px);
     }
 }
