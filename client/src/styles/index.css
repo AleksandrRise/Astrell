@@ -12,6 +12,14 @@
         position: relative;
     }
 
+    .hint-bg {
+        background: linear-gradient(rgba(0, 124, 232, 0.8), rgba(0, 52, 98, 0.8));
+    }
+
+    .hint-rounded {
+        border-radius: 50px 0px 50px 50px;
+    }
+
     .aiball-animation {
         animation-name: aiball-keyframes;
         animation-duration: 5s;
@@ -42,7 +50,6 @@
         animation-fill-mode: towards;
         animation-iteration-count: 1;
     }
-
 }
 
 @theme {
