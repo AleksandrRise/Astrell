@@ -3,7 +3,7 @@ import infoSrc from "../../assets/Information.png"
 export default function Info() {
     const infoAlt = "Info"
     const wrapperClasses = "rounded-full bg-white/30 w-17.5 h-17.5 flex cursor-pointer \
-    hover:bg-white/50 transition"
+    hover:bg-white/50 transition fadeIn opacity-0"
     const imgClasses = "w-10 h-10 m-auto"
 
     return (

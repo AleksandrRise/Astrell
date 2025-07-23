@@ -1,8 +1,8 @@
 export default function Text() {
     const divClasses = "text-white text-center tracking-wider -mt-20"
-    const hClasses = "text-white/80 text-base"
+    const hClasses = "text-white/80 text-base fadeIn"
     const spanClasses = "text-white"
-    const pClasses = "text-2xl mt-5"
+    const pClasses = "text-2xl mt-5 fadeIn"
 
     return (
         <div className={divClasses}>
