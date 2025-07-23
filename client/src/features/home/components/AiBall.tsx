@@ -1,4 +1,5 @@
 import imgSrc from "../assets/aithinkingball.png"
+import FileInput from "./FileInput";
 import Text from "./Text"
 
 type AiBallType = {
@@ -13,6 +14,8 @@ export default function AiBall({ children }: AiBallType) {
 
     return (
         <section className={sectionClasses}>
+            <FileInput />
+
             <figure className={figClasses}>
                 <img className={imgClasses} width="450px" height="450px" src={imgSrc} alt={imgAlt} />
             </figure>

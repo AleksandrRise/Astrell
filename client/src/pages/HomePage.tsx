@@ -5,7 +5,7 @@ import Info from "../shared/components/Info"
 export default function HomePage() {
 
     return (
-        <main className="w-full h-screen hero-bg flex flex-col pb-30">
+        <main className="w-full h-screen hero-bg flex flex-col pb-30 relative">
             <Navbar>
                 <Navbar.MenuBtn />
                 <Navbar.Info>
