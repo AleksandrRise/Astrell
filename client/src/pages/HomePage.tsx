@@ -1,4 +1,4 @@
-import Navbar from "../features/home/components/Navbar"
+import Navbar from "../shared/components/Navbar"
 import AiBall from "../features/home/components/AiBall"
 import Info from "../shared/components/Info"
 

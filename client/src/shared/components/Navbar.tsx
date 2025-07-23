@@ -1,6 +1,6 @@
-import MenuBtn from "../../../shared/components/MenuBtn"
-import Logo from "../../../shared/components/Logo"
-import Info from "../../../shared/components/Info"
+import MenuBtn from "./MenuBtn"
+import Logo from "./Logo"
+import Info from "./Info"
 
 type NavbarProps = {
     children: React.ReactNode;
