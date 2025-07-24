@@ -24,17 +24,19 @@ export default function FileInput() {
         e.preventDefault()
         setIsDragged(false)
 
-        const formData = new FormData()
+        const formData: FormData = new FormData()
 
-        const droppedFiles = e.dataTransfer?.files
+        const droppedFile: File = e.dataTransfer.files[0]
 
-        formData.append('file', droppedFiles[0])
+        formData.append('file', droppedFile)
 
-        console.log(formData)
-
-        await axios.post('http://127.0.0.1:5000/api/v1/uploadVideo', formData)
+        await axios.post('http://127.0.0.1:5000/api/v1/uploadVideo', formData, {
+            headers: {
+                "Content-Type":"multipart/form-data"
+            }
+        })
             .then(res => {
-                console.log(res)
+                console.log(res.data['text'])
             })
             .catch(error => console.log(error))
     }
