@@ -1,5 +1,5 @@
-import { useState } from "react"
-
+import { useEffect, useState } from "react"
+import axios from "axios"
 
 export default function FileInput() {
 
@@ -20,10 +20,23 @@ export default function FileInput() {
         setIsDragged(false)
     }
 
-    const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    const handleDrop = async (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault()
-        const droppedFiles = e.dataTransfer?.files
         setIsDragged(false)
+
+        const formData = new FormData()
+
+        const droppedFiles = e.dataTransfer?.files
+
+        formData.append('file', droppedFiles[0])
+
+        console.log(formData)
+
+        await axios.post('http://127.0.0.1:5000/api/v1/uploadVideo', formData)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(error => console.log(error))
     }
 
     return (
