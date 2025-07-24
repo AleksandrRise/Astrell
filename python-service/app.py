@@ -1,7 +1,8 @@
 import whisper
-from flask import Flask, request, jsonify
+from flask import Flask, request
 from flask_cors import CORS
 from meta_ai_api import MetaAI
+
 from commands import Commands
 
 app = Flask(__name__)
@@ -11,18 +12,18 @@ CORS(app)
 ai = MetaAI()
 model = whisper.load_model("base")
 
-UPLOAD_DIR = "/videos"
-
 
 @app.route('/api/v1/uploadVideo', methods=['POST'])
 def uploadVideo():
-    if request.headers.get('Content-Type') == 'multipart/form-data':
-        rawdata = request.get_data()
+    video = request.files['file']
+    filename = video.filename
 
-        transcript = model.transcribe("videos/test.mp4")
+    video.save(f"videos/{filename}")
 
-        return transcript
-    return jsonify(success=True)
+    transcript = model.transcribe(f"videos/{filename}")
+    print(transcript["text"])
+
+    return transcript
 
 
 if __name__ == "__main__":
