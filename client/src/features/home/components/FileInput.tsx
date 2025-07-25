@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 type FileInputProps = {
     isLoading: boolean;
@@ -7,6 +8,8 @@ type FileInputProps = {
 }
 
 export default function FileInput({ isLoading, setIsLoading }: FileInputProps) {
+
+    const navigate = useNavigate()
 
     const [isDragged, setIsDragged] = useState<boolean>(false)
 
@@ -43,6 +46,7 @@ export default function FileInput({ isLoading, setIsLoading }: FileInputProps) {
         })
             .then(res => {
                 console.log(res.data['text'])
+                navigate("/response")
             })
             .catch(error => console.log(error))
 
