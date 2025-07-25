@@ -36,6 +36,7 @@ export default function FileInput({ isLoading, setIsLoading }: FileInputProps) {
         const formData: FormData = new FormData()
 
         const droppedFile: File = e.dataTransfer.files[0]
+        const videoUrl: string = URL.createObjectURL(droppedFile)
 
         formData.append('file', droppedFile)
 
@@ -45,7 +46,7 @@ export default function FileInput({ isLoading, setIsLoading }: FileInputProps) {
             }
         })
             .then(res => {
-                navigate("/response", { state: res.data['text']})
+                navigate("/response", { state: [res.data['text'], videoUrl]})
             })
             .catch(error => console.log(error))
 

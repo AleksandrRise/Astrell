@@ -6,7 +6,8 @@ import Navbar from "../shared/components/Navbar";
 
 export default function ResponsePage() {
     const location = useLocation()
-    const transcript = location.state
+    const transcript: string = location.state[0]
+    const video: string = location.state[1]
 
     const mainClasses = "h-screen w-full hero-bg text-white flex flex-col justify-start"
 
@@ -25,7 +26,7 @@ export default function ResponsePage() {
 
             <VideoSection>
                 <VideoSection.Transcript transcript={transcript} />
-                <VideoSection.Player/>
+                <VideoSection.Player video={video} />
             </VideoSection>
 
             <Commands>
