@@ -45,8 +45,7 @@ export default function FileInput({ isLoading, setIsLoading }: FileInputProps) {
             }
         })
             .then(res => {
-                console.log(res.data['text'])
-                navigate("/response")
+                navigate("/response", { state: res.data['text']})
             })
             .catch(error => console.log(error))
 
