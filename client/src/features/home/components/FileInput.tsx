@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 
-export default function FileInput() {
+type FileInputProps = {
+    isLoading: boolean;
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function FileInput({ isLoading, setIsLoading }: FileInputProps) {
 
     const [isDragged, setIsDragged] = useState<boolean>(false)
 
@@ -23,6 +28,7 @@ export default function FileInput() {
     const handleDrop = async (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault()
         setIsDragged(false)
+        setIsLoading(true)
 
         const formData: FormData = new FormData()
 
@@ -39,6 +45,8 @@ export default function FileInput() {
                 console.log(res.data['text'])
             })
             .catch(error => console.log(error))
+
+        setIsLoading(false)
     }
 
     return (

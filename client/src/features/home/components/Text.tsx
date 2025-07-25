@@ -1,16 +1,20 @@
-export default function Text() {
-    const divClasses = "text-white text-center tracking-wider -mt-20"
-    const hClasses = "text-white/80 text-base fadeIn"
-    const spanClasses = "text-white"
-    const pClasses = "text-2xl mt-5 fadeIn"
+import TextLoading from "./TextLoading";
+import TextOriginal from "./TextOriginal";
+
+type TextProps = {
+    isLoading: boolean;
+}
+
+export default function Text({ isLoading }: TextProps) {
+
 
     return (
-        <div className={divClasses}>
-            <h3 className={hClasses}>Hi there! I am <span className={spanClasses}>Astrell.</span></h3>
-            <p className={pClasses}>
-                Paste your lecture here, so we<br />
-                could work on that together.
-            </p>
-        </div>
+        (isLoading 
+            ? <Text.TextLoading />
+            : <Text.TextOriginal />
+        )
     )
 }
+
+Text.TextOriginal = TextOriginal
+Text.TextLoading = TextLoading
