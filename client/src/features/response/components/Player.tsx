@@ -5,6 +5,8 @@ type PlayerProps = {
 }
 
 export default function Player({ video }: PlayerProps) {
+
+    // Classes
     const videoClasses = "px-9 border rounded-[50px] "
 
     return (

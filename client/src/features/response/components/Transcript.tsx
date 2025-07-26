@@ -3,6 +3,8 @@ type TranscriptProps = {
 }
 
 export default function Transcript({ transcript }: TranscriptProps) {
+
+    // Classes
     const wrapperClasses = "px-8 py-9.5 font-bold w-100 h-126.25 bg-white/8 rounded-4xl \
     shadow-[0_0_2px_0_rgba(0,149,255,0.75)_inset] backdrop-blur-[100px] overflow-auto \
     "

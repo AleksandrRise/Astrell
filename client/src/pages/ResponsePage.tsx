@@ -9,6 +9,7 @@ export default function ResponsePage() {
     const transcript: string = location.state[0]
     const video: string = location.state[1]
 
+    // Classes
     const mainClasses = "h-screen w-full hero-bg text-white flex flex-col justify-start"
 
     const cardTexts: string[] = [

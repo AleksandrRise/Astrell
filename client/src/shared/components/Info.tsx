@@ -22,6 +22,7 @@ export default function Info({ children }: InfoProps) {
         document.addEventListener('mousedown', handler)
     }, [])
 
+    // Classes
     const infoAlt = "Info"
     const wrapperClasses = `rounded-full ${!isOpen && "hover:bg-white/50"} bg-white/30 w-17.5 h-17.5 flex cursor-pointer \
     transition fadeIn opacity-0 relative ${isOpen && "hint-open"}`

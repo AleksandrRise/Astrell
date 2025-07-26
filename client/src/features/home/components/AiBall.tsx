@@ -9,6 +9,8 @@ type AiBallType = {
 }
 
 export default function AiBall({ children, setErrorText, setIsLoading }: AiBallType) {
+
+    // Classes
     const imgAlt = "AI Thinking Ball"
     const figClasses = "zoomIn"
     const imgClasses = "aiball-animation"

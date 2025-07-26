@@ -10,12 +10,13 @@ export default function Card({ text }: CardProps) {
     const handleClick = async () => {
         switch(text.toLowerCase()) {
             case "summarize":
-                await axios.get("http://127.0.0.1:5000/api/v1/summarize")
+                await axios.get('http://127.0.0.1:5000/api/v1/summarize')
                     .then(res => console.log(res.data))
                 break;
         }
     }
 
+    // Classes
     const liClasses = "w-45 h-50 border rounded-3xl hover:scale-105 transition"
     const btnClasses = "flex justify-start items-center flex-col w-full h-full cursor-pointer \
     pt-8 text-[#D1F3FF]/90 text-center"

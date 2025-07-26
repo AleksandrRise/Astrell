@@ -5,6 +5,8 @@ type CommandsProps = {
 }
 
 export default function Commands({ children }: CommandsProps) {
+
+    // Classes
     const ulClasses = "flex gap-18.5 mb-auto mx-auto mt-19"
 
     return (

@@ -7,6 +7,8 @@ type NavbarProps = {
 }
 
 export default function Navbar({ children }: NavbarProps) {
+
+    // Classes
     const navClasses = "flex justify-between items-center mx-14.25 pt-20"
 
     return (

@@ -6,6 +6,8 @@ type VideoSectionProps = {
 }
 
 export default function VideoSection({ children }: VideoSectionProps) {
+
+    // Classes
     const sectionClasses = "flex justify-center mt-auto gap-19"
 
     return (

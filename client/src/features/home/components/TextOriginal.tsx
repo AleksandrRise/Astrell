@@ -1,4 +1,6 @@
 export default function TextOriginal() {
+
+    // Classes
     const divClasses = "text-white text-center tracking-wider -mt-20"
     const hClasses = "text-white/80 text-base fadeIn"
     const spanClasses = "text-white"

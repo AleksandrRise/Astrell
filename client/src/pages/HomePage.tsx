@@ -10,6 +10,7 @@ export default function HomePage() {
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [errorText, setErrorText] = useState<string>("")
 
+    // Timer for an ErrorMessage
     useEffect(() => {
         if (errorText) {
 
