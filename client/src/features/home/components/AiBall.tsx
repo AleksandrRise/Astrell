@@ -4,11 +4,11 @@ import Text from "./Text"
 
 type AiBallType = {
     children: React.ReactNode; 
-    isLoading: boolean;
+    setErrorText: React.Dispatch<React.SetStateAction<string>>;
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function AiBall({ children, isLoading, setIsLoading }: AiBallType) {
+export default function AiBall({ children, setErrorText, setIsLoading }: AiBallType) {
     const imgAlt = "AI Thinking Ball"
     const figClasses = "zoomIn"
     const imgClasses = "aiball-animation"
@@ -16,7 +16,7 @@ export default function AiBall({ children, isLoading, setIsLoading }: AiBallType
 
     return (
         <section className={sectionClasses}>
-            <FileInput isLoading={isLoading} setIsLoading={setIsLoading} />
+            <FileInput setErrorText={setErrorText} setIsLoading={setIsLoading} />
 
             <figure className={figClasses}>
                 <img className={imgClasses} width="450px" height="450px" src={imgSrc} alt={imgAlt} />

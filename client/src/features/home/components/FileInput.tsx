@@ -3,21 +3,18 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 
 type FileInputProps = {
-    isLoading: boolean;
+    setErrorText: React.Dispatch<React.SetStateAction<string>>;
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function FileInput({ isLoading, setIsLoading }: FileInputProps) {
+export default function FileInput({ setErrorText, setIsLoading }: FileInputProps) {
 
     const navigate = useNavigate()
 
+    // States
     const [isDragged, setIsDragged] = useState<boolean>(false)
 
-    const wrapperClasses = `absolute w-3/4 h-3/4 bg-white/20 rounded-4xl \
-    top-0 bottom-0 left-0 right-0 m-auto flex justify-center items-center z-1 \
-    border-5 border-dashed border-white/30 transition ${!isDragged && "opacity-0"}`
-    const spanClasses = "text-white font-bold tracking-wider text-3xl"
-
+    // Functions
     const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault()
         setIsDragged(true)
@@ -34,7 +31,6 @@ export default function FileInput({ isLoading, setIsLoading }: FileInputProps) {
         setIsLoading(true)
 
         const formData: FormData = new FormData()
-
         const droppedFile: File = e.dataTransfer.files[0]
         const videoUrl: string = URL.createObjectURL(droppedFile)
 
@@ -48,10 +44,15 @@ export default function FileInput({ isLoading, setIsLoading }: FileInputProps) {
             .then(res => {
                 navigate("/response", { state: [res.data['text'], videoUrl]})
             })
-            .catch(error => console.log(error))
+            .catch(error => setErrorText(error['message']))
 
         setIsLoading(false)
     }
+
+    const wrapperClasses = `absolute w-3/4 h-3/4 bg-white/20 rounded-4xl \
+        top-0 bottom-0 left-0 right-0 m-auto flex justify-center items-center z-1 \
+        border-5 border-dashed border-white/30 transition ${!isDragged && "opacity-0"}`
+    const spanClasses = "text-white font-bold tracking-wider text-3xl"
 
     return (
         <div 
