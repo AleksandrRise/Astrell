@@ -12,6 +12,7 @@ export default function HomePage() {
 
     useEffect(() => {
         if (errorText) {
+
             const timer = setTimeout(() => {
                 setErrorText("")
             }, 5000)
@@ -33,7 +34,7 @@ export default function HomePage() {
                 <AiBall.Text isLoading={isLoading} />
             </AiBall>
 
-            {errorText ? <ErrorMessage message={errorText}/> : null}
+            {errorText ? <ErrorMessage message={errorText} /> : null}
         </main>
     )
 }
