@@ -27,7 +27,7 @@ export default function FileInput({ setErrorText, setIsLoading }: FileInputProps
         setIsDragged(false)
     }
 
-    const handleDrop = async (e: React.DragEvent<HTMLDivElement>) => {
+    const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault()
         setIsDragged(false)
 
