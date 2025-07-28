@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 
@@ -14,6 +14,7 @@ export default function FileInput({ setErrorText, setIsLoading }: FileInputProps
 
     // States
     const [isDragged, setIsDragged] = useState<boolean>(false)
+    const [file, setFile] = useState<File | null>(null)
 
     // Functions
     const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
@@ -29,27 +30,38 @@ export default function FileInput({ setErrorText, setIsLoading }: FileInputProps
     const handleDrop = async (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault()
         setIsDragged(false)
-        setIsLoading(true)
 
-        const formData: FormData = new FormData()
         const droppedFile: File = e.dataTransfer.files[0]
-        const videoUrl: string = URL.createObjectURL(droppedFile)
+        if (!droppedFile) return
 
-        formData.append('file', droppedFile)
-
-        await axios.post('http://127.0.0.1:5000/api/v1/uploadVideo', formData, {
-            headers: {
-                "Content-Type":"multipart/form-data"
-            }
-        })
-            .then(res => {
-                localStorage.setItem("video", videoUrl)
-                navigate("/response", { state: res.data['text']})
-            })
-            .catch(error => setErrorText(error['message']))
-
-        setIsLoading(false)
+        setFile(droppedFile)
     }
+
+    useEffect(() => {
+        if (!file) return
+
+        const upload = async () => {
+            setIsLoading(true);
+
+            const formData: FormData = new FormData()
+            formData.append("file", file)
+            const videoUrl: string = URL.createObjectURL(file)
+
+            await axios.post('http://127.0.0.1:5000/api/v1/uploadVideo', formData, {
+                headers: {
+                    "Content-Type":"multipart/form-data"
+                }
+            })
+                .then(res => {
+                    localStorage.setItem("video", videoUrl)
+                    navigate("/response", { state: res.data['text']})
+                })
+                .catch(error => setErrorText(error['message'] || "Upload failed"))
+                .finally(() => setIsLoading(false))
+        }
+
+        upload()
+    }, [file])
 
     // Classes
     const wrapperClasses = `absolute w-3/4 h-3/4 bg-white/20 rounded-4xl \
