@@ -6,7 +6,7 @@ import Navbar from "../shared/components/Navbar";
 
 export default function ResponsePage() {
     const location = useLocation()
-    const transcript: string = location.state[0]
+    const transcript: string = location.state
     const videoUrl: string = localStorage.getItem("video")!
 
     // Classes
