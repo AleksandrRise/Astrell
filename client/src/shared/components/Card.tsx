@@ -1,5 +1,6 @@
 import notebookSrc from "../../features/response/assets/notebook.png"
 import axios from "axios"
+import { useEffect, useState } from "react"
 
 type CardProps = {
     text: string
@@ -7,14 +8,24 @@ type CardProps = {
 
 export default function Card({ text }: CardProps) {
 
-    const handleClick = async () => {
-        switch(text.toLowerCase()) {
-            case "summarize":
-                await axios.get('http://127.0.0.1:5000/api/v1/summarize')
-                    .then(res => console.log(res.data))
-                break;
+    const [loading, setLoading] = useState<boolean>(false)
+
+    useEffect(() => {
+        if (!loading) return
+
+        const handleClick = async () => {
+            switch(text.toLowerCase()) {
+                case "summarize":
+                    await axios.get('http://127.0.0.1:5000/api/v1/summarize')
+                        .then(res => console.log(res.data))
+                        .catch(error => console.error(error))
+                        .finally(() => setLoading(false))
+                    break;
+            }
         }
-    }
+
+        handleClick()
+    }, [loading])
 
     // Classes
     const liClasses = "w-45 h-50 border rounded-3xl hover:scale-105 transition"
@@ -26,7 +37,7 @@ export default function Card({ text }: CardProps) {
 
     return (
         <li className={liClasses}>
-            <button className={btnClasses} onClick={handleClick}>
+            <button className={btnClasses} onClick={() => setLoading(true)} disabled={loading}>
                 <img className={imgClasses} src={notebookSrc} alt={altImg} />
                 <span className={spanClasses}>{text}</span>
             </button>
