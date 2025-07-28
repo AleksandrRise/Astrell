@@ -36,9 +36,15 @@ class Commands:
 ################################################
 
     def convertToJSON(self, msg: str):
-        response = self.ai.prompt(message=msg)
-        return json.loads(response['message'])
+        response = self.ai.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=msg
+        )
+        return json.loads(response.text)
 
     def convertToStr(self, msg: str) -> str:
-        response = self.ai.prompt(message=msg)
-        return response['message']
+        response = self.ai.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=msg
+        )
+        return response.text
