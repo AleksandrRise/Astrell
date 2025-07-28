@@ -1,7 +1,7 @@
-import whisper
-from flask import Flask, request, abort
+import whisper, os
+from flask import Flask, request
 from flask_cors import CORS
-from meta_ai_api import MetaAI
+from dotenv import load_dotenv
 
 from commands import Commands
 
@@ -9,7 +9,8 @@ app = Flask(__name__)
 origin = "http://localhost:5173"
 CORS(app, resources={r"*": {"origins": origin}})
 
-ai = MetaAI()
+load_dotenv()
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 model = whisper.load_model("base")
 
 transcript = ""
