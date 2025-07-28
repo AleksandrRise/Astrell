@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import infoSrc from "../../assets/Information.png"
 import HintBlock from "../../features/home/components/HintBlock";
 
