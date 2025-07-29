@@ -3,6 +3,7 @@ import HomePage from "./pages/HomePage";
 import ResponsePage from "./pages/ResponsePage";
 import QuizPage from "./pages/QuizPage";
 import FlashcardsPage from "./pages/FlashcardsPage";
+import Test from "./pages/Test";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Route path="/response" element={<ResponsePage />} />
       <Route path="/flashcards" element={<FlashcardsPage />} />
       <Route path="/quiz" element={<QuizPage />} />
+      <Route path="/test" element={<Test />} />
     </Routes>
   )
 }
