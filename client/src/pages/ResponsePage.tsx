@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import Commands from "../features/response/components/Commands";
 import VideoSection from "../features/response/components/VideoSection";
 import Navbar from "../shared/components/Navbar";
+import ErrorMessage from "../shared/components/ErrorMessage"
 import { useState } from "react";
 
 
@@ -10,8 +11,10 @@ export default function ResponsePage() {
     const transcript: string = location.state
     const videoUrl: string = localStorage.getItem("video")!
 
+    // States
     const [ summarization, setSummarization ] = useState<string>("")
     const [ sumPage, setSumPage ] = useState<boolean>(false)
+    const [ errorText, setErrorText ] = useState<string>("")
 
     // Classes
     const mainClasses = "h-screen w-full hero-bg text-white flex flex-col justify-start"
@@ -51,9 +54,13 @@ export default function ResponsePage() {
                         text={text} 
                         setSummarization={setSummarization}
                         setSumPage={setSumPage}
+                        errorText={errorText}
+                        setErrorText={setErrorText}
                     />
                 )}
             </Commands>
+
+            {errorText && <ErrorMessage message={errorText} />}
         </main>
     )
 }

@@ -6,9 +6,11 @@ type CardProps = {
     text: string;
     setSummarization: React.Dispatch<React.SetStateAction<string>>;
     setSumPage: React.Dispatch<React.SetStateAction<boolean>>;
+    errorText: string;
+    setErrorText: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function Card({ text, setSummarization, setSumPage }: CardProps) {
+export default function Card({ text, setSummarization, setSumPage, errorText, setErrorText }: CardProps) {
 
     const [loading, setLoading] = useState<boolean>(false)
 
@@ -25,24 +27,25 @@ export default function Card({ text, setSummarization, setSumPage }: CardProps) 
                             setSummarization(res.data)
                             setSumPage(true)
                         })
+                        .catch(error => setErrorText(error.message))
                         .finally(() => setLoading(false))
                     break;
                 case "generate flashcards":
                     await axios.get(`${ADDRESS}/api/v1/getcard`)
                         .then(res => console.log(res.data))
-                        .catch(error => console.error(error))
+                        .catch(error => setErrorText(error.message))
                         .finally(() => setLoading(false))
                     break;
                 case "highlight key concepts":
                     await axios.get(`${ADDRESS}/api/v1/gethighlight`)
                         .then(res => console.log(res.data))
-                        .catch(error => console.error(error))
+                        .catch(error => setErrorText(error.message))
                         .finally(() => setLoading(false))
                     break;
                 case "make a quiz":
                     await axios.get(`${ADDRESS}/api/v1/getquiz`)
                         .then(res => console.log(res.data))
-                        .catch(error => console.error(error))
+                        .catch(error => setErrorText(error.message))
                         .finally(() => setLoading(false))
                     break;
             }
@@ -50,6 +53,18 @@ export default function Card({ text, setSummarization, setSumPage }: CardProps) 
 
         handleClick()
     }, [loading])
+
+    // Timer for an ErrorMessage
+    useEffect(() => {
+        if (errorText) {
+
+            const timer = setTimeout(() => {
+                setErrorText("")
+            }, 5000)
+    
+            return () => clearTimeout(timer)
+        }
+    }, [errorText])
 
     // Classes
     const liClasses = "w-45 h-50 border rounded-3xl hover:scale-105 transition"
@@ -60,11 +75,13 @@ export default function Card({ text, setSummarization, setSumPage }: CardProps) 
     const altImg = "Notebook Image"
 
     return (
-        <li className={liClasses}>
-            <button className={btnClasses} onClick={() => setLoading(true)} disabled={loading}>
-                <img className={imgClasses} src={notebookSrc} alt={altImg} />
-                <span className={spanClasses}>{text}</span>
-            </button>
-        </li>
+        <>
+            <li className={liClasses}>
+                <button className={btnClasses} onClick={() => setLoading(true)} disabled={loading}>
+                    <img className={imgClasses} src={notebookSrc} alt={altImg} />
+                    <span className={spanClasses}>{text}</span>
+                </button>
+            </li>        
+        </>
     )
 }
