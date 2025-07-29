@@ -3,10 +3,12 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 
 type CardProps = {
-    text: string
+    text: string;
+    setSummarization: React.Dispatch<React.SetStateAction<string>>;
+    setSumPage: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function Card({ text }: CardProps) {
+export default function Card({ text, setSummarization, setSumPage }: CardProps) {
 
     const [loading, setLoading] = useState<boolean>(false)
 
@@ -19,8 +21,10 @@ export default function Card({ text }: CardProps) {
             switch(text.toLowerCase()) {
                 case "summarize":
                     await axios.get(`${ADDRESS}/api/v1/summarize`)
-                        .then(res => console.log(res.data))
-                        .catch(error => console.error(error))
+                        .then(res => {
+                            setSummarization(res.data)
+                            setSumPage(true)
+                        })
                         .finally(() => setLoading(false))
                     break;
                 case "generate flashcards":

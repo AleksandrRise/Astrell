@@ -1,5 +1,6 @@
 import Transcript from "./Transcript";
 import Player from "./Player";
+import Summarization from "./Summarization";
 
 type VideoSectionProps = {
     children: React.ReactNode;
@@ -18,4 +19,5 @@ export default function VideoSection({ children }: VideoSectionProps) {
 }
 
 VideoSection.Transcript = Transcript
+VideoSection.Summarization = Summarization
 VideoSection.Player = Player

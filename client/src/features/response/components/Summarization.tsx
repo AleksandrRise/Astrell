@@ -1,11 +1,10 @@
-type TranscriptProps = {
-    transcript: string;
+
+type SummarizationProps = {
     summarization: string;
     setSumPage: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function Transcript({ transcript,summarization, setSumPage }: TranscriptProps) {
-
+export default function Summarization({ summarization, setSumPage }: SummarizationProps) {
     // Classes
     const wrapperClasses = "px-8 py-9.5 font-bold w-100 h-126.25 bg-white/8 rounded-4xl \
     shadow-[0_0_2px_0_rgba(0,149,255,0.75)_inset] backdrop-blur-[100px] overflow-auto \
@@ -18,10 +17,10 @@ export default function Transcript({ transcript,summarization, setSumPage }: Tra
     return (
         <article className={wrapperClasses}>
             <section className={sectionClasses}>
-                <h1 className={h1Classes}>Transcript</h1>
-                {summarization && <button className={btnClasses} onClick={() => setSumPage(true)}></button>}
+                <h1 className={h1Classes}>Summarization</h1>
+                <button className={btnClasses} onClick={() => setSumPage(false)}></button>
             </section>
-            <p className={pClasses}>{transcript}</p>
+            <p className={pClasses}>{summarization}</p>
         </article>
     )
 }
