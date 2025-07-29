@@ -30,9 +30,26 @@ def uploadVideo() -> str:
 
 @app.route('/api/v1/summarize', methods=['GET'])
 def summarize() -> str:
-    print(transcript)
     commands = Commands(transcript, ai)
     return commands.getSummarizeStr()
+
+
+@app.route('/api/v1/getquiz', methods=['GET'])
+def getQuiz():
+    commands = Commands(transcript, ai)
+    return commands.getQuizJSON()
+
+
+@app.route('/api/v1/getcard', methods=['GET'])
+def getExam():
+    commands = Commands(transcript, ai)
+    return commands.getCardJSON()
+
+
+@app.route('/api/v1/gethighlight', methods=['GET'])
+def getHighlight() -> str:
+    commands = Commands(transcript, ai)
+    return commands.getHighlightStr()
 
 
 if __name__ == "__main__":

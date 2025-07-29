@@ -13,10 +13,30 @@ export default function Card({ text }: CardProps) {
     useEffect(() => {
         if (!loading) return
 
+        const ADDRESS = "http://127.0.0.1:5000"
+
         const handleClick = async () => {
             switch(text.toLowerCase()) {
                 case "summarize":
-                    await axios.get('http://127.0.0.1:5000/api/v1/summarize')
+                    await axios.get(`${ADDRESS}/api/v1/summarize`)
+                        .then(res => console.log(res.data))
+                        .catch(error => console.error(error))
+                        .finally(() => setLoading(false))
+                    break;
+                case "generate flashcards":
+                    await axios.get(`${ADDRESS}/api/v1/getcard`)
+                        .then(res => console.log(res.data))
+                        .catch(error => console.error(error))
+                        .finally(() => setLoading(false))
+                    break;
+                case "highlight key concepts":
+                    await axios.get(`${ADDRESS}/api/v1/gethighlight`)
+                        .then(res => console.log(res.data))
+                        .catch(error => console.error(error))
+                        .finally(() => setLoading(false))
+                    break;
+                case "make a quiz":
+                    await axios.get(`${ADDRESS}/api/v1/getquiz`)
                         .then(res => console.log(res.data))
                         .catch(error => console.error(error))
                         .finally(() => setLoading(false))
