@@ -7,7 +7,8 @@ import Profile from "./Profile"
 
 export default function Aside() {
     // Classes
-    const asideClasses = "text-white"
+    const asideClasses = "text-white w-85 h-screen bg-blackBG border-r-3 \
+    border-white/5"
 
     return (
         <aside className={asideClasses}>
