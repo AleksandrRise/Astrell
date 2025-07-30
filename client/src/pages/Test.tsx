@@ -1,7 +1,9 @@
-export default function Test() {
-    
+import Aside from "../features/test/components/Aside"
 
+export default function Test() {
     return (
-        <h1 className="text-white">Hi</h1>
+        <>
+            <Aside />
+        </>
     )
 }
