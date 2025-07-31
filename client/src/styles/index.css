@@ -9,7 +9,6 @@
          url("../assets/fonts/Lato/Lato-Bold.ttf") format("truetype")
 }
 
-
 @layer utilities {
     .hero-bg {
         background: url("../assets/Background.png");
@@ -75,7 +74,7 @@
 @theme {
     --color-lightblue: #00C3FF;
     --color-blackBG: #131313;
-    --font-lato: "Lato", "sans-serif";
+    --font-lato: "Lato", sans-serif;
 }
 
 html {
