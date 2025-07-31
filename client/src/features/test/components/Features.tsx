@@ -6,12 +6,14 @@ type FeaturesProps = {
 }
 
 export default function Features({ children }: FeaturesProps) {
-    
+
     // Classes
     const wrapperClasses = "mt-9.5"
+    const h2Classes = ""
 
     return (
         <section className={wrapperClasses}>
+            <h2 className={h2Classes}>Features</h2>
             {children}
         </section>
     )
