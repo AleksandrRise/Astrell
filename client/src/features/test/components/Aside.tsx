@@ -28,7 +28,7 @@ export default function Aside() {
     const asideClasses = "text-white w-85 h-screen bg-blackBG border-r-3 \
     border-white/5 px-8.5 flex flex-col"
     const divClasses = "bg-white/5 h-0.5 w-full mb-5.5"
-    const h2Classes = "tracking-wide text-white/60 text-base font-bold font-lato mb-7.5 mt-9.5 ml-2"
+    const h2Classes = "tracking-wide text-white/60 text-base font-bold font-lato mt-9.5 ml-2"
 
     return (
         <aside className={asideClasses}>
