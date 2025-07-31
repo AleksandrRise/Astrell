@@ -6,15 +6,15 @@ import Actions from "./Actions"
 export default function Main() {
 
     // Classes
-    const mainClasses = ""
+    const mainClasses = "w-full h-screen px-17 py-16 grid grid-cols-2 grid-rows-2"
 
     return (
         <main className={mainClasses}>
             <VideoPlayer />
 
-            <Transcript />
-
             <Notes />
+
+            <Transcript />
 
             <Actions />
         </main>

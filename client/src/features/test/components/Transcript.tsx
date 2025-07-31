@@ -1,6 +1,10 @@
 export default function Transcript() {
+
+    // Classes
+    const wrapperClasses = "mt-8.5 mr-8.5 outline-solid"
+
     return (
-        <article>
+        <article className={wrapperClasses}>
             <button></button>
 
             <div>

@@ -1,7 +1,10 @@
 import videoSrc from "../assets/test.mp4"
 
 export default function VideoPlayer() {
+    // Classes
+    const videoClasses = "outline-solid"
+
     return (
-        <video src={videoSrc}></video>
+        <video className={videoClasses} src={videoSrc} controls></video>
     )
 }

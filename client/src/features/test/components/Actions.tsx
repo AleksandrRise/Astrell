@@ -1,9 +1,13 @@
 export default function Actions() {
 
+    // Properties
     const htmlFor = "askai"
 
+    // Classes
+    const wrapperClasses = "outline"
+
     return (
-        <section>
+        <section className={wrapperClasses}>
             <button>
                 <span>Make a</span>
                 <img src="" alt="" />
