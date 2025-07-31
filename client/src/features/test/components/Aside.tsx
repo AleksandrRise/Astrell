@@ -9,7 +9,7 @@ export default function Aside() {
     // Classes
     const asideClasses = "text-white w-85 h-screen bg-blackBG border-r-3 \
     border-white/5 px-8.5"
-    const divClasses = "bg-white/5 h-0.5 w-full"
+    const divClasses = "bg-white/5 h-0.5 w-full mb-5.5"
 
     return (
         <aside className={asideClasses}>
