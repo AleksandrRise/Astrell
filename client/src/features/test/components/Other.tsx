@@ -6,8 +6,10 @@ type OtherProps = {
 }
 
 export default function Other({ children }: OtherProps) {
+    const wrapperClasses = "mt-auto"
+
     return (
-        <section>
+        <section className={wrapperClasses}>
             {children}
         </section>
     )

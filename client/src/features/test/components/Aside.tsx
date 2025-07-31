@@ -7,6 +7,8 @@ import dashboardIcon from "../assets/DashboardIcon.png"
 import chatIcon from "../assets/ChatIcon.png"
 import examIcon from "../assets/ExamIcon.png"
 import historyIcon from "../assets/HistoryIcon.png"
+import settingsIcon from "../assets/SettingsIcon.png"
+import supportIcon from "../assets/SupportIcon.png"
 
 
 export default function Aside() {
@@ -18,9 +20,14 @@ export default function Aside() {
         { name: "Chat", icon: chatIcon, isActive: false},
     ]
 
+    const others = [
+        { name: "Settings", icon: settingsIcon, isActive: false},
+        { name: "Support", icon: supportIcon, isActive: false},
+    ]
+
     // Classes
     const asideClasses = "text-white w-85 h-screen bg-blackBG border-r-3 \
-    border-white/5 px-8.5"
+    border-white/5 px-8.5 flex flex-col"
     const divClasses = "bg-white/5 h-0.5 w-full mb-5.5"
 
     return (
@@ -41,10 +48,16 @@ export default function Aside() {
                 )}
             </Features>
 
-            <div className={divClasses}></div>
-
             <Other>
-                <Other.Feature name="Settings" icon="" isActive={false} />
+                <div className={divClasses}></div>
+
+                {others.map(other => 
+                    <Other.Feature
+                        name={other.name}
+                        icon={other.icon} 
+                        isActive={other.isActive}
+                    />                     
+                )}
             </Other>
             
             <Profile />
