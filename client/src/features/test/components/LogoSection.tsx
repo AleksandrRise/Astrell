@@ -1,10 +1,15 @@
 import Logo from "../../../shared/components/Logo"
 
 export default function LogoSection() {
+    // Classes
+    const wrapperClasses = "flex items-center text-3xl \
+    py-7.5"
+    const h1Classes = "pt-1 tracking-wider font-bold font-lato"
+
     return (
-        <section>
+        <section className={wrapperClasses}>
             <Logo />
-            <h1>ASTRELL</h1>
+            <h1 className={h1Classes}>ASTRELL</h1>
         </section>       
     )
 }

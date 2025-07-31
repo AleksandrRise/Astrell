@@ -1,6 +1,13 @@
 @import "tailwindcss";
-@import url("../assets/fonts/Open_Sans/OpenSans-VariableFont_wdth\,wght.ttf");
-@import url("../assets/fonts/Lato/Lato-Regular.ttf");
+
+@font-face {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 400, 700;
+    font-display: swap;
+    src: url("../assets/fonts/Lato/Lato-Regular.ttf") format("truetype"),
+         url("../assets/fonts/Lato/Lato-Bold.ttf") format("truetype")
+}
 
 
 @layer utilities {
@@ -68,7 +75,7 @@
 @theme {
     --color-lightblue: #00C3FF;
     --color-blackBG: #131313;
-    --font-lato: "Lato," sans-serif;
+    --font-lato: "Lato", "sans-serif";
 }
 
 html {
