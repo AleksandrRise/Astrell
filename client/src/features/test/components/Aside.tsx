@@ -1,7 +1,6 @@
 import Features from "./Features";
 import LogoSection from "./LogoSection";
 import SearchBar from "../../../shared/components/SearchBar";
-import Other from "./Other"
 import Profile from "./Profile"
 import dashboardIcon from "../assets/DashboardIcon.png"
 import chatIcon from "../assets/ChatIcon.png"
@@ -29,6 +28,7 @@ export default function Aside() {
     const asideClasses = "text-white w-85 h-screen bg-blackBG border-r-3 \
     border-white/5 px-8.5 flex flex-col"
     const divClasses = "bg-white/5 h-0.5 w-full mb-5.5"
+    const h2Classes = "tracking-wide text-white/60 text-base font-bold font-lato mb-7.5 mt-9.5 ml-2"
 
     return (
         <aside className={asideClasses}>
@@ -39,6 +39,8 @@ export default function Aside() {
             <SearchBar />
 
             <Features>
+                <h2 className={h2Classes}>Features</h2>
+
                 {features.map(feature => 
                     <Features.Feature 
                         name={feature.name} 
@@ -48,17 +50,17 @@ export default function Aside() {
                 )}
             </Features>
 
-            <Other>
-                <div className={divClasses}></div>
+            <div className={divClasses + " mt-auto"}></div>
 
+            <Features>
                 {others.map(other => 
-                    <Other.Feature
+                    <Features.Feature
                         name={other.name}
                         icon={other.icon} 
                         isActive={other.isActive}
                     />                     
                 )}
-            </Other>
+            </Features>
             
             <Profile />
         </aside>
