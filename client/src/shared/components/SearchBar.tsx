@@ -1,6 +1,28 @@
+import { useState, type SetStateAction } from "react";
+import type { FeaturesProps } from "../../features/test/utils/FeaturesProps"
 import searchIcon from "../../assets/Search.png"
 
-export default function SearchBar() {
+type SearchBarProps = {
+    features: FeaturesProps[];
+    setSearchRes: React.Dispatch<SetStateAction<FeaturesProps[]>>; 
+}
+
+export default function SearchBar({ features, setSearchRes}: SearchBarProps) {
+
+    // Searching algorithm
+    const handleChange = (value: string) => {
+        const results = features.filter((feature) => {
+            return (
+                value && 
+                feature &&
+                feature.name &&
+                feature.name.toLowerCase().includes(value)
+            )
+        })
+
+        value ? setSearchRes(results) : setSearchRes(features)
+    }
+
     // Classes
     const imgClasses = "w-5 h-5"
     const inputClasses = "outline-none border-none pl-3.5 text-sm \
@@ -17,7 +39,13 @@ export default function SearchBar() {
     return (
         <label htmlFor={htmlFor} className={wrapperClasses}>
             <img className={imgClasses} src={searchIcon} alt={altSearch} />
-            <input className={inputClasses} type="text" name={htmlFor} id={htmlFor} placeholder={inputPlaceholder} />
+            <input className={inputClasses} 
+                type="text" 
+                name={htmlFor} 
+                id={htmlFor} 
+                placeholder={inputPlaceholder} 
+                onChange={(e) => handleChange(e.target.value)}
+            />
         </label>
     )
 }

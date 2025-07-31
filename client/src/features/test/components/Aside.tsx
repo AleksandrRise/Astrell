@@ -8,10 +8,13 @@ import examIcon from "../assets/ExamIcon.png"
 import historyIcon from "../assets/HistoryIcon.png"
 import settingsIcon from "../assets/SettingsIcon.png"
 import supportIcon from "../assets/SupportIcon.png"
+import type { FeaturesProps } from "../utils/FeaturesProps"
+import { useState } from "react";
 
 
 export default function Aside() {
 
+    // Features arrays
     const features = [
         { name: "Dashboard", icon: dashboardIcon, isActive: true},
         { name: "History", icon: historyIcon, isActive: false},
@@ -23,6 +26,9 @@ export default function Aside() {
         { name: "Settings", icon: settingsIcon, isActive: false},
         { name: "Support", icon: supportIcon, isActive: false},
     ]
+
+    // States
+    const [ searchRes, setSearchRes ] = useState<FeaturesProps[]>(features)
 
     // Classes
     const asideClasses = "text-white w-85 h-screen bg-blackBG border-r-3 \
@@ -36,16 +42,17 @@ export default function Aside() {
 
             <div className={divClasses}></div>
             
-            <SearchBar />
+            <SearchBar features={features} setSearchRes={setSearchRes} />
 
             <Features>
                 <h2 className={h2Classes}>Features</h2>
 
-                {features.map(feature => 
+                {searchRes.map((featureEl, index) => 
                     <Features.Feature 
-                        name={feature.name} 
-                        icon={feature.icon} 
-                        isActive={feature.isActive}
+                        name={featureEl.name} 
+                        icon={featureEl.icon} 
+                        isActive={featureEl.isActive}
+                        key={index}
                     />
                 )}
             </Features>
@@ -53,11 +60,12 @@ export default function Aside() {
             <div className={divClasses + " mt-auto"}></div>
 
             <Features>
-                {others.map(other => 
+                {others.map((other, index) => 
                     <Features.Feature
                         name={other.name}
                         icon={other.icon} 
                         isActive={other.isActive}
+                        key={index}
                     />                     
                 )}
             </Features>

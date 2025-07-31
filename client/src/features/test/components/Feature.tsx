@@ -1,11 +1,6 @@
+import type { FeaturesProps } from "../utils/FeaturesProps"
 
-type FeatureProps = {
-    name: string;
-    icon: string;
-    isActive: boolean;
-}
-
-export default function Feature({ name, icon, isActive }: FeatureProps) {
+export default function Feature({ name, icon, isActive }: FeaturesProps) {
 
     // Classes
     const liClasses = `w-full rounded-lg  \
