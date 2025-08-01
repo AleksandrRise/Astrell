@@ -1,7 +1,7 @@
 export default function Transcript() {
 
     // Classes
-    const wrapperClasses = "mt-8.5 mr-8.5 outline-solid"
+    const wrapperClasses = "outline-solid rounded-3xl w-full h-full row-start-2"
 
     return (
         <article className={wrapperClasses}>
