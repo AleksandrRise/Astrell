@@ -23,19 +23,19 @@ export default function Transcript() {
         `
             Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
             what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
-            what yo bro.<br />
+            what yo bro.
 
             Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
             what ifaepf and then what so what yo bro. Some text bla yes yes and then what so                        
             Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
             what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
-            what yo bro.<br />
+            what yo bro.
 
             Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
             what ifaepf and 
             Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
             what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
-            what yo bro.<br />
+            what yo bro.
 
             Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
             what ifaepf and
