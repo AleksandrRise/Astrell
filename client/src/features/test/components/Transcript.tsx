@@ -80,8 +80,8 @@ export default function Transcript() {
         btnClicked === 0
             ? 'left-0'
             : btnClicked === 1
-            ? 'left-46'
-            : 'left-88'
+            ? 'left-47'
+            : 'left-89'
 
     const iconClasses = "size-7.5"
     const btnTextClasses = "text-xl font-bold font-lato"
