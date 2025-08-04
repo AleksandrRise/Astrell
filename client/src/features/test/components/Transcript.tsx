@@ -20,7 +20,7 @@ export default function Transcript() {
     ]
 
     // Classes
-    const enlargeClasses = "opacity-30 absolute right-5 top-5 w-5 h-5"
+    const enlargeClasses = "opacity-30 absolute right-5 top-5 w-5 h-5 cursor-pointer"
     const wrapperClasses = "relative rounded-3xl w-full h-full row-start-2 p-[1px] \
         bg-gradient-to-tl from-[#333333] from-[75%] to-[#999999] to-[100%] z-1"
     const innerWrapperClasses = "bg-blackBG rounded-3xl w-full h-full px-13.5 p-8 flex flex-col"
@@ -28,9 +28,9 @@ export default function Transcript() {
     const btnClasses = "flex gap-2.5 items-center cursor-pointer"
     const iconClasses = "w-7.5 h-7.5"
     const btnTextClasses = "text-xl font-bold font-lato"
-    const lineClasses = "my-4 w-full h-[1px] bg-white/5"
+    const lineClasses = "my-3.5 w-full h-[1px] bg-white/5"
     const textWrapperClasses = "w-full h-full"
-    const textClasses = "overflow-auto"
+    const textClasses = "overflow-auto text-sm text-white/70 text-left max-w-11/12"
 
     return (
         <article className={wrapperClasses}>
