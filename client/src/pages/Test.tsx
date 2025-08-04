@@ -4,7 +4,7 @@ import Main from "../features/test/components/Main"
 export default function Test() {
 
     // Classes
-    const mainClasses = "flex text-white"
+    const mainClasses = "flex text-white hero-bg-response"
 
     return (
         <main className={mainClasses}>

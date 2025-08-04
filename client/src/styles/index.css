@@ -18,6 +18,14 @@
         position: relative;
     }
 
+    .hero-bg-response {
+        background: linear-gradient(190deg, #000C19 0%, #0F1A38 10%, #000C19 100%);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+
     .hint-bg {
         background: linear-gradient(rgba(0, 124, 232, 0.8), rgba(0, 52, 98, 0.8));
     }
