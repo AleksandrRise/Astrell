@@ -64,7 +64,7 @@ export default function Transcript() {
     const handleClick = (index: number): void => {
         setBtnClicked(index)
     }
-    // 0, 1/4, 9/19
+
     // Classes
     const wrapperClasses = "relative rounded-3xl size-full row-start-2 p-px \
         bg-gradient-to-tl from-[#333333] from-[75%] to-[#999999] to-[100%]"
@@ -72,9 +72,16 @@ export default function Transcript() {
     const enlargeClasses = "opacity-30 absolute right-5 top-5 size-5 cursor-pointer"
     const btnsClasses = "flex gap-11 relative pb-4 w-full"
     const btnClasses = "flex gap-2.5 items-center cursor-pointer"
+
     const underlineClasses = `h-[2px] w-2/9 bg-white/70 rounded-t-lg \
-        absolute bottom-0 shadow-[0_0_12px_2px_#FFFFFF]/25 transition-all \
-        left-${btnClicked === 0 ? "0" : (btnClicked === 1 ? "1/4" : "9/19")}`
+        absolute bottom-0 shadow-[0_0_12px_2px_#FFFFFF]/25 transition-all`
+    const underlinePosition = 
+        btnClicked === 0
+            ? 'left-0 w-1/3'
+            : btnClicked === 1
+            ? 'left-1/4 w-1/3'
+            : 'left-9/19 w-1/3'
+
     const iconClasses = "size-7.5"
     const btnTextClasses = "text-xl font-bold font-lato"
     const lineClasses = "mb-4 w-19/20 h-px bg-white/5"
@@ -100,14 +107,20 @@ export default function Transcript() {
                         )
                     })}
 
-                    <div className={underlineClasses}></div>
+                    <div className={`${underlineClasses} ${underlinePosition}`}></div>
                 </div>
 
                 <div className={lineClasses}></div>
 
                 <div className={textWrapperClasses}>
                     <p className={textClasses}>
-                        {transcript}
+                        {btnClicked === 0 
+                            ? (transcript) 
+                            : (btnClicked === 1 
+                                ? (summary) 
+                                : (highlights)
+                            )
+                        }
                     </p>
                 </div>
             </div>
