@@ -74,13 +74,14 @@ export default function Transcript() {
     const btnClasses = "flex gap-2.5 items-center cursor-pointer"
 
     const underlineClasses = `h-[2px] w-2/9 bg-white/70 rounded-t-lg \
-        absolute bottom-0 shadow-[0_0_12px_2px_#FFFFFF]/25 transition-all`
+        absolute bottom-0 shadow-[0_0_12px_2px_#FFFFFF]/25 transition-all \
+        lg:w-40`
     const underlinePosition = 
         btnClicked === 0
-            ? 'left-0 w-1/3'
+            ? 'left-0'
             : btnClicked === 1
-            ? 'left-1/4 w-1/3'
-            : 'left-9/19 w-1/3'
+            ? 'left-46'
+            : 'left-88'
 
     const iconClasses = "size-7.5"
     const btnTextClasses = "text-xl font-bold font-lato"
