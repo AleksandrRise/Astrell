@@ -2,7 +2,7 @@ import transcriptIcon from "../assets/TranscriptIcon.png"
 import summaryIcon from "../assets/SummaryIcon.png"
 import highlightsIcon from "../assets/HighlightsIcon.png"
 import enlargeIcon from "../assets/EnlargeIcon.png"
-import { useState } from "react"
+import { useState, type SetStateAction } from "react"
 
 
 type buttonType = {
@@ -11,10 +11,39 @@ type buttonType = {
     name: string;
     isActive: boolean;
 }
+type TranscriptProps = {
+    isVideoShown: boolean;
+    setIsVideoShown: React.Dispatch<SetStateAction<boolean>>;
+}
 
-export default function Transcript() {
+export default function Transcript({ isVideoShown, setIsVideoShown }: TranscriptProps) {
 
-    const [btnClicked, setBtnClicked] = useState<number>(0);
+    const [btnClicked, setBtnClicked] = useState<number>(0)
+
+    const transcriptStatic: string = 
+        `
+            Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
+            what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
+            what yo bro.
+
+            Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
+            what ifaepf and then what so what yo bro. Some text bla yes yes and then what so                        
+            Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
+            what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
+            what yo bro.
+
+            Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
+            what ifaepf and 
+            Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
+            what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
+            what yo bro.
+
+            Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
+            what ifaepf and
+        `
+    const [transcript, setTranscript] = useState<string>(transcriptStatic)
+    const [summary, setSummary] = useState<string>("")
+    const [highlights, setHighlights] = useState<string>("")
 
     const buttons: buttonType[] = [
         {
@@ -37,32 +66,11 @@ export default function Transcript() {
         },
     ]
 
-    const transcript: string = 
-        `
-            Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
-            what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
-            what yo bro.
-
-            Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
-            what ifaepf and then what so what yo bro. Some text bla yes yes and then what so                        
-            Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
-            what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
-            what yo bro.
-
-            Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
-            what ifaepf and 
-            Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
-            what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
-            what yo bro.
-
-            Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
-            what ifaepf and
-        `
-    const summary: string = ``
-    const highlights: string = ``
-
     const handleClick = (index: number): void => {
         setBtnClicked(index)
+    }
+    const handleEnlarge = (): void => {
+        return (isVideoShown ? setIsVideoShown(false) : setIsVideoShown(true))
     }
 
     // Classes
@@ -80,19 +88,20 @@ export default function Transcript() {
         btnClicked === 0
             ? 'left-0'
             : btnClicked === 1
-            ? 'left-47'
-            : 'left-89'
+                ? 'left-47'
+                : 'left-89'
 
     const iconClasses = "size-7.5"
     const btnTextClasses = "text-xl font-bold font-lato"
     const lineClasses = "mb-4 w-19/20 h-px bg-white/5"
-    const textWrapperClasses = "w-full h-44 pr-15 relative overflow-y-auto break-words"
+    const textWrapperClasses = `w-full pr-15 relative overflow-y-auto break-words \
+        ${isVideoShown ? "h-44" : "h-110"}`
     const textClasses = "text-sm text-white/60 text-left leading-6"
 
     return (
         <article className={wrapperClasses}>
             <div className={innerWrapperClasses}>
-                <button className={enlargeClasses}>
+                <button className={enlargeClasses} onClick={handleEnlarge}>
                     <img src={enlargeIcon} alt="Enlarge" />
                 </button>
 

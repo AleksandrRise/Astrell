@@ -2,8 +2,12 @@ import Transcript from "./Transcript"
 import VideoPlayer from "./VideoPlayer"
 import Notes from "./Notes"
 import Actions from "./Actions"
+import { useState } from "react"
 
 export default function Main() {
+
+    // States
+    const [isVideoShown, setIsVideoShown] = useState<boolean>(true)
 
     // Classes
     const mainClasses = "p-10 flex w-full h-screen \
@@ -14,8 +18,8 @@ export default function Main() {
     return (
         <main className={mainClasses}>
             <div className={leftColClasses}>
-                <VideoPlayer />
-                <Transcript />
+                {isVideoShown ? <VideoPlayer /> : null}
+                <Transcript isVideoShown={isVideoShown} setIsVideoShown={setIsVideoShown} />
             </div>
 
             <div className={rightColClasses}>
