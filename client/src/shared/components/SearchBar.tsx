@@ -1,4 +1,4 @@
-import { useState, type SetStateAction } from "react";
+import { type SetStateAction } from "react";
 import type { FeaturesProps } from "../../features/test/utils/FeaturesProps"
 import searchIcon from "../../assets/Search.png"
 
