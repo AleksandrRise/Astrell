@@ -1,3 +1,7 @@
+import QuizIcon from "../assets/QuizIcon.png"
+import FlashIcon from "../assets/FlashIcon.png"
+import AIIcon from "../assets/AIIcon.png"
+
 export default function Actions() {
 
     // Properties
@@ -13,12 +17,12 @@ export default function Actions() {
         <section className={wrapperClasses}>
             <button className={btnClasses}>
                 <span>Make a</span>
-                <img src="" alt="" />
+                <img src={QuizIcon} alt="" />
                 <span>Quiz</span>
             </button>
 
             <button className={btnClasses}>
-                <img src="" alt="" />
+                <img src={FlashIcon} alt="" />
                 <span>Flashcards</span>
                 <span>Make</span>
             </button>
@@ -28,7 +32,7 @@ export default function Actions() {
                 <span>AI</span>
                 <div>
                     <input type="text" name={htmlFor} id={htmlFor} />
-                    <img src="" alt="" />
+                    <img src={AIIcon} alt="" />
                 </div>
             </label>
         </section>
