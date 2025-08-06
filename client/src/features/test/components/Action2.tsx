@@ -8,7 +8,7 @@ export default function Action2() {
     const flashContainerClasses = "flex flex-col"
     const flashIconClasses = "size-7"
     const flashIconAlt = "FlashcardsIcon"
-    const flashTextClasses = "text-2xl font-bold bg-clip-text text-transparent \
+    const flashTextClasses = "text-3xl font-bold italic bg-clip-text text-transparent \
         bg-linear-to-l from-[#999999] to-white"
     const flashSubtextClasses = "text-sm italic ml-auto font-semibold"
 
