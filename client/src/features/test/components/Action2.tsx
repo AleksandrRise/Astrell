@@ -9,7 +9,7 @@ export default function Action2() {
     const flashIconClasses = "size-7"
     const flashIconAlt = "FlashcardsIcon"
     const flashTextClasses = "text-3xl font-bold italic bg-clip-text text-transparent \
-        bg-linear-to-l from-[#999999] to-white"
+        bg-linear-to-l from-[#999999] to-white tracking-wide"
     const flashSubtextClasses = "text-sm italic ml-auto font-semibold"
 
     return (

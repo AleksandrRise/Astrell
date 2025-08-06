@@ -11,7 +11,7 @@ export default function Action3() {
         flex justify-center items-center cursor-text"
     const aiContainerClasses = "flex items-end gap-5.5"
     const aiTextClasses = "text-4xl bg-clip-text text-transparent \
-        bg-linear-to-l from-[#999999] to-white font-bold italic"
+        bg-linear-to-l from-[#999999] to-white font-bold italic tracking-wider"
     const aiSubtextClasses = "text-sm italic -mb-1.5"
     const aiTextWrapperClasses = "relative flex flex-col"
     const aiInputWrapperClasses = "relative w-70"
