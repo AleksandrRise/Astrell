@@ -4,10 +4,10 @@ export default function Actions() {
     const htmlFor = "askai"
 
     // Classes
-    const wrapperClasses = "outline-solid h-full w-full grid grid-cols-2 grid-rows-2 gap-5.25 \
+    const wrapperClasses = "h-full w-full grid grid-cols-2 grid-rows-2 gap-5.25 \
         row-start-2"
-    const btnClasses = "rounded-3xl outline-solid p-9.5"
-    const labelClasses = "outline-solid rounded-3xl col-span-2"
+    const btnClasses = "rounded-3xl logoGradient-bg p-[2px]"
+    const labelClasses = "logoGradient-bg p-[2px] w-full rounded-3xl col-span-2"
 
     return (
         <section className={wrapperClasses}>
