@@ -1,15 +1,42 @@
 @import "tailwindcss";
 
+/* Regular 400 */
 @font-face {
     font-family: "Lato";
-    font-style: normal, italic;
-    font-weight: 400, 700;
+    font-style: normal;
+    font-weight: 400;
     font-display: swap;
-    src: url("../assets/fonts/Lato/Lato-Regular.ttf") format("truetype"),
-         url("../assets/fonts/Lato/Lato-Bold.ttf") format("truetype"),
-         url("../assets/fonts/Lato/Lato-BoldItalic.ttf") format("truetype")
-         url("../assets/fonts/Lato/Lato-Italic.ttf") format("truetype")
+    src: url("../assets/fonts/Lato/Lato-Regular.ttf") format("truetype");
 }
+
+/* Bold 700 */
+@font-face {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("../assets/fonts/Lato/Lato-Bold.ttf") format("truetype");
+}
+
+/* Italic 400 */
+@font-face {
+    font-family: "Lato";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../assets/fonts/Lato/Lato-Italic.ttf") format("truetype");
+}
+
+/* Bold Italic 700 */
+@font-face {
+    font-family: "Lato";
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url("../assets/fonts/Lato/Lato-BoldItalic.ttf") format("truetype");
+}
+
+
 
 @layer utilities {
     .hero-bg {
