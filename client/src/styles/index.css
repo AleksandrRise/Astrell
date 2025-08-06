@@ -91,7 +91,7 @@ html {
 }
 
 .logoGradient-bg {
-    overflow: hidden;
+    position: relative;
 
     background-image: 
     linear-gradient(rgba(19, 19, 19)), 
@@ -101,6 +101,26 @@ html {
             rgba(38, 135, 209, 0.1) 66%,
             rgba(28, 154, 214, 1)   100%);
     background-clip: content-box, padding-box;
+}
+.logoGradient-bg::before {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    filter: blur(50px);
+    background-color: #444EC3;
+    border-radius: 9999px;
+    top: 0; left: 0;
+}
+.logoGradient-bg::after {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    filter: blur(50px);
+    background-color: #1C9AD6;
+    border-radius: 9999px;
+    bottom: 0; right: 0;
 }
 
 
