@@ -16,7 +16,8 @@ export default function Action3() {
     const aiTextWrapperClasses = "relative flex flex-col"
     const aiInputWrapperClasses = "relative w-70"
     const aiInputClasses = "border border-[#333533] rounded-lg bg-white/5 outline-none \
-        p-2 w-full focus:shadow-[0_0_0_2px_#FFFFFF]/20 transition"
+        p-2 pr-13 w-full focus:shadow-[0_0_0_2px_#FFFFFF]/20 transition \
+        text-white/80 text-md"
     const aiIconClasses = "size-7 absolute bottom-1.5 right-2.5 cursor-pointer"
     const aiIconAlt = "AiIcon"
 
