@@ -6,11 +6,9 @@ import { useState } from "react"
 
 export default function Main() {
 
-    // States
-    const [isVideoShown, setIsVideoShown] = useState<boolean>(true)
 
     // Classes
-    const mainClasses = "p-10 flex w-full h-screen \
+    const mainClasses = "relative p-10 flex w-full h-screen \
         justify-center items-center gap-8 overflow-hidden"
     const leftColClasses = "grid grid-rows-[auto_2fr] flex-2 size-full gap-4"
     const rightColClasses = "grid grid-rows-[2fr_1fr] flex-1 size-full gap-6"
@@ -18,8 +16,8 @@ export default function Main() {
     return (
         <main className={mainClasses}>
             <div className={leftColClasses}>
-                {isVideoShown ? <VideoPlayer /> : null}
-                <Transcript isVideoShown={isVideoShown} setIsVideoShown={setIsVideoShown} />
+                <VideoPlayer />
+                <Transcript />
             </div>
 
             <div className={rightColClasses}>

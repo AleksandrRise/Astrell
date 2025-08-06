@@ -11,12 +11,8 @@ type buttonType = {
     name: string;
     isActive: boolean;
 }
-type TranscriptProps = {
-    isVideoShown: boolean;
-    setIsVideoShown: React.Dispatch<SetStateAction<boolean>>;
-}
 
-export default function Transcript({ isVideoShown, setIsVideoShown }: TranscriptProps) {
+export default function Transcript() {
 
     const transcriptStatic: string = 
         `
@@ -41,6 +37,7 @@ export default function Transcript({ isVideoShown, setIsVideoShown }: Transcript
         `
     // States
     const [btnClicked, setBtnClicked] = useState<number>(0)
+    const [isEnlarged, setIsEnlarged] = useState<boolean>(false)
     const [transcript, setTranscript] = useState<string>(transcriptStatic)
     const [summary, setSummary] = useState<string>("")
     const [highlights, setHighlights] = useState<string>("")
@@ -70,12 +67,16 @@ export default function Transcript({ isVideoShown, setIsVideoShown }: Transcript
         setBtnClicked(index)
     }
     const handleEnlarge = (): void => {
-        return (isVideoShown ? setIsVideoShown(false) : setIsVideoShown(true))
+        return (isEnlarged ? setIsEnlarged(false) : setIsEnlarged(true))
     }
 
+    // Properties
+    const enlargeIconAlt = "Enlarge"
+
     // Classes
-    const wrapperClasses = "relative rounded-3xl size-full row-start-2 p-px \
+    const wrapperClasses = "size-full z-1 rounded-3xl row-start-2 p-px \
         bg-gradient-to-tl from-[#333333] from-[75%] to-[#999999] to-[100%] min-h-0"
+    const transcriptEnlarger = (isEnlarged ? "absolute inset-0" : "relative")
     const innerWrapperClasses = "bg-blackBG rounded-3xl size-full pl-12 pr-15 py-8 flex flex-col"
     const enlargeClasses = "opacity-30 absolute right-5 top-5 size-5 cursor-pointer"
     const btnsClasses = "flex gap-11 relative pb-4 w-full"
@@ -99,10 +100,10 @@ export default function Transcript({ isVideoShown, setIsVideoShown }: Transcript
     const textClasses = "text-sm text-white/60 text-left leading-6"
 
     return (
-        <article className={wrapperClasses}>
+        <article className={`${wrapperClasses} ${transcriptEnlarger}`}>
             <div className={innerWrapperClasses}>
                 <button className={enlargeClasses} onClick={handleEnlarge}>
-                    <img src={enlargeIcon} alt="Enlarge" />
+                    <img src={enlargeIcon} alt={enlargeIconAlt} />
                 </button>
 
                 <div className={btnsClasses}>
