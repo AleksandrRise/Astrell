@@ -18,8 +18,6 @@ type TranscriptProps = {
 
 export default function Transcript({ isVideoShown, setIsVideoShown }: TranscriptProps) {
 
-    const [btnClicked, setBtnClicked] = useState<number>(0)
-
     const transcriptStatic: string = 
         `
             Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
@@ -41,6 +39,8 @@ export default function Transcript({ isVideoShown, setIsVideoShown }: Transcript
             Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
             what ifaepf and
         `
+    // States
+    const [btnClicked, setBtnClicked] = useState<number>(0)
     const [transcript, setTranscript] = useState<string>(transcriptStatic)
     const [summary, setSummary] = useState<string>("")
     const [highlights, setHighlights] = useState<string>("")
@@ -75,7 +75,7 @@ export default function Transcript({ isVideoShown, setIsVideoShown }: Transcript
 
     // Classes
     const wrapperClasses = "relative rounded-3xl size-full row-start-2 p-px \
-        bg-gradient-to-tl from-[#333333] from-[75%] to-[#999999] to-[100%]"
+        bg-gradient-to-tl from-[#333333] from-[75%] to-[#999999] to-[100%] min-h-0"
     const innerWrapperClasses = "bg-blackBG rounded-3xl size-full pl-12 pr-15 py-8 flex flex-col"
     const enlargeClasses = "opacity-30 absolute right-5 top-5 size-5 cursor-pointer"
     const btnsClasses = "flex gap-11 relative pb-4 w-full"
@@ -94,8 +94,7 @@ export default function Transcript({ isVideoShown, setIsVideoShown }: Transcript
     const iconClasses = "size-7.5"
     const btnTextClasses = "text-xl font-bold font-lato"
     const lineClasses = "mb-4 w-19/20 h-px bg-white/5"
-    const textWrapperClasses = `w-full pr-15 relative overflow-y-auto break-words \
-        ${isVideoShown ? "h-44" : "h-110"}`
+    const textWrapperClasses = "w-full pr-15 relative overflow-y-auto break-words"
     const textClasses = "text-sm text-white/60 text-left leading-6"
 
     return (
