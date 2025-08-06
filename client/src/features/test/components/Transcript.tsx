@@ -95,7 +95,7 @@ export default function Transcript({ isVideoShown, setIsVideoShown }: Transcript
     const btnTextClasses = "text-xl font-bold font-lato"
     const lineClasses = "mb-4 w-19/20 h-px bg-white/5"
     const textWrapperClasses = "w-full pr-15 relative overflow-y-auto break-words \
-        removeScrollBarBg"
+        scrollbarEdit"
     const textClasses = "text-sm text-white/60 text-left leading-6"
 
     return (
