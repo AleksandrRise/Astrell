@@ -1,14 +1,18 @@
 import { useState } from "react"
 import QuizIcon from "../assets/QuizIcon.png"
 import { fetchData } from "../utils/fetchData"
+import { useContext } from "react"
+import { ErrorMessageContext } from "../../../shared/utils/ErrorMessageContext"
 
 
 const ADDRESS: string = "http://127.0.0.1:5000"
 
 export default function Action1() {
 
-    // States
+    // Hooks
     const [ isLoading, setIsLoading ] = useState<boolean>(false)
+    const [ , setErrorText ] = useContext(ErrorMessageContext)
+    
 
     // Classes
     const btnClasses = `rounded-3xl logoGradient-bg p-[2px] flex flex-col text-start \
@@ -22,7 +26,7 @@ export default function Action1() {
     const quizIconAlt = "QuizIcon"
 
     return (
-        <button className={btnClasses} onClick={() => fetchData(setIsLoading, ADDRESS, "getquiz")}>
+        <button className={btnClasses} onClick={() => fetchData(setIsLoading, ADDRESS, "getquiz", setErrorText)}>
             <div className={quizContainerClasses}>
                 <span className={quizSubtextClasses}>Make a</span>
                 <div className={quizHolderClasses}>

@@ -1,10 +1,14 @@
 import FlashIcon from "../assets/FlashIcon.png"
 import { useState } from "react"
 import { fetchData } from "../utils/fetchData"
+import { useContext } from "react"
+import { ErrorMessageContext } from "../../../shared/utils/ErrorMessageContext"
 
 export default function Action2() {
 
+    // Hooks
     const [ isLoading, setIsLoading ] = useState<boolean>(false)
+    const [ , setErrorText ] = useContext(ErrorMessageContext)
 
     const ADDRESS: string = "http://127.0.0.1:5000"
 
@@ -21,7 +25,7 @@ export default function Action2() {
     const flashSubtextClasses = "text-sm italic ml-auto font-semibold"
 
     return (
-        <button className={btnClasses} onClick={() => fetchData(setIsLoading, ADDRESS, "getcard")}>
+        <button className={btnClasses} onClick={() => fetchData(setIsLoading, ADDRESS, "getcard", setErrorText)}>
             <div className={flashContainerClasses}>
                 <img className={flashIconClasses} src={FlashIcon} alt={flashIconAlt} />
                 <span className={flashTextClasses}>Flashcards</span>
