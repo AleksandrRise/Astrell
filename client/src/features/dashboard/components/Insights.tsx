@@ -2,21 +2,19 @@ import transcriptIcon from "../assets/TranscriptIcon.png"
 import summaryIcon from "../assets/SummaryIcon.png"
 import highlightsIcon from "../assets/HighlightsIcon.png"
 import enlargeIcon from "../assets/EnlargeIcon.png"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { useLocation } from "react-router-dom"
 import type { ButtonType } from "../utils/ButtonType.tsx"
 import { insightsHandler } from "../utils/insightsHandler.ts"
 import InsightsBtn from "./InsightsBtn.tsx"
 import LoadingText from "../../../shared/components/LoadingText.tsx"
+import { ErrorMessageContext } from "../../../shared/utils/ErrorMessageContext.tsx"
 
 
-type InsightsProps = {
-    setErrorText: React.Dispatch<React.SetStateAction<string>>;
-}
-
-export default function Insights({ setErrorText }: InsightsProps) {
+export default function Insights() {
 
     const location = useLocation()
+    const [, setErrorText] = useContext(ErrorMessageContext)
 
     // States
     const [choiceClicked, setChoiceClicked] = useState<number>(0)
