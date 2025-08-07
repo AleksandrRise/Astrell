@@ -1,24 +1,14 @@
 import { useState } from "react"
 import QuizIcon from "../assets/QuizIcon.png"
-import axios from "axios"
+import { fetchData } from "../utils/fetchData"
+
+
+const ADDRESS: string = "http://127.0.0.1:5000"
 
 export default function Action1() {
 
+    // States
     const [ isLoading, setIsLoading ] = useState<boolean>(false)
-
-    const ADDRESS: string = "http://127.0.0.1:5000"
-
-    const fetchData = async () => {
-        setIsLoading(true)
-        const response = await axios.get(`${ADDRESS}/api/v1/getquiz`)
-
-        if (response.status != 200) {
-            console.error(response.statusText)
-        } else {
-            console.log(response.data)
-        }
-        setIsLoading(false)
-    }
 
     // Classes
     const btnClasses = `rounded-3xl logoGradient-bg p-[2px] flex flex-col text-start \
@@ -32,7 +22,7 @@ export default function Action1() {
     const quizIconAlt = "QuizIcon"
 
     return (
-        <button className={btnClasses} onClick={() => fetchData()}>
+        <button className={btnClasses} onClick={() => fetchData(setIsLoading, ADDRESS, "getquiz")}>
             <div className={quizContainerClasses}>
                 <span className={quizSubtextClasses}>Make a</span>
                 <div className={quizHolderClasses}>
