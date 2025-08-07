@@ -1,5 +1,5 @@
 import { type SetStateAction } from "react";
-import type { FeaturesProps } from "../../features/test/utils/FeaturesProps"
+import type { FeaturesProps } from "../../features/dashboard/utils/FeaturesProps"
 import searchIcon from "../../assets/Search.png"
 
 type SearchBarProps = {

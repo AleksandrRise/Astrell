@@ -1,7 +1,7 @@
 import Insights from "./Insights.tsx"
-import VideoPlayer from "./VideoPlayer"
-import Notes from "./Notes"
-import Actions from "./Actions"
+import VideoPlayer from "./VideoPlayer.tsx"
+import Notes from "./Notes.tsx"
+import Actions from "./Actions.tsx"
 import { useState } from "react"
 import ErrorMessage from "../../../shared/components/ErrorMessage.tsx"
 
