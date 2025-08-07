@@ -52,13 +52,12 @@ export default function Insights({ setErrorText }: InsightsProps) {
     const handleEnlarge = (): void => {
         return (isEnlarged ? setIsEnlarged(false) : setIsEnlarged(true))
     }
+
+    // Processes Summarization and Highlights texts
     useEffect(() => {
         const processData = async () => insightsHandler(ADDRESS, setSummarization, setHighlights, setErrorText)
         processData()
     }, [])
-
-    console.log(highlights)
-    console.log(summarization)
 
     // Properties
     const enlargeIconAlt = "Enlarge"
@@ -84,7 +83,7 @@ export default function Insights({ setErrorText }: InsightsProps) {
     const lineClasses = "mb-4 w-19/20 h-px bg-white/5"
     const textWrapperClasses = "w-full pr-15 relative overflow-y-auto break-words \
         scrollbarEdit"
-    const textClasses = "text-sm text-white/60 text-left leading-6"
+    const textClasses = "text-sm text-white/60 text-left leading-6 whitespace-pre-wrap"
 
     return (
         <article className={`${wrapperClasses} ${transcriptEnlarger}`}>
