@@ -105,15 +105,17 @@ export default function Insights() {
                 <div className={lineClasses}></div>
 
                 <div className={textWrapperClasses}>
-                    <p className={textClasses}>
-                        {choiceClicked === 0 
-                            ? (transcript) 
-                            : (choiceClicked === 1 
-                                ? (summarization === "" ? <LoadingText /> : summarization) 
-                                : (highlights === "" ? <LoadingText /> : highlights)
-                            )
-                        }
-                    </p>
+                    {choiceClicked === 0 
+                        ? (<p className={textClasses}>{transcript}</p>) 
+                        : (choiceClicked === 1 
+                            ? (summarization === "" 
+                                ? <LoadingText /> 
+                                : <p className={textClasses}>{summarization}</p>) 
+                            : (highlights === "" 
+                                ? <LoadingText /> 
+                                : <p className={textClasses}>{highlights}</p>)
+                        )
+                    }
                 </div>
             </div>
             
