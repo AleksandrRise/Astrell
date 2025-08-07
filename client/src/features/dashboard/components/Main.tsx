@@ -2,12 +2,25 @@ import Insights from "./Insights.tsx"
 import VideoPlayer from "./VideoPlayer.tsx"
 import Notes from "./Notes.tsx"
 import Actions from "./Actions.tsx"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import ErrorMessage from "../../../shared/components/ErrorMessage.tsx"
 
 export default function Main() {
 
+    // States
     const [errorText, setErrorText] = useState<string>("")
+
+    // Timer for an ErrorMessage
+    useEffect(() => {
+        if (errorText !== "") {
+
+            const timer = setTimeout(() => {
+                setErrorText("")
+            }, 5000)
+    
+            return () => clearTimeout(timer)
+        }
+    }, [errorText])
 
     // Classes
     const mainClasses = "relative p-10 flex w-full h-screen \

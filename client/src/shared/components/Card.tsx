@@ -54,17 +54,7 @@ export default function Card({ text, setSummarization, setSumPage, errorText, se
         handleClick()
     }, [loading])
 
-    // Timer for an ErrorMessage
-    useEffect(() => {
-        if (errorText) {
 
-            const timer = setTimeout(() => {
-                setErrorText("")
-            }, 5000)
-    
-            return () => clearTimeout(timer)
-        }
-    }, [errorText])
 
     // Classes
     const liClasses = "w-45 h-50 border rounded-3xl hover:scale-105 transition"
