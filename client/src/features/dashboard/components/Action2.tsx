@@ -1,6 +1,6 @@
 import FlashIcon from "../assets/FlashIcon.png"
-import axios from "axios"
 import { useState } from "react"
+import { fetchData } from "../utils/fetchData"
 
 export default function Action2() {
 
@@ -8,17 +8,7 @@ export default function Action2() {
 
     const ADDRESS: string = "http://127.0.0.1:5000"
 
-    const fetchData = async () => {
-        setIsLoading(true)
-        const response = await axios.get(`${ADDRESS}/api/v1/getcard`)
-
-        if (response.status != 200) {
-            console.error(response.statusText)
-        } else {
-            console.log(response.data)
-        }
-        setIsLoading(false)
-    }
+    
 
     // Classes
     const btnClasses = `rounded-3xl logoGradient-bg p-[2px] flex flex-col text-start \
@@ -31,7 +21,7 @@ export default function Action2() {
     const flashSubtextClasses = "text-sm italic ml-auto font-semibold"
 
     return (
-        <button className={btnClasses} onClick={() => fetchData()}>
+        <button className={btnClasses} onClick={() => fetchData(setIsLoading, ADDRESS, "getcard")}>
             <div className={flashContainerClasses}>
                 <img className={flashIconClasses} src={FlashIcon} alt={flashIconAlt} />
                 <span className={flashTextClasses}>Flashcards</span>
