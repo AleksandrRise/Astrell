@@ -6,11 +6,11 @@ export default function LoadingText() {
     const repsNum: number = 3
 
     return (
-        [...Array(repsNum).keys()].map(key => 
+        [...Array(repsNum).keys()].map(() => 
             <>
-                <div key={key} className={`${blocksClasses} ${block1}`}></div>
-                <div key={key} className={`${blocksClasses} ${block2}`}></div>
-                <div key={key} className={`${blocksClasses} ${block3}`}></div>           
+                <div className={`${blocksClasses} ${block1}`}></div>
+                <div className={`${blocksClasses} ${block2}`}></div>
+                <div className={`${blocksClasses} ${block3}`}></div>           
             </>
         )       
     )

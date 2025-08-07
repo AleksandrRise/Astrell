@@ -53,8 +53,9 @@ export default function Insights({ setErrorText }: InsightsProps) {
         return (isEnlarged ? setIsEnlarged(false) : setIsEnlarged(true))
     }
     useEffect(() => {
-        const processData = async() => insightsHandler(ADDRESS, setSummarization, setHighlights, setErrorText)
-    })
+        const processData = async () => insightsHandler(ADDRESS, setSummarization, setHighlights, setErrorText)
+        processData()
+    }, [])
 
     console.log(highlights)
     console.log(summarization)
