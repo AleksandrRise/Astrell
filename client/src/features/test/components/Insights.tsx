@@ -25,7 +25,7 @@ export default function Insights({ setErrorText }: InsightsProps) {
     const [summarization, setSummarization] = useState<string>("")
     const [highlights, setHighlights] = useState<string>("")
 
-    const ADDRESS = "http://127.0.0.1:5000"
+    const ADDRESS: string = "http://127.0.0.1:5000"
 
 
     const buttons: ButtonType[] = [
