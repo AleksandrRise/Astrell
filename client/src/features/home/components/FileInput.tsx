@@ -54,7 +54,7 @@ export default function FileInput({ setErrorText, setIsLoading }: FileInputProps
             })
                 .then(res => {
                     localStorage.setItem("video", videoUrl)
-                    navigate("/response", { state: res.data['text']})
+                    navigate("/dashboard", { state: res.data['text']})
                 })
                 .catch(error => setErrorText(error['message'] || "Upload failed"))
                 .finally(() => setIsLoading(false))

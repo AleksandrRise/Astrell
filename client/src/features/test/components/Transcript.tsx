@@ -2,7 +2,8 @@ import transcriptIcon from "../assets/TranscriptIcon.png"
 import summaryIcon from "../assets/SummaryIcon.png"
 import highlightsIcon from "../assets/HighlightsIcon.png"
 import enlargeIcon from "../assets/EnlargeIcon.png"
-import { useState, type SetStateAction } from "react"
+import { useState } from "react"
+import { useLocation } from "react-router-dom"
 
 
 type buttonType = {
@@ -14,31 +15,13 @@ type buttonType = {
 
 export default function Transcript() {
 
-    const transcriptStatic: string = 
-        `
-            Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
-            what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
-            what yo bro.
+    const location = useLocation()
+    const videoUrl: string = localStorage.getItem("video")!
 
-            Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
-            what ifaepf and then what so what yo bro. Some text bla yes yes and then what so                        
-            Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
-            what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
-            what yo bro.
-
-            Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
-            what ifaepf and 
-            Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
-            what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
-            what yo bro.
-
-            Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so what yo bro. Some text bla yes yes and then what so 
-            what ifaepf and
-        `
     // States
     const [btnClicked, setBtnClicked] = useState<number>(0)
     const [isEnlarged, setIsEnlarged] = useState<boolean>(false)
-    const [transcript, setTranscript] = useState<string>(transcriptStatic)
+    const [transcript, setTranscript] = useState<string>(location.state)
     const [summary, setSummary] = useState<string>("")
     const [highlights, setHighlights] = useState<string>("")
 

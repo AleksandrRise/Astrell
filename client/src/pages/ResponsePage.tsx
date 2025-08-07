@@ -9,7 +9,6 @@ import { useState } from "react";
 export default function ResponsePage() {
     const location = useLocation()
     const transcript: string = location.state
-    const videoUrl: string = localStorage.getItem("video")!
 
     // States
     const [ summarization, setSummarization ] = useState<string>("")
