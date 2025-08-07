@@ -1,15 +1,16 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import { ErrorMessageContext } from "../../../shared/utils/ErrorMessageContext";
 
 type FileInputProps = {
-    setErrorText: React.Dispatch<React.SetStateAction<string>>;
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function FileInput({ setErrorText, setIsLoading }: FileInputProps) {
+export default function FileInput({setIsLoading }: FileInputProps) {
 
     // Other hooks
+    const [, setErrorText] = useContext(ErrorMessageContext)
     const navigate = useNavigate()
 
     // States

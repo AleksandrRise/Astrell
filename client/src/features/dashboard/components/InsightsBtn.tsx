@@ -6,6 +6,7 @@ type InsightsBtnProps = {
     setChoiceClicked: React.Dispatch<React.SetStateAction<number>>;
 }   
 
+
 export default function InsightsBtn({ btn, index, setChoiceClicked }: InsightsBtnProps) {
     const btnClasses = "flex gap-2.5 items-center cursor-pointer"
     const iconClasses = "size-7.5"

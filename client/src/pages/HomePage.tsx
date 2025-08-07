@@ -10,7 +10,7 @@ export default function HomePage() {
     // States
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
-    const [errorText, setErrorText] = useContext(ErrorMessageContext)
+    const [errorText] = useContext(ErrorMessageContext)
 
     return (
         <main className="w-full h-screen hero-bg flex flex-col pb-30 relative">
@@ -21,7 +21,7 @@ export default function HomePage() {
                 </Navbar.Info>
             </Navbar>
 
-            <AiBall setErrorText={setErrorText} setIsLoading={setIsLoading}>
+            <AiBall setIsLoading={setIsLoading}>
                 <AiBall.Text isLoading={isLoading} />
             </AiBall>
 

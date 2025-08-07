@@ -13,6 +13,7 @@ import { ErrorMessageContext } from "../../../shared/utils/ErrorMessageContext.t
 
 export default function Insights() {
 
+    // Other Hooks
     const location = useLocation()
     const [, setErrorText] = useContext(ErrorMessageContext)
 
@@ -25,7 +26,7 @@ export default function Insights() {
 
     const ADDRESS: string = "http://127.0.0.1:5000"
 
-
+    // All insights buttons
     const buttons: ButtonType[] = [
         {
             icon: transcriptIcon, 
@@ -47,6 +48,7 @@ export default function Insights() {
         },
     ]
 
+    // Enlarges Insights block if clicked
     const handleEnlarge = (): void => {
         return (isEnlarged ? setIsEnlarged(false) : setIsEnlarged(true))
     }
