@@ -1,11 +1,13 @@
-import Transcript from "./Transcript"
+import Insights from "./Insights.tsx"
 import VideoPlayer from "./VideoPlayer"
 import Notes from "./Notes"
 import Actions from "./Actions"
 import { useState } from "react"
+import ErrorMessage from "../../../shared/components/ErrorMessage.tsx"
 
 export default function Main() {
 
+    const [errorText, setErrorText] = useState<string>("")
 
     // Classes
     const mainClasses = "relative p-10 flex w-full h-screen \
@@ -17,13 +19,15 @@ export default function Main() {
         <main className={mainClasses}>
             <div className={leftColClasses}>
                 <VideoPlayer />
-                <Transcript />
+                <Insights setErrorText={setErrorText} />
             </div>
 
             <div className={rightColClasses}>
                 <Notes />
                 <Actions />
             </div>
+
+            {errorText && <ErrorMessage message={errorText} />}
         </main>
     )
 }

@@ -2,56 +2,62 @@ import transcriptIcon from "../assets/TranscriptIcon.png"
 import summaryIcon from "../assets/SummaryIcon.png"
 import highlightsIcon from "../assets/HighlightsIcon.png"
 import enlargeIcon from "../assets/EnlargeIcon.png"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useLocation } from "react-router-dom"
+import type { ButtonType } from "../utils/ButtonType"
+import { insightsHandler } from "../utils/insightsHandler.ts"
+import InsightsBtn from "./InsightsBtn.tsx"
+import LoadingText from "../../../shared/components/LoadingText.tsx"
 
 
-type buttonType = {
-    icon: string;
-    alt: string;
-    name: string;
-    isActive: boolean;
+type InsightsProps = {
+    setErrorText: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function Transcript() {
+export default function Insights({ setErrorText }: InsightsProps) {
 
     const location = useLocation()
-    const videoUrl: string = localStorage.getItem("video")!
 
     // States
-    const [btnClicked, setBtnClicked] = useState<number>(0)
+    const [choiceClicked, setChoiceClicked] = useState<number>(0)
     const [isEnlarged, setIsEnlarged] = useState<boolean>(false)
-    const [transcript, setTranscript] = useState<string>(location.state)
-    const [summary, setSummary] = useState<string>("")
+    const [transcript] = useState<string>(location.state)
+    const [summarization, setSummarization] = useState<string>("")
     const [highlights, setHighlights] = useState<string>("")
 
-    const buttons: buttonType[] = [
+    const ADDRESS = "http://127.0.0.1:5000"
+
+
+    const buttons: ButtonType[] = [
         {
             icon: transcriptIcon, 
             alt: "transcriptIcon", 
             name: "Transcription", 
-            isActive: (btnClicked === 0),
+            isActive: (choiceClicked === 0),
         },
         {
             icon: summaryIcon, 
             alt: "summaryIcon", 
             name: "Summary", 
-            isActive: (btnClicked === 1), 
+            isActive: (choiceClicked === 1), 
         },
         {
             icon: highlightsIcon, 
             alt: "highlightsIcon", 
             name: "Highlights", 
-            isActive: (btnClicked === 2), 
+            isActive: (choiceClicked === 2), 
         },
     ]
 
-    const handleClick = (index: number): void => {
-        setBtnClicked(index)
-    }
     const handleEnlarge = (): void => {
         return (isEnlarged ? setIsEnlarged(false) : setIsEnlarged(true))
     }
+    useEffect(() => {
+        const processData = async() => insightsHandler(ADDRESS, setSummarization, setHighlights, setErrorText)
+    })
+
+    console.log(highlights)
+    console.log(summarization)
 
     // Properties
     const enlargeIconAlt = "Enlarge"
@@ -63,20 +69,17 @@ export default function Transcript() {
     const innerWrapperClasses = "bg-blackBG rounded-3xl size-full pl-12 pr-15 py-8 flex flex-col"
     const enlargeClasses = "opacity-30 absolute right-5 top-5 size-5 cursor-pointer"
     const btnsClasses = "flex gap-11 relative pb-4 w-full"
-    const btnClasses = "flex gap-2.5 items-center cursor-pointer"
 
     const underlineClasses = `h-[2px] w-2/9 bg-white/70 rounded-t-lg \
         absolute bottom-0 shadow-[0_0_12px_2px_#FFFFFF]/25 transition-all \
         lg:w-40`
     const underlinePosition = 
-        btnClicked === 0
+        choiceClicked === 0
             ? 'left-0'
-            : btnClicked === 1
+            : choiceClicked === 1
                 ? 'left-47'
                 : 'left-89'
 
-    const iconClasses = "size-7.5"
-    const btnTextClasses = "text-xl font-bold font-lato"
     const lineClasses = "mb-4 w-19/20 h-px bg-white/5"
     const textWrapperClasses = "w-full pr-15 relative overflow-y-auto break-words \
         scrollbarEdit"
@@ -92,12 +95,7 @@ export default function Transcript() {
                 <div className={btnsClasses}>
                     {buttons.map((btn, index) => {
                         return (
-                            <button className={btnClasses + (btn.isActive ? " opacity-90" : " opacity-50")}
-                                key={index} onClick={() => handleClick(index)}
-                            >
-                                <img className={iconClasses} src={btn.icon} alt={btn.alt}/>
-                                <span className={btnTextClasses}>{btn.name}</span>
-                            </button>
+                            <InsightsBtn btn={btn} index={index} setChoiceClicked={setChoiceClicked} />
                         )
                     })}
 
@@ -108,11 +106,11 @@ export default function Transcript() {
 
                 <div className={textWrapperClasses}>
                     <p className={textClasses}>
-                        {btnClicked === 0 
+                        {choiceClicked === 0 
                             ? (transcript) 
-                            : (btnClicked === 1 
-                                ? (summary) 
-                                : (highlights)
+                            : (choiceClicked === 1 
+                                ? (summarization === "" ? <LoadingText /> : summarization) 
+                                : (highlights === "" ? <LoadingText /> : highlights)
                             )
                         }
                     </p>

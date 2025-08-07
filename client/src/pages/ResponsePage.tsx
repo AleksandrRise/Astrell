@@ -44,7 +44,7 @@ export default function ResponsePage() {
                     />
                 }
 
-                <VideoSection.Player videoUrl={videoUrl} />
+                <VideoSection.Player videoUrl="" />
             </VideoSection>
 
             <Commands>
