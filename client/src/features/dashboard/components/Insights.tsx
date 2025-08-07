@@ -93,9 +93,9 @@ export default function Insights() {
                 </button>
 
                 <div className={btnsClasses}>
-                    {buttons.map((btn, index) => {
+                    {buttons.map((btn, key) => {
                         return (
-                            <InsightsBtn btn={btn} index={index} setChoiceClicked={setChoiceClicked} />
+                            <InsightsBtn key={key} btn={btn} index={key} setChoiceClicked={setChoiceClicked} />
                         )
                     })}
 
