@@ -1,22 +1,16 @@
-import { useState } from "react"
 import QuizIcon from "../assets/QuizIcon.png"
-import { fetchData } from "../utils/fetchData"
-import { useContext } from "react"
-import { ErrorMessageContext } from "../../../shared/utils/ErrorMessageContext"
+import { useNavigate } from "react-router-dom"
 
-
-const ADDRESS: string = "http://127.0.0.1:5000"
 
 export default function Action1() {
 
     // Hooks
-    const [ isLoading, setIsLoading ] = useState<boolean>(false)
-    const [ , setErrorText ] = useContext(ErrorMessageContext)
+    const navigate = useNavigate()
     
 
     // Classes
-    const btnClasses = `rounded-3xl logoGradient-bg p-[2px] flex flex-col text-start \
-        justify-center items-center cursor-pointer ${isLoading && "animate-pulse"}`
+    const btnClasses = "rounded-3xl logoGradient-bg p-[2px] flex flex-col text-start \
+        justify-center items-center cursor-pointer"
     const quizContainerClasses = ""
     const quizTextClasses = "text-5xl font-bold italic bg-clip-text text-transparent \
         bg-linear-to-l from-[#999999] to-white tracking-wider"
@@ -26,7 +20,7 @@ export default function Action1() {
     const quizIconAlt = "QuizIcon"
 
     return (
-        <button className={btnClasses} onClick={() => fetchData(setIsLoading, ADDRESS, "getquiz", setErrorText)}>
+        <button className={btnClasses} onClick={() => navigate('/quiz')}>
             <div className={quizContainerClasses}>
                 <span className={quizSubtextClasses}>Make a</span>
                 <div className={quizHolderClasses}>
