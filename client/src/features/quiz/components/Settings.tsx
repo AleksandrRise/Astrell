@@ -7,8 +7,12 @@ type SettingsProps = {
 }
 
 export default function Settings({ children }: SettingsProps) {
+
+    // Classes
+    const wrapperClasses = "grid grid-cols-2 gap-x-7.5 gap-y-4"
+
     return (
-        <div>
+        <div className={wrapperClasses}>
             {children}
         </div>
     )
