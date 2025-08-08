@@ -10,7 +10,7 @@ export default function Action1() {
 
     // Classes
     const btnClasses = "rounded-3xl logoGradient-bg p-[2px] flex flex-col text-start \
-        justify-center items-center cursor-pointer"
+        justify-center items-center cursor-pointer hover:scale-102 transition"
     const quizContainerClasses = ""
     const quizTextClasses = "text-5xl font-bold italic bg-clip-text text-transparent \
         bg-linear-to-l from-[#999999] to-white tracking-wider"
