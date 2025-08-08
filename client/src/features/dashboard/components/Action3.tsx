@@ -8,7 +8,7 @@ export default function Action3() {
 
     // Classes
     const aiClasses = "logoGradient-bg p-[5px] rounded-3xl col-span-2 \
-        flex justify-center items-center cursor-text"
+        flex justify-center items-center opacity-40"
     const aiContainerClasses = "flex items-end gap-5.5"
     const aiTextClasses = "text-5xl bg-clip-text text-transparent \
         bg-linear-to-l from-[#999999] to-white font-bold italic tracking-wider"
@@ -31,7 +31,7 @@ export default function Action3() {
                 </div>
                 <div className={aiInputWrapperClasses}>
                     <img className={aiIconClasses} src={AIIcon} alt={aiIconAlt} />
-                    <input className={aiInputClasses} type="text" name={htmlFor} id={htmlFor} />
+                    <input disabled={true} className={aiInputClasses} type="text" name={htmlFor} id={htmlFor} />
                 </div>
             </div>
         </label>

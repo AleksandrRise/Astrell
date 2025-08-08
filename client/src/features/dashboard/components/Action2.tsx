@@ -16,7 +16,8 @@ export default function Action2() {
 
     // Classes
     const btnClasses = `rounded-3xl logoGradient-bg p-[2px] flex flex-col text-start \
-        justify-center items-center cursor-pointer ${isLoading && "animate-pulse"}`
+        justify-center items-center ${isLoading && "animate-pulse"} \
+        opacity-40`
     const flashContainerClasses = "flex flex-col"
     const flashIconClasses = "size-7"
     const flashIconAlt = "FlashcardsIcon"
@@ -25,7 +26,7 @@ export default function Action2() {
     const flashSubtextClasses = "text-sm italic ml-auto font-semibold"
 
     return (
-        <button className={btnClasses} onClick={() => fetchData(setIsLoading, ADDRESS, "getcard", setErrorText)}>
+        <button disabled={true} className={btnClasses} onClick={() => fetchData(setIsLoading, ADDRESS, "getcard", setErrorText)}>
             <div className={flashContainerClasses}>
                 <img className={flashIconClasses} src={FlashIcon} alt={flashIconAlt} />
                 <span className={flashTextClasses}>Flashcards</span>

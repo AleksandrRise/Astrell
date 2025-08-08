@@ -2,7 +2,8 @@ export default function Notes() {
 
     // Classes
     const wrapperClasses = "w-full h-auto row-start-1 rounded-3xl \
-        relative flex flex-col items-center logoGradient-bg p-[2px]"
+        relative flex flex-col items-center logoGradient-bg p-[2px] \
+        opacity-40"
     const headerWrapper = "flex items-center justify-center gap-4.25 mt-8 w-full"
     const headerClasses = "font-lato text-2xl font-bold text-nowrap \
         text-shadow-[0_0_16px_rgb(255_255_255_/_0.25)]"
