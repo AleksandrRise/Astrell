@@ -17,7 +17,7 @@ export default function QuizBlock() {
     const btnBackClasses = "bg-white/20 rounded-full size-10 cursor-pointer \
         flex justify-center items-center"
     const iconBackClasses = "size-4.5"
-    const descClasses = ""
+    const descClasses = "text-base text-white/70 py-8.25 inline-block"
 
     return (
         <section className={wrapperClasses}>
