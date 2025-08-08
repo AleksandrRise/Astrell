@@ -1,6 +1,13 @@
-export default function DifficultyBlock() {
+import type { CommonClassesProps } from "../utils/CommonClassesProps"
+
+
+export default function DifficultyBlock({ commonClasses }: CommonClassesProps) {
+
+    // Classes
+    const wrapperClasses = ""
+
     return (
-        <div>
+        <div className={`${commonClasses} ${wrapperClasses}`}>
             
         </div>
     )

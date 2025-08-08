@@ -10,6 +10,7 @@ export default function QuizBlock() {
         backdrop-blur-[100px] shadow-[0_0_2px_0_rgba(0,149,255,75)_inset]"
     const containerClasses = "p-11.5"
     const descClasses = "text-base text-white/70 py-8.25 inline-block"
+    const settingsClasses = ""
 
     return (
         <section className={wrapperClasses}>
@@ -20,9 +21,9 @@ export default function QuizBlock() {
                 <span className={descClasses}>Choose your quiz preferences.</span>
 
                 <Settings>
-                    <Settings.TimeBlock />
-                    <Settings.DifficultyBlock />
-                    <Settings.QuestionsNumBlock />
+                    <Settings.TimeBlock commonClasses={settingsClasses} />
+                    <Settings.DifficultyBlock commonClasses={settingsClasses} />
+                    <Settings.QuestionsNumBlock commonClasses={settingsClasses} />
                 </Settings>
 
                 <StartBtn />

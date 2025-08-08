@@ -1,6 +1,13 @@
-export default function TimeBlock() {
+import type { CommonClassesProps } from "../utils/CommonClassesProps"
+
+
+export default function TimeBlock({ commonClasses }: CommonClassesProps) {
+
+    // Classes
+    const wrapperClasses = ""
+
     return (
-        <div>
+        <div className={`${commonClasses} ${wrapperClasses}`}>
             
         </div>
     )
