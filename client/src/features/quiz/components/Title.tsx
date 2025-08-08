@@ -7,7 +7,7 @@ export default function Title() {
 
     // Classes
     const titleClasses = "flex gap-11.5 items-center"
-    const titleTextClasses = "font-lato font-bold text-2xl"
+    const titleTextClasses = "font-lato font-regular tracking-wide text-2xl"
     const btnBackClasses = "bg-white/20 rounded-full size-10 cursor-pointer \
         flex justify-center items-center"
     const iconBackClasses = "size-4.5"
