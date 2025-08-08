@@ -1,5 +1,13 @@
+import QuizBlock from "../features/quiz/components/QuizBlock"
+
+
 export default function QuizPage() {
+
+    const mainClasses = "hero-bg w-full h-screen"
+
     return (
-        <h1 className="text-white">Quiz Page</h1>
+        <main className={mainClasses}>
+            <QuizBlock />
+        </main>
     )
 }
