@@ -2,7 +2,11 @@ import Settings from "./Settings"
 import StartBtn from "./StartBtn"
 import Title from "./Title"
 
-export default function QuizBlock() {
+type QuizBlockProps = {
+    setHasStarted: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function QuizBlock({ setHasStarted }: QuizBlockProps) {
 
     
     // Classes
@@ -27,7 +31,7 @@ export default function QuizBlock() {
                     <Settings.QuestionsNumBlock commonClasses={commonClasses} />
                 </Settings>
 
-                <StartBtn />
+                <StartBtn setHasStarted={setHasStarted} />
             </div>
         </section>
     )

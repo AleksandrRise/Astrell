@@ -3,7 +3,7 @@ import summaryIcon from "../assets/SummaryIcon.png"
 import highlightsIcon from "../assets/HighlightsIcon.png"
 import enlargeIcon from "../assets/EnlargeIcon.png"
 import { useState, useEffect, useContext } from "react"
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import type { ButtonType } from "../utils/ButtonType.tsx"
 import { insightsHandler } from "../utils/insightsHandler.ts"
 import InsightsBtn from "./InsightsBtn.tsx"
@@ -14,6 +14,7 @@ import { ErrorMessageContext } from "../../../shared/utils/ErrorMessageContext.t
 export default function Insights() {
 
     // Other Hooks
+    const navigate = useNavigate()
     const location = useLocation()
     const [, setErrorText] = useContext(ErrorMessageContext)
 
@@ -23,6 +24,13 @@ export default function Insights() {
     const [transcript] = useState<string>(location.state)
     const [summarization, setSummarization] = useState<string>("")
     const [highlights, setHighlights] = useState<string>("")
+
+    // Forbid page access manually
+    // useEffect(() => {
+    //     if (!transcript) {
+    //         navigate("/")
+    //     }
+    // }, [])
 
     const ADDRESS: string = "http://127.0.0.1:5000"
 
