@@ -6,7 +6,8 @@ import QuestionBlock from "../features/quiz/components/QuestionBlock"
 export default function QuizPage() {
 
     const [ hasStarted, setHasStarted ] = useState<boolean>(false)
-    const mainClasses = "hero-bg w-full h-screen flex justify-center items-center"
+    const mainClasses = `hero-bg w-full h-screen flex justify-center items-center \
+        ${hasStarted && "bg-blur"} transition-filter`
 
     return (
         <main className={mainClasses}>

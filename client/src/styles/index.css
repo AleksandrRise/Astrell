@@ -39,6 +39,11 @@
 
 
 @layer utilities {
+    html {
+        background-color: #000;
+        font-family: "Open Sans", sans-serif;
+    }
+
     .hero-bg {
         background: url("../assets/Background.png");
         background-repeat: no-repeat;
@@ -144,7 +149,9 @@
         scrollbar-color: rgba(255,255,255,0.5) transparent;
     }
 
-    
+    .bg-blur {
+        animation: blur 2s forwards;
+    }
 }
 
 @theme {
@@ -152,11 +159,6 @@
     --color-blackBG: #131313;
     --font-lato: "Lato", sans-serif;
     --animate-wiggle: wiggle 1s ease-in-out infinite;
-}
-
-html {
-    background-color: #000;
-    font-family: "Open Sans", sans-serif;
 }
 
 
@@ -212,3 +214,12 @@ html {
       transform: rotate(3deg);
     }
   }
+
+@keyframes blur {
+    0% {
+        filter: blur(0px);
+    }
+    100% {
+        filter: blur(24px);
+    }
+}
