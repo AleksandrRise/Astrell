@@ -23,10 +23,10 @@ export default function TimeBlock({ commonClasses }: CommonClassesProps) {
     const topClasses = "flex items-center"
     const btnsClasses = "grid grid-cols-3 gap-x-1.5"
     const iconClasses = "size-5"
-    const textClasses = "text-md text-white/80 ml-1.75 mr-auto tracking-wide"
+    const textClasses = "text-md text-white/90 ml-1.75 mr-auto tracking-wide"
     const checkClasses = "size-3.5"
     const className = "text-center bg-white border-1 border-black/20 rounded-md \
-        text-black placeholder:text-black text-xs py-1 px-3 tracking-wide \
+        text-black/80 placeholder:text-black/80 text-xs py-1 px-3 tracking-wide \
         outline-none focus:placeholder:text-transparent [appearance:textfield]  \
         [&::-webkit-outer-spin-button]:appearance-none \
         [&::-webkit-inner-spin-button]:appearance-none"
