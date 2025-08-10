@@ -1,7 +1,11 @@
+import { useState } from "react"
 import Answer from "./Answer"
 import Circles from "./Circles"
 
 export default function QuestionBlock() {
+
+    // States
+    const [ activeIndex, setActiveIndex ] = useState<number>(0)
 
     const questions = [
         {question: "When was it abandoned?", 
@@ -34,7 +38,7 @@ export default function QuestionBlock() {
     const wrapperClasses = "animate-[fadeIn_1s_1s_forwards] w-273 h-full bg-black/20 opacity-0 \
         rounded-3xl mt-44 logoGradient-bg-2 p-[2px] backdrop-blur-[100px] overflow-hidden \
         shadow-[0_0_16px_5px_rgba(28,154,214,0.25)] text-white"
-    const containerClasses = "mx-18.5"
+    const containerClasses = "mx-18.5 flex justify-between"
     const questionClasses = ""
 
     return (
@@ -47,8 +51,12 @@ export default function QuestionBlock() {
                 </div>
 
                 <Circles>
-                    {questions.map(() => 
-                        <Circles.Circle />
+                    {questions.map((q, key) => 
+                        <Circles.Circle 
+                            index={key} 
+                            activeIndex={activeIndex} 
+                            setActiveIndex={setActiveIndex}
+                            key={key} />
                     )}
                 </Circles>
             </div>

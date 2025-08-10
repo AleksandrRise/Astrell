@@ -7,7 +7,7 @@ type CirclesProps = {
 export default function Circles({ children }: CirclesProps) {
 
     // Classes
-    const circlesClasses = ""
+    const circlesClasses = "grid grid-cols-3 gap-6"
 
     return (
         <div className={circlesClasses}>
