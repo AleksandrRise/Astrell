@@ -1,14 +1,14 @@
 
 
 type ChoiceProps = {
-    key: number;
     index: number;
+    questionNum: number;
     ans: {answer: string, correct: boolean};
     choice: number | null;
     setChoice: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
-export default function Choice({ key, index, ans, choice, setChoice }: ChoiceProps) {
+export default function Choice({ index, questionNum, ans, choice, setChoice }: ChoiceProps) {
 
     // Attributes
     const selectionType = "radio"
@@ -22,17 +22,17 @@ export default function Choice({ key, index, ans, choice, setChoice }: ChoicePro
     
 
     return (
-        <div key={key} className={answerClasses}>
+        <div className={answerClasses}>
             <input 
                 className={ansRadioClasses} 
                 type={selectionType} 
-                id={`ans-${index}-${key}`}
-                onClick={() => setChoice(key)}
-                checked={choice === key}  
+                id={`ans-${questionNum}-${index}`}
+                onClick={() => setChoice(index)}
+                checked={choice === index}  
             />
             <label 
-                className={`${ansTextClasses} ${choice === key && chosenClasses}`} 
-                htmlFor={`ans-${index}-${key}`}>
+                className={`${ansTextClasses} ${choice === index && chosenClasses}`} 
+                htmlFor={`ans-${questionNum}-${index}`}>
                     {ans.answer}
             </label>
         </div>          

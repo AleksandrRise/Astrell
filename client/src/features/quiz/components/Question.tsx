@@ -45,8 +45,9 @@ export default function Question({ question, setActiveIndex, index, maxIndex }: 
                 <div className={answersClasses}>
                     {question.answers.map((ans, key) => 
                         <Choice 
-                            key={key} 
-                            index={index} 
+                            key={key}
+                            index={key} 
+                            questionNum={index} 
                             ans={ans} 
                             choice={choice}
                             setChoice={setChoice}
