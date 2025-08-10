@@ -64,6 +64,7 @@ export default function QuestionBlock() {
                             index={key} 
                             activeIndex={activeIndex} 
                             setActiveIndex={setActiveIndex}
+                            ansChoice={ansChoiceArr[key]}
                             key={key} 
                         />
                     )}
