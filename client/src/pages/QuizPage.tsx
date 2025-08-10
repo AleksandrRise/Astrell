@@ -1,6 +1,6 @@
 import { useState } from "react"
 import QuizBlock from "../features/quiz/components/QuizBlock"
-import QuestionBlock from "../features/quiz/components/QuestionBlock"
+import QuizWrapper from "../features/quiz/components/QuizWrapper"
 
 
 export default function QuizPage() {
@@ -14,7 +14,12 @@ export default function QuizPage() {
         <main className={mainClasses}>
             <div className={containerClasses}>
                 {hasStarted 
-                    ? <QuestionBlock /> 
+                    ? 
+                        <QuizWrapper>
+                            <QuizWrapper.TimerBlock />
+                            <QuizWrapper.QuestionBlock />
+                        </QuizWrapper>
+
                     : <QuizBlock setHasStarted={setHasStarted} />
                 }
             </div>
