@@ -8,7 +8,7 @@ type QuizWrapperProps = {
 export default function QuizWrapper({ children }: QuizWrapperProps) {
 
     // Classes
-    const mainClasses = "flex flex-col"
+    const mainClasses = "flex flex-col size-full items-center"
 
     return (
         <main className={mainClasses}>

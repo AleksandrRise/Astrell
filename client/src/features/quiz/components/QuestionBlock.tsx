@@ -39,7 +39,7 @@ export default function QuestionBlock() {
 
     // Classes
     const wrapperClasses = "animate-[fadeIn_1s_1s_forwards] w-273 h-full bg-black/20 opacity-0 \
-        rounded-3xl mt-44 logoGradient-bg-2 p-[2px] backdrop-blur-[100px] \
+        rounded-3xl mt-8 logoGradient-bg-2 p-[2px] backdrop-blur-[100px] \
         shadow-[0_0_16px_5px_rgba(28,154,214,0.25)] text-white"
     const containerClasses = "mx-18.5 pt-15 flex justify-between"
     const questionsClasses = "flex flex-col gap-200 size-full"
