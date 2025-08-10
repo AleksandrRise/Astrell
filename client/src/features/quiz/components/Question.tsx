@@ -43,7 +43,7 @@ export default function Question({
             <div className={containerClasses}>
                 <h3 className={questionSubtitleClasses}>{question.question}</h3>
 
-                <div className={answersClasses}>
+                <ul className={answersClasses}>
                     {question.answers.map((ans, key) => 
                         <Choice 
                             key={key}
@@ -54,7 +54,7 @@ export default function Question({
                             setAnsChoice={setAnsChoice}
                         />              
                     )}
-                </div>
+                </ul>
 
                 <div className={btnsClasses}>
                     <input className={submitClasses} type={submitType} value={submitVal} />

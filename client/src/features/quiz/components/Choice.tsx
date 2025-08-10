@@ -21,13 +21,13 @@ export default function Choice({ index, questionNum, ans, ansChoiceArr, setAnsCh
 
     // Classes
     const answerClasses = "relative text-xl text-white/50 \
-        pb-2.75 answerLine cursor-pointer"
-    const ansRadioClasses = ""
-    const ansTextClasses = "pl-5"
+        answerLine pb-2.75 cursor-pointer w-full"
+    const ansRadioClasses = "text-red-500"
+    const ansTextClasses = "pl-5 w-full"
     const chosenClasses = "text-white font-bold"
 
     return (
-        <div className={answerClasses}>
+        <li className={answerClasses}>
             <input 
                 className={ansRadioClasses} 
                 type={selectionType} 
@@ -40,6 +40,6 @@ export default function Choice({ index, questionNum, ans, ansChoiceArr, setAnsCh
                 htmlFor={`ans-${questionNum}-${index}`}>
                     {ans.answer}
             </label>
-        </div>          
+        </li>          
     )
 }
