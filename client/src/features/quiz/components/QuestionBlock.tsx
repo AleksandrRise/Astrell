@@ -1,4 +1,5 @@
 import Answer from "./Answer"
+import Circles from "./Circles"
 
 export default function QuestionBlock() {
 
@@ -31,27 +32,25 @@ export default function QuestionBlock() {
 
     // Classes
     const wrapperClasses = "animate-[fadeIn_1s_1s_forwards] w-273 h-full bg-black/20 opacity-0 \
-        rounded-3xl mt-44 logoGradient-bg-2 p-[2px] backdrop-blur-[100px] \
+        rounded-3xl mt-44 logoGradient-bg-2 p-[2px] backdrop-blur-[100px] overflow-hidden \
         shadow-[0_0_16px_5px_rgba(28,154,214,0.25)] text-white"
-    const containerClasses = "pl-37.5 pr-75"
+    const containerClasses = "mx-18.5"
     const questionClasses = ""
-    const circlesClasses = ""
-    const circleClasses = ""
 
     return (
         <section className={wrapperClasses}>
             <div className={containerClasses}>
                 <div className={questionClasses}>
                     {questions.map((q, key) => 
-                        <Answer q={q} index={key} key={key} />
+                        <Answer question={q} index={key} key={key} />
                     )}
                 </div>
 
-                <div className={circlesClasses}>
+                <Circles>
                     {questions.map(() => 
-                        <div className={circleClasses}></div>
+                        <Circles.Circle />
                     )}
-                </div>
+                </Circles>
             </div>
         </section>
     )

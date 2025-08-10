@@ -1,35 +1,45 @@
+import type { QuestionsProps } from "../utils/QuestionsProps"
 
-
-type AnswersProps = {
-    q: {
-        question: string;
-        answers: { answer: string, correct: boolean }[]
-    }
-    index: number;
-}
-
-export default function Answer({ q, index }: AnswersProps) {
+export default function Answer({ question, index }: QuestionsProps) {
 
     // Attributes
-    const type = "radio"
+    const selectionType = "radio"
+    const submitType = "submit"
+    const submitVal = "Submit"
 
     // Classes
-    const questionWrapperClasses = ""
+    const wrapperClasses = ""
+    const containerClasses = ""
     const questionTitleClasses = ""
     const answerClasses = ""
     const ansRadioClasses = ""
     const ansTextClasses = ""
+    const btnsClasses = ""
+    const submitClasses = "cursor-pointer"
+    const nextClasses = "cursor-pointer"
 
     return (
-        <div className={questionWrapperClasses}>
-            <h3 className={questionTitleClasses}>{q.question}</h3>
+        <div className={wrapperClasses}>
 
-            {q.answers.map((ans, key) => 
-                <div key={key} className={answerClasses}>
-                    <input className={ansRadioClasses} type={type} id={`ans-${index}-${key}`}  />
-                    <label className={ansTextClasses} htmlFor={`ans-${index}-${key}`}>{ans.answer}</label>
-                </div>                
-            )}
+            <h2>QUESTION {index+1}</h2>
+
+            <div className={containerClasses}>
+                <h3 className={questionTitleClasses}>{question.question}</h3>
+
+                {question.answers.map((ans, key) => 
+                    <div key={key} className={answerClasses}>
+                        <input className={ansRadioClasses} type={selectionType} id={`ans-${index}-${key}`}  />
+                        <label className={ansTextClasses} htmlFor={`ans-${index}-${key}`}>{ans.answer}</label>
+                    </div>                
+                )}
+
+                <div className={btnsClasses}>
+                    <input className={submitClasses} type={submitType} value={submitVal} />
+                    <button className={nextClasses}>Next</button>
+                </div>
+            </div>
+
+            
         </div>        
     )
 }
