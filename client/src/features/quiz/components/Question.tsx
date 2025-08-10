@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Choice from "./Choice";
 
 type QuestionsProps = {
     question: {
@@ -15,7 +16,6 @@ export default function Question({ question, setActiveIndex, index, maxIndex }: 
     const [ choice, setChoice ] = useState<number | null>(0)
 
     // Attributes
-    const selectionType = "radio"
     const submitType = "submit"
     const submitVal = "Submit"
 
@@ -29,11 +29,6 @@ export default function Question({ question, setActiveIndex, index, maxIndex }: 
         after:bg-white/80 after:left-0 after:bottom-0 \
         after:shadow-[0_0_12px_rgba(255,255,255,0.75)]"
     const answersClasses = "ml-3.5 my-14.25 flex flex-col gap-5.75"
-    const answerClasses = "relative text-xl text-white/50 \
-        pb-2.75 answerLine cursor-pointer"
-    const ansRadioClasses = ""
-    const ansTextClasses = "pl-5"
-    const chosenClasses = "text-white font-bold"
     const btnsClasses = ""
     const submitClasses = "cursor-pointer px-15 py-3 bg-white/15 font-bold \
         text-xl rounded-xl"
@@ -49,20 +44,13 @@ export default function Question({ question, setActiveIndex, index, maxIndex }: 
 
                 <div className={answersClasses}>
                     {question.answers.map((ans, key) => 
-                        <div key={key} className={answerClasses}>
-                            <input 
-                                className={ansRadioClasses} 
-                                type={selectionType} 
-                                id={`ans-${index}-${key}`}
-                                onClick={() => setChoice(key)}
-                                checked={choice === key}  
-                            />
-                            <label 
-                                className={`${ansTextClasses} ${choice === key && chosenClasses}`} 
-                                htmlFor={`ans-${index}-${key}`}>
-                                    {ans.answer}
-                            </label>
-                        </div>                
+                        <Choice 
+                            key={key} 
+                            index={index} 
+                            ans={ans} 
+                            choice={choice}
+                            setChoice={setChoice}
+                        />              
                     )}
                 </div>
 
