@@ -113,7 +113,7 @@
     }
 
     .logoGradient-bg {
-        position: relative;
+        @apply relative;
     
         background-image: 
         linear-gradient(#091428), 
@@ -126,23 +126,21 @@
     }
     .logoGradient-bg::before {
         content: "";
-        position: absolute;
-        width: 25px;
-        height: 25px;
-        filter: blur(50px);
-        background-color: #444EC3;
-        border-radius: 9999px;
-        top: 0; left: 0;
+        @apply 
+        absolute 
+        size-6.25 
+        rounded-full 
+        bg-[#444EC3]
+        bottom-0 top-0 blur-[50px];
     }
     .logoGradient-bg::after {
         content: "";
-        position: absolute;
-        width: 25px;
-        height: 25px;
-        filter: blur(50px);
-        background-color: #1C9AD6;
-        border-radius: 9999px;
-        bottom: 0; right: 0;
+        @apply 
+        absolute 
+        size-6.25 
+        rounded-full 
+        bg-[#1C9AD6]
+        bottom-0 top-0 blur-[50px];
     }
 
     .logoGradient-bg-2 {
@@ -165,6 +163,16 @@
 
     .bg-blur {
         animation: blur 2s 0.2s forwards;
+    }
+
+    .answerLine:not(:last-child):after {
+        content: "";
+        @apply 
+        absolute 
+        w-3/4
+        h-px
+        bg-white/20
+        bottom-0 left-5.25
     }
 }
 
