@@ -8,7 +8,7 @@ export default function QuizPage() {
     const [ hasStarted, setHasStarted ] = useState<boolean>(false)
     const mainClasses = "hero-bg w-full h-screen"
     const containerClasses = `${hasStarted && "bg-blur"} transition-filter size-full \
-        flex justify-center items-center`
+        flex justify-center items-center overflow-hidden`
 
     return (
         <main className={mainClasses}>
