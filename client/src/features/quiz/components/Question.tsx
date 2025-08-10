@@ -23,8 +23,7 @@ export default function Question({
     // Classes
     const wrapperClasses = "m-auto size-full"
     const containerClasses = "size-full mt-20"
-    const questionTitleClasses = "text-5xl font-lato font-bold tracking-wide \
-        "
+    const questionTitleClasses = "text-5xl font-lato font-bold tracking-wide"
     const questionSubtitleClasses = "relative font-bold text-xl tracking-wide \
         pb-4 after:content-[''] after:absolute after:w-5/6 after:h-px \
         after:bg-white/80 after:left-0 after:bottom-0 \
