@@ -1,7 +1,16 @@
 import { useState } from "react"
-import type { QuestionsProps } from "../utils/QuestionsProps"
 
-export default function Question({ question, setActiveIndex, index }: QuestionsProps) {
+type QuestionsProps = {
+    question: {
+        question: string;
+        answers: { answer: string, correct: boolean }[]
+    }
+    setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
+    index: number;
+    maxIndex: number;
+}
+
+export default function Question({ question, setActiveIndex, index, maxIndex }: QuestionsProps) {
 
     const [ choice, setChoice ] = useState<number | null>(0)
 
@@ -61,8 +70,10 @@ export default function Question({ question, setActiveIndex, index }: QuestionsP
                     <input className={submitClasses} type={submitType} value={submitVal} />
                     <button 
                         className={nextClasses} 
-                        onClick={() => setActiveIndex(prev => prev + 1)}>
-                            Next
+                        onClick={() => setActiveIndex(prev => 
+                            prev === maxIndex ? 0 : (prev + 1)
+                        )}
+                    >Next
                     </button>
                 </div>
             </div>

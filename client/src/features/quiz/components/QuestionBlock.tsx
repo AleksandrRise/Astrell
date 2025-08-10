@@ -49,6 +49,7 @@ export default function QuestionBlock() {
                         question={questions[activeIndex]}
                         setActiveIndex={setActiveIndex} 
                         index={activeIndex} 
+                        maxIndex={questions.length-1}
                     />
                 </div>
 
