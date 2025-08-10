@@ -39,12 +39,12 @@ export default function QuestionBlock() {
         rounded-3xl mt-44 logoGradient-bg-2 p-[2px] backdrop-blur-[100px] \
         shadow-[0_0_16px_5px_rgba(28,154,214,0.25)] text-white"
     const containerClasses = "mx-18.5 pt-15 flex justify-between"
-    const questionClasses = ""
+    const questionsClasses = "flex flex-col gap-200 size-full"
 
     return (
         <section className={wrapperClasses}>
             <div className={containerClasses}>
-                <div className={questionClasses}>
+                <div className={questionsClasses}>
                     {questions.map((q, key) => 
                         <Question question={q} index={key} key={key} />
                     )}
@@ -56,7 +56,8 @@ export default function QuestionBlock() {
                             index={key} 
                             activeIndex={activeIndex} 
                             setActiveIndex={setActiveIndex}
-                            key={key} />
+                            key={key} 
+                        />
                     )}
                 </Circles>
             </div>
