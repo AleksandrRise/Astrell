@@ -1,7 +1,7 @@
 import { useState } from "react"
 import type { QuestionsProps } from "../utils/QuestionsProps"
 
-export default function Question({ question, index }: QuestionsProps) {
+export default function Question({ question, setActiveIndex, index }: QuestionsProps) {
 
     const [ choice, setChoice ] = useState<number | null>(0)
 
@@ -26,8 +26,9 @@ export default function Question({ question, index }: QuestionsProps) {
     const ansTextClasses = "pl-5"
     const chosenClasses = "text-white font-bold"
     const btnsClasses = ""
-    const submitClasses = "cursor-pointer"
-    const nextClasses = "cursor-pointer"
+    const submitClasses = "cursor-pointer px-15 py-3 bg-white/15 font-bold \
+        text-xl rounded-xl"
+    const nextClasses = "cursor-pointer ml-5.5 text-lg font-bold tracking-wider"
 
     return (
         <div className={wrapperClasses}>
@@ -58,7 +59,11 @@ export default function Question({ question, index }: QuestionsProps) {
 
                 <div className={btnsClasses}>
                     <input className={submitClasses} type={submitType} value={submitVal} />
-                    <button className={nextClasses}>Next</button>
+                    <button 
+                        className={nextClasses} 
+                        onClick={() => setActiveIndex(prev => prev + 1)}>
+                            Next
+                    </button>
                 </div>
             </div>
 

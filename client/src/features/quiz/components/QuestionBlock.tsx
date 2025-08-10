@@ -45,9 +45,11 @@ export default function QuestionBlock() {
         <section className={wrapperClasses}>
             <div className={containerClasses}>
                 <div className={questionsClasses}>
-                    {questions.map((q, key) => 
-                        <Question question={q} index={key} key={key} />
-                    )}
+                    <Question 
+                        question={questions[activeIndex]}
+                        setActiveIndex={setActiveIndex} 
+                        index={activeIndex} 
+                    />
                 </div>
 
                 <Circles>
