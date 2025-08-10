@@ -4,9 +4,6 @@ import Circles from "./Circles"
 
 export default function QuestionBlock() {
 
-    // States
-    const [ activeIndex, setActiveIndex ] = useState<number>(0)
-
     const questions = [
         {question: "When was it abandoned?", 
             answers: [
@@ -34,6 +31,12 @@ export default function QuestionBlock() {
         },
     ]
 
+    // States
+    const [ activeIndex, setActiveIndex ] = useState<number>(0)
+    const [ ansChoiceArr, setAnsChoice ] = useState<Array<number | null>>(
+        new Array(questions.length).fill(null)
+    )
+
     // Classes
     const wrapperClasses = "animate-[fadeIn_1s_1s_forwards] w-273 h-full bg-black/20 opacity-0 \
         rounded-3xl mt-44 logoGradient-bg-2 p-[2px] backdrop-blur-[100px] \
@@ -50,6 +53,8 @@ export default function QuestionBlock() {
                         setActiveIndex={setActiveIndex} 
                         index={activeIndex} 
                         maxIndex={questions.length-1}
+                        ansChoiceArr={ansChoiceArr}
+                        setAnsChoice={setAnsChoice}
                     />
                 </div>
 

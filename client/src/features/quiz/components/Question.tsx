@@ -1,4 +1,3 @@
-import { useState } from "react"
 import Choice from "./Choice";
 
 type QuestionsProps = {
@@ -9,11 +8,13 @@ type QuestionsProps = {
     setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
     index: number;
     maxIndex: number;
+    ansChoiceArr: Array<number | null>;
+    setAnsChoice: React.Dispatch<React.SetStateAction<Array<number | null>>>;
 }
 
-export default function Question({ question, setActiveIndex, index, maxIndex }: QuestionsProps) {
-
-    const [ choice, setChoice ] = useState<number | null>(0)
+export default function Question({ 
+    question, setActiveIndex, index, maxIndex, ansChoiceArr, setAnsChoice 
+}: QuestionsProps) {
 
     // Attributes
     const submitType = "submit"
@@ -49,8 +50,8 @@ export default function Question({ question, setActiveIndex, index, maxIndex }: 
                             index={key} 
                             questionNum={index} 
                             ans={ans} 
-                            choice={choice}
-                            setChoice={setChoice}
+                            ansChoiceArr={ansChoiceArr}
+                            setAnsChoice={setAnsChoice}
                         />              
                     )}
                 </div>
