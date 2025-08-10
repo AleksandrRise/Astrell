@@ -1,6 +1,6 @@
 import type { QuestionsProps } from "../utils/QuestionsProps"
 
-export default function Questions({ question, index }: QuestionsProps) {
+export default function Question({ question, index }: QuestionsProps) {
 
     // Attributes
     const selectionType = "radio"
