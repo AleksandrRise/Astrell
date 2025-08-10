@@ -31,8 +31,10 @@ export default function Question({
         after:shadow-[0_0_12px_rgba(255,255,255,0.75)]"
     const answersClasses = "ml-3.5 my-14.25 flex flex-col gap-5.75"
     const btnsClasses = ""
-    const submitClasses = "cursor-pointer px-15 py-3 bg-white/15 font-bold \
-        text-xl rounded-xl"
+    const submitClasses = "cursor-pointer w-50 h-12.5 bg-white/15 font-bold \
+        text-xl rounded-xl logoGradient-bg-3 p-[2px] shadow-[0_0_12px_0_rgba(28,154,214,0.5)] \
+        hover:shadow-[0_0_12px_0_rgba(28,154,214,1)] hover:scale-101 \
+        transition duration-300 active:opacity-75"
     const nextClasses = "cursor-pointer ml-5.5 text-lg font-bold tracking-wider"
 
     return (

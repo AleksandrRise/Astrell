@@ -142,7 +142,6 @@
         bg-[#1C9AD6]
         bottom-0 top-0 blur-[50px];
     }
-
     .logoGradient-bg-2 {
         position: relative;
     
@@ -156,6 +155,17 @@
             );
         background-clip: content-box, padding-box;
     }
+    .logoGradient-bg-3 {
+        position: relative;
+    
+        background-image: 
+        linear-gradient(rgba(255,255,255,0.15)), 
+            linear-gradient(to right, 
+                #1C9AD6,
+                #444EC3
+            );
+        background-clip: content-box, padding-box;
+    }    
 
     .scrollbarEdit {
         scrollbar-color: rgba(255,255,255,0.5) transparent;
