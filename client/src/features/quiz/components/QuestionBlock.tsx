@@ -1,5 +1,5 @@
 import { useState } from "react"
-import Answer from "./Answer"
+import Questions from "./Questions.tsx"
 import Circles from "./Circles"
 
 export default function QuestionBlock() {
@@ -46,7 +46,7 @@ export default function QuestionBlock() {
             <div className={containerClasses}>
                 <div className={questionClasses}>
                     {questions.map((q, key) => 
-                        <Answer question={q} index={key} key={key} />
+                        <Questions question={q} index={key} key={key} />
                     )}
                 </div>
 
