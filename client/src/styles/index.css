@@ -165,7 +165,31 @@
                 #444EC3
             );
         background-clip: content-box, padding-box;
-    }    
+    }
+    
+    .correctGradient-bg {
+        position: relative;
+    
+        background-image: 
+        linear-gradient(#091428), 
+            linear-gradient(to top, 
+                #264653,
+                #2A9D8F,
+            );
+        background-clip: content-box, padding-box;
+    } 
+    
+    .wrongGradient-bg {
+        position: relative;
+    
+        background-image: 
+        linear-gradient(#091428), 
+            linear-gradient(to top, 
+                #FD7610,
+                #FF3533
+            );
+        background-clip: content-box, padding-box;
+    }   
 
     .scrollbarEdit {
         scrollbar-color: rgba(255,255,255,0.5) transparent;
@@ -201,6 +225,8 @@
     --animate-wiggle: wiggle 1s ease-in-out infinite;
     --color-logo-blue: #1C9AD6;
     --color-logo-purple: #444EC3;
+    --color-error: #FF3533;
+    --color-success: #2A9D8F;
 }
 
 
