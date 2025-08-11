@@ -36,7 +36,10 @@ export default function Question({
         hover:shadow-[0_0_12px_0_rgba(28,154,214,1)] hover:scale-101 \
         transition duration-300 \
         ${correctArr[index] !== null ? "opacity-50" : "active:opacity-75"}`
-    const nextClasses = "cursor-pointer ml-5.5 text-lg font-bold tracking-wider"
+    const nextClasses = "relative cursor-pointer ml-5.5 text-lg font-bold tracking-wider \
+        after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 \
+        after:h-px after:bg-white hover:after:w-full after:transition-all \
+        active:opacity-80"
 
     return (
         <div className={wrapperClasses}>
