@@ -19,7 +19,7 @@ export default function QuizBlock({ setHasStarted }: QuizBlockProps) {
 
     return (
         <section className={wrapperClasses}>
-            <div className={containerClasses}>
+            <form className={containerClasses}>
 
                 <Title />
 
@@ -32,7 +32,7 @@ export default function QuizBlock({ setHasStarted }: QuizBlockProps) {
                 </Settings>
 
                 <StartBtn setHasStarted={setHasStarted} />
-            </div>
+            </form>
         </section>
     )
 }
