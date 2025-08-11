@@ -1,4 +1,6 @@
 import Choice from "./Choice";
+import { submitQuestion } from "../utils/submitQuestion.ts"
+import { useState } from "react";
 
 type QuestionsProps = {
     question: {
@@ -10,15 +12,14 @@ type QuestionsProps = {
     maxIndex: number;
     ansChoiceArr: Array<number | null>;
     setAnsChoice: React.Dispatch<React.SetStateAction<Array<number | null>>>;
+    correctArr: Array<boolean | null>;
+    setCorrectArr: React.Dispatch<React.SetStateAction<Array<boolean | null>>>;    
 }
 
 export default function Question({ 
-    question, setActiveIndex, index, maxIndex, ansChoiceArr, setAnsChoice 
+    question, setActiveIndex, index, maxIndex, ansChoiceArr, setAnsChoice, correctArr, setCorrectArr 
 }: QuestionsProps) {
 
-    // Attributes
-    const submitType = "submit"
-    const submitVal = "Submit"
 
     // Classes
     const wrapperClasses = "m-auto size-full"
@@ -30,10 +31,11 @@ export default function Question({
         after:shadow-[0_0_12px_rgba(255,255,255,0.75)]"
     const answersClasses = "ml-3.5 my-14.25 flex flex-col gap-5.75"
     const btnsClasses = ""
-    const submitClasses = "cursor-pointer w-50 h-12.5 bg-white/15 font-bold \
+    const submitClasses = `cursor-pointer w-50 h-12.5 bg-white/15 font-bold \
         text-xl rounded-xl logoGradient-bg-3 p-[2px] shadow-[0_0_12px_0_rgba(28,154,214,0.5)] \
         hover:shadow-[0_0_12px_0_rgba(28,154,214,1)] hover:scale-101 \
-        transition duration-300 active:opacity-75"
+        transition duration-300 \
+        ${correctArr[index] !== null ? "opacity-50" : "active:opacity-75"}`
     const nextClasses = "cursor-pointer ml-5.5 text-lg font-bold tracking-wider"
 
     return (
@@ -58,7 +60,13 @@ export default function Question({
                 </ul>
 
                 <div className={btnsClasses}>
-                    <input className={submitClasses} type={submitType} value={submitVal} />
+                    <button 
+                        className={submitClasses} 
+                        onClick={() => submitQuestion(question, ansChoiceArr, index, setCorrectArr)}
+                        disabled={correctArr[index] !== null}
+                    >
+                        Submit
+                    </button>
                     <button 
                         className={nextClasses} 
                         onClick={() => setActiveIndex(prev => 

@@ -15,7 +15,7 @@ export default function Circle({ index, activeIndex, setActiveIndex, ansChoice }
         index === activeIndex ? setIsActive(true) : setIsActive(false)
     }, [activeIndex])
 
-    const circleClasses = `rounded-full size-5 cursor-pointer transition duration-500 \ 
+    const circleClasses = `rounded-full size-5 cursor-pointer transition duration-500 \
         ${isActive 
             ? `${ansChoice === null ? "bg-white" : "bg-[#FFCC00]"} \ 
                 scale-200 shadow-[0_0_5px_2px_rgba(255,255,255,0.5)]` 

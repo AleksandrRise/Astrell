@@ -17,7 +17,7 @@ export default function QuestionBlock() {
             answers: [
                 {answer: "Today", correct: true},
                 {answer: "Yesterday", correct: false},
-                {answer: "Tomorrow", correct: true},
+                {answer: "Tomorrow", correct: false},
                 {answer: "1800 BC", correct: false},
             ],
         }, 
@@ -34,6 +34,9 @@ export default function QuestionBlock() {
     // States
     const [ activeIndex, setActiveIndex ] = useState<number>(0)
     const [ ansChoiceArr, setAnsChoice ] = useState<Array<number | null>>(
+        new Array(questions.length).fill(null)
+    )
+    const [ correctArr, setCorrectArr ] = useState<Array<boolean | null>>(
         new Array(questions.length).fill(null)
     )
 
@@ -55,6 +58,8 @@ export default function QuestionBlock() {
                         maxIndex={questions.length-1}
                         ansChoiceArr={ansChoiceArr}
                         setAnsChoice={setAnsChoice}
+                        correctArr={correctArr}
+                        setCorrectArr={setCorrectArr}
                     />
                 </div>
 
