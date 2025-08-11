@@ -55,6 +55,7 @@ export default function Question({
                             ans={ans} 
                             ansChoiceArr={ansChoiceArr}
                             setAnsChoice={setAnsChoice}
+                            isDisabled={correctArr[index] !== null}
                         />              
                     )}
                 </ul>

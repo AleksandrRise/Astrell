@@ -6,9 +6,10 @@ type ChoiceProps = {
     ans: {answer: string, correct: boolean};
     ansChoiceArr: Array<number | null>;
     setAnsChoice: React.Dispatch<React.SetStateAction<Array<number | null>>>;
+    isDisabled: boolean;
 }
 
-export default function Choice({ index, questionNum, ans, ansChoiceArr, setAnsChoice }: ChoiceProps) {
+export default function Choice({ index, questionNum, ans, ansChoiceArr, setAnsChoice, isDisabled }: ChoiceProps) {
 
     const updatedArray = (prev: Array<number | null>): Array<number | null> => {
         const next = [...prev]
@@ -34,6 +35,7 @@ export default function Choice({ index, questionNum, ans, ansChoiceArr, setAnsCh
                 id={`ans-${questionNum}-${index}`}
                 onClick={() => setAnsChoice(prev => updatedArray(prev))}
                 checked={ansChoiceArr[questionNum] === index}  
+                disabled={isDisabled}
             />
             <label 
                 className={`${ansTextClasses} ${ansChoiceArr[questionNum] === index && chosenClasses}`} 
