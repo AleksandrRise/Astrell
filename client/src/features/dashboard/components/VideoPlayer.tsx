@@ -1,6 +1,9 @@
-export default function VideoPlayer() {
+import React from "react"
 
-    const videoUrl: string = localStorage.getItem("video")!
+
+const VideoPlayer = React.memo(() => {
+    
+    const videoUrl: string = localStorage.getItem("video") || ""
 
     // Classes
     const videoClasses = "rounded-3xl row-start-1 min-w-full"
@@ -8,4 +11,6 @@ export default function VideoPlayer() {
     return (
         <video className={videoClasses} src={videoUrl} controls />
     )
-}
+})
+
+export default VideoPlayer
