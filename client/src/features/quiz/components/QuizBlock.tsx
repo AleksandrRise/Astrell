@@ -11,11 +11,6 @@ type QuizBlockProps = {
 
 export default function QuizBlock({ setHasStarted, setTotalTime, hasTimer, setHasTimer }: QuizBlockProps) {
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        console.log(e)
-    }
-
-    
     // Classes
     const wrapperClasses = "text-white rounded-[40px] bg-white/8 size-fit \
         backdrop-blur-[100px] shadow-[0_0_2px_0_rgba(0,149,255,75)_inset] \
@@ -26,7 +21,7 @@ export default function QuizBlock({ setHasStarted, setTotalTime, hasTimer, setHa
 
     return (
         <section className={wrapperClasses}>
-            <form className={containerClasses} onSubmit={handleSubmit}>
+            <form className={containerClasses}>
 
                 <Title />
 

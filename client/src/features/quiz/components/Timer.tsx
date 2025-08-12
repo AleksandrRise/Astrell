@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 
 type TimerProps = {
-    duration: number;
+    time: number;
+    setTime: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export default function Timer({ duration }: TimerProps) {
-
-    const [ time, setTime ] = useState<number>(duration)
+export default function Timer({ time, setTime }: TimerProps) {
 
     useEffect(() => {
         if (time > 0) {
