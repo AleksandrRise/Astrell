@@ -1,7 +1,9 @@
 import axios from "axios"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { QuestionsType } from "../utils/QuestionsType";
 
+
+const ADDRESS: string = "http://127.0.0.1:5000"
 
 type StartBtnProps = {
     setHasStarted: React.Dispatch<React.SetStateAction<boolean>>;
@@ -12,16 +14,24 @@ type StartBtnProps = {
 
 export default function StartBtn({ setHasStarted, difficulty, questionsNum, setQuestions }: StartBtnProps) {
 
+
     const [ isLoading, setIsLoading ] = useState<boolean>(false)
 
-    const handleClick = () => {
-        setIsLoading(true)
+    // Connecting with backend/Receiving questions for a quiz
+    useEffect(() => {
+        if (isLoading) {
+            async () => {
+                const questions: QuestionsType = 
+                    await axios.get(`${ADDRESS}/get-quiz?difficulty=${difficulty}&questionsNum=${questionsNum}`) 
 
-        
+                setQuestions(questions)
 
-        setHasStarted(true)
-        setIsLoading(false)
-    }
+                setHasStarted(true)
+                setIsLoading(false)
+            }
+        }
+    }, [isLoading])
+
 
     // Classes
     const btnClasses = `mt-9.25 w-full py-3 bg-white/20 font-lato text-base \
@@ -29,6 +39,6 @@ export default function StartBtn({ setHasStarted, difficulty, questionsNum, setQ
         transition active:scale-98 ${isLoading && "opacity-70"}`
 
     return (
-        <button className={btnClasses} onClick={() => handleClick} disabled={isLoading}>Start!</button>
+        <button className={btnClasses} onClick={() => setIsLoading(true)} disabled={isLoading}>Start!</button>
     )
 }
