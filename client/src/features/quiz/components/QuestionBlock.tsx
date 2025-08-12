@@ -8,7 +8,6 @@ import type { QuestionsType } from "../utils/QuestionsType.ts"
 export default function QuestionBlock({ questions }: QuestionsType) {
 
 
-
     // States
     const [ activeIndex, setActiveIndex ] = useState<number>(0)
     const [ ansChoiceArr, setAnsChoice ] = useState<Array<number | null>>(
@@ -23,7 +22,7 @@ export default function QuestionBlock({ questions }: QuestionsType) {
         rounded-3xl mt-8 ${handleBgColor(correctArr, activeIndex)} \
         p-[2px] backdrop-blur-[100px] \
         text-white`
-    const containerClasses = "mx-18.5 pt-15 flex justify-between h-full"
+    const containerClasses = "mx-18.5 pt-15 flex justify-between h-full gap-10"
     const questionsClasses = "flex flex-col gap-200 size-full flex-1"
 
     return (

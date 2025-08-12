@@ -19,16 +19,24 @@ export default function StartBtn({ setHasStarted, difficulty, questionsNum, setQ
 
     // Connecting with backend/Receiving questions for a quiz
     useEffect(() => {
+
         if (isLoading) {
-            async () => {
-                const questions: QuestionsType = 
-                    await axios.get(`${ADDRESS}/get-quiz?difficulty=${difficulty}&questionsNum=${questionsNum}`) 
+            const fetchData = async () => {
+                try {
+                    const res = await axios.get<QuestionsType>(
+                        `${ADDRESS}/api/v1/getQuiz?difficulty=${difficulty}&questionsNum=${questionsNum}`
+                    ) 
 
-                setQuestions(questions)
+                    setQuestions(res.data)
+                    setHasStarted(true)
+                } catch (err) {
+                    console.error(err)
+                } finally {
+                    setIsLoading(false)
+                }
+            } 
 
-                setHasStarted(true)
-                setIsLoading(false)
-            }
+            fetchData()
         }
     }, [isLoading])
 

@@ -34,7 +34,7 @@ def summarize() -> str:
     return commands.getSummarizeStr()
 
 
-@app.route('/api/v1/get-quiz', methods=['GET'])
+@app.route('/api/v1/getQuiz', methods=['GET'])
 def getQuiz():
     difficulty = request.args.get('difficulty')
     questionsNum = request.args.get('questionsNum')
@@ -42,12 +42,13 @@ def getQuiz():
     commands = Commands(transcript, ai)
 
     if difficulty and questionsNum:
-        return commands.getQuizJSON(difficulty, questionsNum)
+        quiz = commands.getQuizJSON(difficulty, questionsNum)
+        return quiz
 
     return "Bad request. Invalid input provided.", 400
 
 
-@app.route('/api/v1/get-card', methods=['GET'])
+@app.route('/api/v1/getCard', methods=['GET'])
 def getExam():
     commands = Commands(transcript, ai)
     return commands.getCardJSON()
