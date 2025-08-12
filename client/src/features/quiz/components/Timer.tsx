@@ -9,9 +9,11 @@ export default function Timer({ duration }: TimerProps) {
     const [ time, setTime ] = useState<number>(duration)
 
     useEffect(() => {
-        setTimeout(() => {
-            setTime(time - 1000)
-        }, 1000)
+        if (time > 0) {
+            setTimeout(() => {
+                setTime(time - 1000)
+            }, 1000)
+        }
     }, [time])
 
     const getFormattedTime = (millis: number) => {

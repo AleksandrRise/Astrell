@@ -10,7 +10,7 @@ export default function TimerBlock() {
 
     return (
         <section className={wrapperClasses}>
-            <Timer duration={5 * 30 * 1000} />
+            <Timer duration={3000} />
         </section>
     )
 }
