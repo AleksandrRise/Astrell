@@ -6,12 +6,41 @@ class Commands:
         self.transcript = transcript
         self.ai = ai
 
-    def getQuizJSON(self):
+    def getQuizJSON(self, difficulty, questionsNum):
         msg = ((
-                  'Make a single quiz with only one possible answer strictly according to a transcript and following the format without adding any your comments at all: '
-                  '{"question": "(your question)", "answer1": {"answer": "(your answer 1)", "correct": "(true/false)}, "answer2": {"answer": "(your answer 2)", "correct": "(true/false)}, '
-                  '"answer3": {"answer": "(your answer 3)", "correct": "(true/false)}, "answer4": {"answer": "(your answer 4)", "correct": "(true/false)}} . Transcript of a lecture you use: ') +
-               self.transcript["text"])
+                  '''Provide a single quiz strictly in a JSON format with ''' + questionsNum + ''' questions, 
+                  4 possible answers, and ''' + difficulty + ''' level of difficulty strictly 
+                  according to a transcript and following the JSON format without adding any of your comments at all.  
+                  The Format you must follow: 
+                  
+                  questions: [
+                    {question: "When was it abandoned?", 
+                        answers: [
+                            {answer: "Today", correct: false},
+                            {answer: "Yesterday", correct: false},
+                            {answer: "Tomorrow", correct: true},
+                            {answer: "1900 BC", correct: false},
+                        ],
+                    }, 
+                    {question: "When was it born?", 
+                        answers: [
+                            {answer: "Today", correct: true},
+                            {answer: "Yesterday", correct: false},
+                            {answer: "Tomorrow", correct: false},
+                            {answer: "1800 BC", correct: false},
+                        ],
+                    }, 
+                    {question: "When was it returned?", 
+                        answers: [
+                            {answer: "Today", correct: false},
+                            {answer: "Yesterday", correct: false},
+                            {answer: "Tomorrow", correct: false},
+                            {answer: "200030 BC", correct: true},           
+                        ],
+                    },
+                  ]
+                  
+                  The transcript you must follow: ''' + self.transcript["text"]))
         return self.convertToJSON(msg)
 
     def getCardJSON(self):

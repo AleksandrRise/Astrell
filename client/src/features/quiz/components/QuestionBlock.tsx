@@ -8,6 +8,7 @@ import type { QuestionsType } from "../utils/QuestionsType.ts"
 export default function QuestionBlock({ questions }: QuestionsType) {
 
 
+
     // States
     const [ activeIndex, setActiveIndex ] = useState<number>(0)
     const [ ansChoiceArr, setAnsChoice ] = useState<Array<number | null>>(
