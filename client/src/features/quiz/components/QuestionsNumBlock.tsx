@@ -1,8 +1,11 @@
 import type { CommonClassesProps } from "../utils/CommonClassesProps"
 import questionIcon from "../assets/questionIcon.png"
 
+interface QuestionsNumBlock extends CommonClassesProps {
+    setQuestionsNum: React.Dispatch<React.SetStateAction<number>>;
+}
 
-export default function QuestionsNumBlock({ commonClasses }: CommonClassesProps) {
+export default function QuestionsNumBlock({ commonClasses, setQuestionsNum }: QuestionsNumBlock) {
 
     // Attributes
     const inputType = "number"
@@ -29,7 +32,12 @@ export default function QuestionsNumBlock({ commonClasses }: CommonClassesProps)
                     <span className={textClasses}>Number of questions</span>
                 </div>
 
-                <input className={inputClasses} type={inputType} placeholder="1" />
+                <input 
+                    className={inputClasses} 
+                    type={inputType} 
+                    placeholder="1" 
+                    onChange={(e) => setQuestionsNum(Number(e.target.value))} 
+                />
             </div>
         </div>
     )

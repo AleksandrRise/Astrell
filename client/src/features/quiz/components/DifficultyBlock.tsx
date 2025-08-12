@@ -5,8 +5,11 @@ type OptionsType = {
     value: string;
     text: string;
 }
+interface DifficultyBlockProps extends CommonClassesProps {
+    setDifficulty: React.Dispatch<React.SetStateAction<string>>;
+}
 
-export default function DifficultyBlock({ commonClasses }: CommonClassesProps) {
+export default function DifficultyBlock({ commonClasses, setDifficulty }: DifficultyBlockProps) {
 
     const options: Array<OptionsType> = [
         { value: "easy", text: "Easy" },
@@ -36,7 +39,7 @@ export default function DifficultyBlock({ commonClasses }: CommonClassesProps) {
                     <span className={textClasses}>Difficulty</span>
                 </div>
 
-                <select className={selectClasses} name={selectName}>
+                <select className={selectClasses} name={selectName} onChange={(e) => setDifficulty(e.target.value)}>
                     {options.map(option => 
                         <option value={option.value}>{option.text}</option>
                     )}

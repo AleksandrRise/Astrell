@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Settings from "./Settings"
 import StartBtn from "./StartBtn"
 import Title from "./Title"
@@ -10,6 +11,11 @@ type QuizBlockProps = {
 }
 
 export default function QuizBlock({ setHasStarted, setTotalTime, hasTimer, setHasTimer }: QuizBlockProps) {
+
+    // States
+    const [ difficulty, setDifficulty ] = useState<string>("Easy")
+    const [ questionsNum, setQuestionsNum ] = useState<number>(1)
+
 
     // Classes
     const wrapperClasses = "text-white rounded-[40px] bg-white/8 size-fit \
@@ -34,11 +40,11 @@ export default function QuizBlock({ setHasStarted, setTotalTime, hasTimer, setHa
                         hasTimer={hasTimer}
                         setHasTimer={setHasTimer}
                     />
-                    <Settings.DifficultyBlock commonClasses={commonClasses} />
-                    <Settings.QuestionsNumBlock commonClasses={commonClasses} />
+                    <Settings.DifficultyBlock commonClasses={commonClasses} setDifficulty={setDifficulty} />
+                    <Settings.QuestionsNumBlock commonClasses={commonClasses} setQuestionsNum={setQuestionsNum} />
                 </Settings>
 
-                <StartBtn setHasStarted={setHasStarted} />
+                <StartBtn setHasStarted={setHasStarted} difficulty={difficulty} questionsNum={questionsNum} />
             </form>
         </section>
     )
