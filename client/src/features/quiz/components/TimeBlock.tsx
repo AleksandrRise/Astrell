@@ -8,12 +8,16 @@ type TimeBtnType = {
     placeholder: string;
     onChange: React.ChangeEventHandler<HTMLInputElement>;
 }
+interface TimeBlockProps extends CommonClassesProps {
+    hasTimer: boolean;
+    setHasTimer: React.Dispatch<React.SetStateAction<boolean>>;
+    setTotalTime?: React.Dispatch<React.SetStateAction<number>>;
+}
 
 
-export default function TimeBlock({ commonClasses, setTotalTime }: CommonClassesProps) {
+export default function TimeBlock({ commonClasses, setTotalTime, hasTimer, setHasTimer }: TimeBlockProps) {
 
     // States
-    const [isEnabled, setIsEnabled] = useState<boolean>(true)
     const [ h, setHours ] = useState<number>(0)
     const [ m, setMinutes ] = useState<number>(0)
     const [ s, setSeconds ] = useState<number>(0)
@@ -41,7 +45,7 @@ export default function TimeBlock({ commonClasses, setTotalTime }: CommonClasses
     const timerAlt = "TimeIcon"
 
     // Classes
-    const wrapperClasses = `${!isEnabled && "opacity-50"}`
+    const wrapperClasses = `${!hasTimer && "opacity-50"}`
     const containerClasses = "m-4.5 flex flex-col gap-3"
     const topClasses = "flex items-center"
     const btnsClasses = "grid grid-cols-3 gap-x-1.5"
@@ -70,8 +74,8 @@ export default function TimeBlock({ commonClasses, setTotalTime }: CommonClasses
                     <input 
                         className={checkClasses} 
                         type="checkbox" 
-                        checked={isEnabled} 
-                        onChange={() => setIsEnabled(!isEnabled)}
+                        checked={hasTimer} 
+                        onChange={() => setHasTimer(!hasTimer)}
                     />
                 </div>
 
@@ -82,7 +86,7 @@ export default function TimeBlock({ commonClasses, setTotalTime }: CommonClasses
                             className={timeInput.className}
                             placeholder={timeInput.placeholder}
                             onChange={timeInput.onChange}
-                            disabled={!isEnabled}
+                            disabled={!hasTimer}
                             min="0"
                             max="59"
                             key={index}

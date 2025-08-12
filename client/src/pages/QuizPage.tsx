@@ -6,6 +6,7 @@ import QuizWrapper from "../features/quiz/components/QuizWrapper"
 export default function QuizPage() {
 
     // States
+    const [ hasTimer, setHasTimer ] = useState<boolean>(true)
     const [ hasStarted, setHasStarted ] = useState<boolean>(false)
     const [ totalTime, setTotalTime ] = useState<number>(0)
 
@@ -20,11 +21,16 @@ export default function QuizPage() {
                 {hasStarted 
                     ? 
                         <QuizWrapper>
-                            <QuizWrapper.TimerBlock totalTime={totalTime} />
+                            {hasTimer ? <QuizWrapper.TimerBlock totalTime={totalTime} /> : null}
                             <QuizWrapper.QuestionBlock />
                         </QuizWrapper>
 
-                    : <QuizBlock setHasStarted={setHasStarted} setTotalTime={setTotalTime} />
+                    : <QuizBlock 
+                        setHasStarted={setHasStarted} 
+                        setTotalTime={setTotalTime} 
+                        hasTimer={hasTimer}
+                        setHasTimer={setHasTimer}
+                    />
                 }
             </div>
         </main>

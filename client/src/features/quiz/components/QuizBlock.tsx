@@ -5,9 +5,11 @@ import Title from "./Title"
 type QuizBlockProps = {
     setHasStarted: React.Dispatch<React.SetStateAction<boolean>>;
     setTotalTime: React.Dispatch<React.SetStateAction<number>>;
+    hasTimer: boolean;
+    setHasTimer: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function QuizBlock({ setHasStarted, setTotalTime }: QuizBlockProps) {
+export default function QuizBlock({ setHasStarted, setTotalTime, hasTimer, setHasTimer }: QuizBlockProps) {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         console.log(e)
@@ -31,7 +33,12 @@ export default function QuizBlock({ setHasStarted, setTotalTime }: QuizBlockProp
                 <span className={descClasses}>Choose your quiz preferences.</span>
 
                 <Settings>
-                    <Settings.TimeBlock commonClasses={commonClasses} setTotalTime={setTotalTime} />
+                    <Settings.TimeBlock 
+                        commonClasses={commonClasses} 
+                        setTotalTime={setTotalTime} 
+                        hasTimer={hasTimer}
+                        setHasTimer={setHasTimer}
+                    />
                     <Settings.DifficultyBlock commonClasses={commonClasses} />
                     <Settings.QuestionsNumBlock commonClasses={commonClasses} />
                 </Settings>
