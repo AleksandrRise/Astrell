@@ -4,9 +4,14 @@ import Title from "./Title"
 
 type QuizBlockProps = {
     setHasStarted: React.Dispatch<React.SetStateAction<boolean>>;
+    setTotalTime: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export default function QuizBlock({ setHasStarted }: QuizBlockProps) {
+export default function QuizBlock({ setHasStarted, setTotalTime }: QuizBlockProps) {
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        console.log(e)
+    }
 
     
     // Classes
@@ -19,14 +24,14 @@ export default function QuizBlock({ setHasStarted }: QuizBlockProps) {
 
     return (
         <section className={wrapperClasses}>
-            <form className={containerClasses}>
+            <form className={containerClasses} onSubmit={handleSubmit}>
 
                 <Title />
 
                 <span className={descClasses}>Choose your quiz preferences.</span>
 
                 <Settings>
-                    <Settings.TimeBlock commonClasses={commonClasses} />
+                    <Settings.TimeBlock commonClasses={commonClasses} setTotalTime={setTotalTime} />
                     <Settings.DifficultyBlock commonClasses={commonClasses} />
                     <Settings.QuestionsNumBlock commonClasses={commonClasses} />
                 </Settings>

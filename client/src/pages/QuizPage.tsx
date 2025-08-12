@@ -6,6 +6,7 @@ import QuizWrapper from "../features/quiz/components/QuizWrapper"
 export default function QuizPage() {
 
     const [ hasStarted, setHasStarted ] = useState<boolean>(false)
+    const [ totalTime, setTotalTime ] = useState<number>(0)
     const mainClasses = "hero-bg w-full h-screen"
     const containerClasses = `${hasStarted && "bg-blur"} transition-filter size-full \
         flex justify-center items-center overflow-hidden`
@@ -16,11 +17,11 @@ export default function QuizPage() {
                 {hasStarted 
                     ? 
                         <QuizWrapper>
-                            <QuizWrapper.TimerBlock />
+                            <QuizWrapper.TimerBlock totalTime={totalTime} />
                             <QuizWrapper.QuestionBlock />
                         </QuizWrapper>
 
-                    : <QuizBlock setHasStarted={setHasStarted} />
+                    : <QuizBlock setHasStarted={setHasStarted} setTotalTime={setTotalTime} />
                 }
             </div>
         </main>

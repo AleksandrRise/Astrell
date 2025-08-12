@@ -1,6 +1,10 @@
 import Timer from "./Timer"
 
-export default function TimerBlock() {
+type TimerBlock = {
+    totalTime: number;
+}
+
+export default function TimerBlock({ totalTime }: TimerBlock) {
 
 
     // Classes
@@ -10,7 +14,7 @@ export default function TimerBlock() {
 
     return (
         <section className={wrapperClasses}>
-            <Timer duration={3000} />
+            <Timer duration={totalTime} />
         </section>
     )
 }

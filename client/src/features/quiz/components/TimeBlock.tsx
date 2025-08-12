@@ -1,18 +1,41 @@
 import type { CommonClassesProps } from "../utils/CommonClassesProps"
 import timerIcon from "../assets/timerIcon.png"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type TimeBtnType = {
     type: string;
     className: string;
     placeholder: string;
+    onChange: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 
-export default function TimeBlock({ commonClasses }: CommonClassesProps) {
+export default function TimeBlock({ commonClasses, setTotalTime }: CommonClassesProps) {
 
     // States
     const [isEnabled, setIsEnabled] = useState<boolean>(true)
+    const [ h, setHours ] = useState<number>(0)
+    const [ m, setMinutes ] = useState<number>(0)
+    const [ s, setSeconds ] = useState<number>(0)
+
+    // Time Handling
+    useEffect(() => {
+        if (setTotalTime !== undefined) {
+            const calculatedTime: number = (h * 3600 + m * 60 + s) * 1000
+            console.log(calculatedTime)
+            setTotalTime(calculatedTime)
+        }
+    }, [h, m, s])
+
+    const changeHours = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setHours(Number(e.target.value || 0))
+    }
+    const changeMinutes = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setMinutes(Number(e.target.value || 0))
+    }
+    const changeSeconds = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSeconds(Number(e.target.value || 0))
+    }
 
     // Attributes
     const timerAlt = "TimeIcon"
@@ -31,10 +54,11 @@ export default function TimeBlock({ commonClasses }: CommonClassesProps) {
         [&::-webkit-outer-spin-button]:appearance-none \
         [&::-webkit-inner-spin-button]:appearance-none"
 
+    // Inputs attributes
     const timeInputs: Array<TimeBtnType> = [
-        { type: "number", className, placeholder: "Hours" },
-        { type: "number", className, placeholder: "Mins" },
-        { type: "number", className, placeholder: "Secs" },
+        { type: "number", className, placeholder: "Hours", onChange: changeHours },
+        { type: "number", className, placeholder: "Mins", onChange: changeMinutes },
+        { type: "number", className, placeholder: "Secs", onChange: changeSeconds },
     ]
 
     return (
@@ -52,11 +76,16 @@ export default function TimeBlock({ commonClasses }: CommonClassesProps) {
                 </div>
 
                 <div className={btnsClasses}>
-                    {timeInputs.map(timeInput => 
+                    {timeInputs.map((timeInput, index) => 
                         <input 
                             type={timeInput.type}
                             className={timeInput.className}
-                            placeholder={timeInput.placeholder} 
+                            placeholder={timeInput.placeholder}
+                            onChange={timeInput.onChange}
+                            disabled={!isEnabled}
+                            min="0"
+                            max="59"
+                            key={index}
                         />
                     )}
                 </div>
