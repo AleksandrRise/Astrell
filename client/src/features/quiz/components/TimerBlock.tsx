@@ -1,8 +1,7 @@
-import Timer from "../utils/Timer"
+import Timer from "./Timer"
 
 export default function TimerBlock() {
 
-    const timer = "1:25:57"
 
     // Classes
     const wrapperClasses = "w-82 min-h-19 bg-black border-1 border-white/20 rounded-3xl \
@@ -11,7 +10,7 @@ export default function TimerBlock() {
 
     return (
         <section className={wrapperClasses}>
-            <Timer duration={2 * 64 * 60 * 60 * 1000} />
+            <Timer duration={5 * 30 * 1000} />
         </section>
     )
 }

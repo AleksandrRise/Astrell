@@ -23,7 +23,9 @@ export default function Timer({ duration }: TimerProps) {
         let minutes: number = total_min % 60
         let hours: number = total_hours % 24 
 
-        return `${hours}:${minutes}:${seconds}`
+        return (hours < 10 ? `0${hours}:` : `${hours}:`)
+               +(minutes < 10 ? `0${minutes}:` : `${minutes}:`)
+                +(seconds < 10 ? `0${seconds}` : `${seconds}`)
     }
 
     // Classes
