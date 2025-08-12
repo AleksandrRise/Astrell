@@ -1,6 +1,5 @@
 import Choice from "./Choice";
 import { submitQuestion } from "../utils/submitQuestion.ts"
-import { useState } from "react";
 
 type QuestionsProps = {
     question: {
