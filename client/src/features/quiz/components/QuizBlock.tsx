@@ -2,15 +2,17 @@ import { useState } from "react";
 import Settings from "./Settings"
 import StartBtn from "./StartBtn"
 import Title from "./Title"
+import type { QuestionsType } from "../utils/QuestionsType";
 
 type QuizBlockProps = {
     setHasStarted: React.Dispatch<React.SetStateAction<boolean>>;
     setTotalTime: React.Dispatch<React.SetStateAction<number>>;
     hasTimer: boolean;
     setHasTimer: React.Dispatch<React.SetStateAction<boolean>>;
+    setQuestions: React.Dispatch<React.SetStateAction<QuestionsType>>;
 }
 
-export default function QuizBlock({ setHasStarted, setTotalTime, hasTimer, setHasTimer }: QuizBlockProps) {
+export default function QuizBlock({ setHasStarted, setTotalTime, hasTimer, setHasTimer, setQuestions }: QuizBlockProps) {
 
     // States
     const [ difficulty, setDifficulty ] = useState<string>("Easy")
@@ -27,7 +29,7 @@ export default function QuizBlock({ setHasStarted, setTotalTime, hasTimer, setHa
 
     return (
         <section className={wrapperClasses}>
-            <form className={containerClasses}>
+            <div className={containerClasses}>
 
                 <Title />
 
@@ -44,8 +46,8 @@ export default function QuizBlock({ setHasStarted, setTotalTime, hasTimer, setHa
                     <Settings.QuestionsNumBlock commonClasses={commonClasses} setQuestionsNum={setQuestionsNum} />
                 </Settings>
 
-                <StartBtn setHasStarted={setHasStarted} difficulty={difficulty} questionsNum={questionsNum} />
-            </form>
+                <StartBtn setHasStarted={setHasStarted} difficulty={difficulty} questionsNum={questionsNum} setQuestions={setQuestions}/>
+            </div>
         </section>
     )
 }

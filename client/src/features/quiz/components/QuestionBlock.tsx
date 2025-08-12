@@ -2,35 +2,11 @@ import { useState } from "react"
 import Question from "./Question.tsx"
 import Circles from "./Circles"
 import { handleBgColor } from "../utils/handleBgColor.ts"
+import type { QuestionsType } from "../utils/QuestionsType.ts"
 
-export default function QuestionBlock() {
 
-    const questions = [
-        {question: "When was it abandoned?", 
-            answers: [
-                {answer: "Today", correct: false},
-                {answer: "Yesterday", correct: false},
-                {answer: "Tomorrow", correct: true},
-                {answer: "1900 BC", correct: false},
-            ],
-        }, 
-        {question: "When was it born?", 
-            answers: [
-                {answer: "Today", correct: true},
-                {answer: "Yesterday", correct: false},
-                {answer: "Tomorrow", correct: false},
-                {answer: "1800 BC", correct: false},
-            ],
-        }, 
-        {question: "When was it returned?", 
-            answers: [
-                {answer: "Today", correct: false},
-                {answer: "Yesterday", correct: false},
-                {answer: "Tomorrow", correct: false},
-                {answer: "200030 BC", correct: true},           
-            ],
-        },
-    ]
+export default function QuestionBlock({ questions }: QuestionsType) {
+
 
     // States
     const [ activeIndex, setActiveIndex ] = useState<number>(0)
