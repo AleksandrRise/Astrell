@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Settings from "./Settings"
 import StartBtn from "./StartBtn"
 import Title from "./Title"
 import type { QuestionsType } from "../utils/QuestionsType.ts";
+import { useNavigate } from "react-router-dom";
 
 type QuizBlockProps = {
     setHasStarted: React.Dispatch<React.SetStateAction<boolean>>;
@@ -13,6 +14,16 @@ type QuizBlockProps = {
 }
 
 export default function QuizBlock({ setHasStarted, setTotalTime, hasTimer, setHasTimer, setQuestions }: QuizBlockProps) {
+
+    const navigate = useNavigate()
+
+    // Returns a user to the main page if no transcript was found
+    useEffect(() => {
+        const transcriptTemp = localStorage.getItem("transcript")
+        if (transcriptTemp === "" || transcriptTemp === null) {
+            navigate("/")
+        }
+    })
 
     // States
     const [ difficulty, setDifficulty ] = useState<string>("Easy")
