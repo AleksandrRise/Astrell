@@ -12,9 +12,9 @@ export default function Action1() {
     const btnClasses = "rounded-3xl logoGradient-bg p-[2px] flex flex-col text-start \
         justify-center items-center cursor-pointer hover:scale-102 transition"
     const quizContainerClasses = ""
-    const quizTextClasses = "text-5xl font-bold italic bg-clip-text text-transparent \
+    const quizTextClasses = "xl:text-5xl lg:text-4xl font-bold italic bg-clip-text text-transparent \
         bg-linear-to-l from-[#999999] to-white tracking-wider"
-    const quizSubtextClasses = "text-lg font-semibold italic"
+    const quizSubtextClasses = "xl:text-lg lg:text-md font-semibold italic"
     const quizHolderClasses = "flex items-center gap-1"
     const quizIconClasses = "size-7 -mt-1"
     const quizIconAlt = "QuizIcon"

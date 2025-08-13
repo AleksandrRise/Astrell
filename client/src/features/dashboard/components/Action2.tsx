@@ -21,9 +21,9 @@ export default function Action2() {
     const flashContainerClasses = "flex flex-col"
     const flashIconClasses = "size-7"
     const flashIconAlt = "FlashcardsIcon"
-    const flashTextClasses = "text-3xl font-bold italic bg-clip-text text-transparent \
+    const flashTextClasses = "xl:text-3xl lg:text-2xl font-bold italic bg-clip-text text-transparent \
         bg-linear-to-l from-[#999999] to-white tracking-wide"
-    const flashSubtextClasses = "text-sm italic ml-auto font-semibold"
+    const flashSubtextClasses = "xl:text-sm lg:text-xs italic ml-auto font-semibold"
 
     return (
         <button disabled={true} className={btnClasses} onClick={() => fetchData(setIsLoading, ADDRESS, "getcard", setErrorText)}>
