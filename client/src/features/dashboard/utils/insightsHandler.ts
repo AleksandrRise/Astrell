@@ -11,14 +11,12 @@ export async function insightsHandler(
     await axios.get(`${ADDRESS}/api/v1/summarize`)
         .then(res => {
             setSummarization(res.data)
-            localStorage.setItem("summarization", res.data)
         })
         .catch(error => setErrorText(error.message))
 
     await axios.get(`${ADDRESS}/api/v1/gethighlight`)
         .then(res => {
             setHighlights(res.data)
-            localStorage.setItem("highlights", res.data)
         })
         .catch(error => setErrorText(error.message))
 }

@@ -1,5 +1,5 @@
 import whisper
-from flask import Flask, request
+from flask import Flask, request, send_file
 from flask_cors import CORS
 from google import genai
 
@@ -26,6 +26,11 @@ def uploadVideo() -> str:
     transcript = model.transcribe(f"videos/temp")
 
     return transcript
+
+
+@app.route('/api/v1/getVideo', methods=['GET'])
+def getVideo():
+    return send_file("videos/temp", "video/mp4")
 
 
 @app.route('/api/v1/summarize', methods=['GET'])
