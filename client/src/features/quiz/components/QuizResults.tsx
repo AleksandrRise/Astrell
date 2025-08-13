@@ -17,8 +17,7 @@ export default function QuizResults({ correctArr }: QuizResultsProps) {
     const coverClasses = "bg-black/20 z-1 absolute top-0 left-0 size-full flex justify-center items-center \
         fadeInOpacity transition opacity-0"
     const wrapperClasses = "w-145 h-95 rounded-[40px] text-white bg-blackBG \
-        backdrop-blur-[100px] shadow-[0_0_2px_0_rgba(0,149,255,75)_inset] \
-        fadeIn transition delay-500"
+        backdrop-blur-[100px] shadow-[0_0_2px_0_rgba(0,149,255,75)_inset]"
     const containerClasses = "flex flex-col justify-center items-center size-full"
     const titleClasses = "text-5xl font-bold tracking-wide"
     const textClasses = "text-2xl tracking-wide pt-5.75 pb-15.5"
