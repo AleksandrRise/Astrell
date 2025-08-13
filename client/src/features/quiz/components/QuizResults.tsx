@@ -1,17 +1,25 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 type QuizResultsProps = {
     correctArr: Array<boolean | null>;
+    setHasEnded: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function QuizResults({ correctArr }: QuizResultsProps) {
+export default function QuizResults({ correctArr, setHasEnded }: QuizResultsProps) {
 
-    // States
+    // States & Hooks
     const [ correctNum, setCorrectNum ] = useState<number>(0)
+    const navigate = useNavigate()
 
     useEffect(() => {
         setCorrectNum(correctArr.filter(correctAns => correctAns).length)
     }, [correctArr])
+
+    const handleReturn = () => {
+        setHasEnded(false)
+        navigate("/dashboard")
+    }
 
     // Classes
     const coverClasses = "bg-black/20 z-1 absolute top-0 left-0 size-full flex justify-center items-center \
@@ -36,7 +44,7 @@ export default function QuizResults({ correctArr }: QuizResultsProps) {
                     <span className={textClasses}>
                         Your score is {correctNum}/10.
                     </span>
-                    <button className={btnClasses}>Return</button>
+                    <button className={btnClasses} onClick={handleReturn}>Return</button>
                 </div>
             </section>
         </div>

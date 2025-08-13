@@ -37,7 +37,7 @@ export default function QuizPage() {
 
     return (
         <main className={mainClasses}>
-            <QuizResults correctArr={correctArr} />
+            {hasEnded && <QuizResults correctArr={correctArr} setHasEnded={setHasEnded} />}
 
             <div className={containerClasses}>
 
