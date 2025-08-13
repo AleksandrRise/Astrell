@@ -35,21 +35,31 @@ class Commands:
 
     def getCardJSON(self):
         prompt = (
-                  'Make a single question and answer strictly according to a transcript and following the format without adding any of your comments at all: '
-                  '{"question": "(the question)", "answer": "(the answer to the question)" . Transcript of a lecture you use: ') + \
-              self.transcript["text"]
+                "Generate exactly ONE question and its corresponding answer, based solely on the provided lecture transcript. "
+                "Follow this exact JSON format without adding any commentary, explanations, or extra text:\n\n"
+                '{"question": "…", "answer": "…"}\n\n'
+                "Lecture transcript:\n" + self.transcript["text"]
+        )
         return self.convertToJSON(prompt)
 
     def getHighlightStr(self) -> str:
         prompt = (
-                  'Highlight key concepts strictly according to a transcript. The text must be comprehensive enough for a student at a college. Transcript of a lecture you use: ') + \
-              self.transcript["text"]
+                "Extract the key concepts from the provided lecture transcript. "
+                "Write them as plain text, without any formatting symbols (no bold, italics, or special characters). "
+                "The highlights must be clear and detailed enough for a college-level student to understand the main points, "
+                "but concise enough to avoid unnecessary information.\n\n"
+                "Lecture transcript:\n" + self.transcript["text"]
+        )
         return self.convertToStr(prompt)
 
     def getSummarizeStr(self) -> str:
         prompt = (
-                  'Make a summarization of a transcript in 0-200 words. The text must be comprehensive enough for a student at a college. Transcript of a lecture you use: ') + \
-              self.transcript["text"]
+                "Summarize the following lecture transcript in no more than 200 words. "
+                "The summary must be clear, concise, and comprehensive enough for a college-level student to understand "
+                "the main ideas, without adding extra commentary, irrelevant details, or any formatting styles "
+                "(no bold, italics, or special characters). Write only plain text.\n\n"
+                "Lecture transcript:\n" + self.transcript["text"]
+        )
         return self.convertToStr(prompt)
 
 ################################################
