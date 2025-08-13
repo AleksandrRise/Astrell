@@ -9,6 +9,7 @@ import LoadingText from "../../../shared/components/LoadingText.tsx"
 import React from "react"
 import { handleSum } from "../utils/handleSum.ts"
 import { handleHighs } from "../utils/handleHighs.ts"
+import { useNavigate } from "react-router-dom"
 
 
 const ADDRESS: string = "http://127.0.0.1:5000"
@@ -20,6 +21,7 @@ type InsightsProps = {
 export default function Insights({ setErrorText }: InsightsProps) {
 
     const transcriptItem = localStorage.getItem("transcript") || ""
+    const navigate = useNavigate()
 
     // States
     const [choiceClicked, setChoiceClicked] = useState<number>(0)
@@ -28,7 +30,7 @@ export default function Insights({ setErrorText }: InsightsProps) {
     const [summarization, setSummarization] = useState<string>(localStorage.getItem("summarization") || "")
     const [highlights, setHighlights] = useState<string>(localStorage.getItem("highlights") || "")
 
-    // Forbid page access manually
+    // // Forbid page access manually
     // useEffect(() => {
     //     if (!transcript) {
     //         navigate("/")

@@ -3,28 +3,25 @@ import LogoSection from "./LogoSection";
 import SearchBar from "../../../shared/components/SearchBar";
 import Profile from "./Profile"
 import dashboardIcon from "../assets/DashboardIcon.png"
-import chatIcon from "../assets/ChatIcon.png"
-import examIcon from "../assets/ExamIcon.png"
-import historyIcon from "../assets/HistoryIcon.png"
 import settingsIcon from "../assets/SettingsIcon.png"
 import supportIcon from "../assets/SupportIcon.png"
+import lectureIcon from "../assets/BookmarkIcon.png"
 import type { FeaturesProps } from "../utils/FeaturesProps"
 import { useState } from "react";
 
 
 export default function Aside() {
 
+
     // Features arrays
     const features = [
         { name: "Dashboard", icon: dashboardIcon, isActive: true},
-        { name: "History", icon: historyIcon, isActive: false},
-        { name: "Exam Builder", icon: examIcon, isActive: false},
-        { name: "Chat", icon: chatIcon, isActive: false},
+        { name: "New Lecture", icon: lectureIcon, isActive: false, navigateTo: "/"},
     ]
 
     const others = [
-        { name: "Settings", icon: settingsIcon, isActive: false},
-        { name: "Support", icon: supportIcon, isActive: false},
+        { name: "Settings (n/a)", icon: settingsIcon, isActive: false},
+        { name: "Support (n/a)", icon: supportIcon, isActive: false},
     ]
 
     // States
@@ -52,6 +49,7 @@ export default function Aside() {
                         name={featureEl.name} 
                         icon={featureEl.icon} 
                         isActive={featureEl.isActive}
+                        navigateTo={featureEl.navigateTo}
                         key={index}
                     />
                 )}

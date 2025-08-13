@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom"
 import type { FeaturesProps } from "../utils/FeaturesProps"
 
-export default function Feature({ name, icon, isActive }: FeaturesProps) {
+export default function Feature({ name, icon, isActive, navigateTo }: FeaturesProps) {
+
+    const navigate = useNavigate()
 
     // Classes
     const liClasses = `w-full rounded-lg  \
@@ -24,7 +27,7 @@ export default function Feature({ name, icon, isActive }: FeaturesProps) {
 
     return (
         <li className={liClasses}>
-            <button className={btnClasses}>
+            <button className={btnClasses} onClick={() => navigate(navigateTo || "/dashboard")}>
                 <img className={imgClasses} src={icon} alt={altIcon} />
                 <span className={spanClasses}>{name}</span>
             </button>
