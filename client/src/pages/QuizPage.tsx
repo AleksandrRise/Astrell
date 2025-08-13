@@ -2,6 +2,7 @@ import { useState } from "react"
 import QuizBlock from "../features/quiz/components/QuizBlock"
 import QuizWrapper from "../features/quiz/components/QuizWrapper"
 import type { QuestionsType } from "../features/quiz/utils/QuestionsType.ts"
+import QuizResults from "../features/quiz/components/QuizResults.tsx"
 
 
 // Default value
@@ -24,6 +25,7 @@ export default function QuizPage() {
     const [ hasTimer, setHasTimer ] = useState<boolean>(true)
     const [ hasStarted, setHasStarted ] = useState<boolean>(false)
     const [ questionsState, setQuestions ] = useState<QuestionsType>(questionsDefault)
+    const [ hasEnded, setHasEnded ] = useState<boolean>(false)
 
     // Classes
     const mainClasses = "hero-bg w-full h-screen"
@@ -32,12 +34,15 @@ export default function QuizPage() {
 
     return (
         <main className={mainClasses}>
+            {hasEnded ? <QuizResults /> : null}
+
             <div className={containerClasses}>
+
                 {hasStarted 
                     ? 
                         <QuizWrapper>
                             {(hasTimer && totalTime > 0) 
-                                ? <QuizWrapper.TimerBlock duration={totalTime} /> 
+                                ? <QuizWrapper.TimerBlock duration={totalTime} setHasEnded={setHasEnded} /> 
                                 : null}
                             <QuizWrapper.QuestionBlock questions={questionsState.questions} />
                         </QuizWrapper>

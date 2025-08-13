@@ -3,15 +3,18 @@ import { useEffect } from "react"
 type TimerProps = {
     time: number;
     setTime: React.Dispatch<React.SetStateAction<number>>;
+    setHasEnded: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function Timer({ time, setTime }: TimerProps) {
+export default function Timer({ time, setTime, setHasEnded }: TimerProps) {
 
     useEffect(() => {
         if (time > 0) {
             setTimeout(() => {
                 setTime(time - 1000)
             }, 1000)
+        } else {
+            setHasEnded(true)
         }
     }, [time])
 

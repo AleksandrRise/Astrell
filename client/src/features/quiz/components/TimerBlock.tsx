@@ -3,9 +3,10 @@ import Timer from "./Timer"
 
 type TimerBlock = {
     duration: number;
+    setHasEnded: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function TimerBlock({ duration }: TimerBlock) {
+export default function TimerBlock({ duration, setHasEnded }: TimerBlock) {
 
     // States
     const [ time, setTime ] = useState<number>(duration)
@@ -28,7 +29,7 @@ export default function TimerBlock({ duration }: TimerBlock) {
 
     return (
         <section className={wrapperClasses}>
-            <Timer time={time} setTime={setTime} />
+            <Timer time={time} setTime={setTime} setHasEnded={setHasEnded} />
         </section>
     )
 }
