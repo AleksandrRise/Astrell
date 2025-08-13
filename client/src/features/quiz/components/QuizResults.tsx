@@ -38,7 +38,7 @@ export default function QuizResults({ correctArr, setHasEnded }: QuizResultsProp
             <section className={wrapperClasses}>
                 <div className={containerClasses}>
                     <h3 className={titleClasses}>
-                        {correctNum >= 8 ? "Great job!" : "Give it another try!"}
+                        {correctNum / correctArr.length >= 0.8 ? "Great job!" : "Give it another try!"}
                     </h3>
 
                     <span className={textClasses}>

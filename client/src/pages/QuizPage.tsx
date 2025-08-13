@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import QuizBlock from "../features/quiz/components/QuizBlock"
 import QuizWrapper from "../features/quiz/components/QuizWrapper"
 import type { QuestionsType } from "../features/quiz/utils/QuestionsType.ts"
@@ -29,6 +29,13 @@ export default function QuizPage() {
     const [ correctArr, setCorrectArr ] = useState<Array<boolean | null>>(
         new Array(questionsState.questions.length).fill(null)
     )
+
+    useEffect(() => {
+        setHasEnded(!correctArr.includes(null))
+    }, [correctArr])
+    useEffect(() => {
+        setCorrectArr(new Array(questionsState.questions.length).fill(null))
+    }, [questionsState])
 
     // Classes
     const mainClasses = "hero-bg w-full h-screen"
