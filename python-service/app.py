@@ -2,6 +2,7 @@ import whisper
 from flask import Flask, request, send_file
 from flask_cors import CORS
 from google import genai
+import os
 
 from commands import Commands
 
@@ -20,10 +21,10 @@ video = ""
 def uploadVideo() -> str:
     global video
     video = request.files['file']
-    video.save(f"videos/temp")
+    video.save("videos/temp")
 
     global transcript
-    transcript = model.transcribe(f"videos/temp")
+    transcript = model.transcribe("videos/temp")
 
     return transcript
 
