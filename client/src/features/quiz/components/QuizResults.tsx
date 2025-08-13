@@ -1,4 +1,17 @@
-export default function QuizResults() {
+import { useEffect, useState } from "react";
+
+type QuizResultsProps = {
+    correctArr: Array<boolean | null>;
+}
+
+export default function QuizResults({ correctArr }: QuizResultsProps) {
+
+    // States
+    const [ correctNum, setCorrectNum ] = useState<number>(0)
+
+    useEffect(() => {
+        setCorrectNum(correctArr.filter(correctAns => correctAns).length)
+    }, [correctArr])
 
     // Classes
     const coverClasses = "bg-black/20 z-1 absolute top-0 left-0 size-full flex justify-center items-center \
@@ -17,9 +30,13 @@ export default function QuizResults() {
         <div className={coverClasses}>
             <section className={wrapperClasses}>
                 <div className={containerClasses}>
-                    <h3 className={titleClasses}>Great job!</h3>
+                    <h3 className={titleClasses}>
+                        {correctNum >= 8 ? "Great job!" : "Give it another try!"}
+                    </h3>
 
-                    <span className={textClasses}>Your score is 8/10.</span>
+                    <span className={textClasses}>
+                        Your score is {correctNum}/10.
+                    </span>
                     <button className={btnClasses}>Return</button>
                 </div>
             </section>

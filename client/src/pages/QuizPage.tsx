@@ -37,7 +37,7 @@ export default function QuizPage() {
 
     return (
         <main className={mainClasses}>
-            <QuizResults />
+            <QuizResults correctArr={correctArr} />
 
             <div className={containerClasses}>
 
