@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react";
-import type { QuestionsType } from "../utils/QuestionsType";
+import type { QuestionsType } from "../utils/QuestionsType.ts";
 
 
 const ADDRESS: string = "http://127.0.0.1:5000"

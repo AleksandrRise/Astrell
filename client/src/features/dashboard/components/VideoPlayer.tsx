@@ -1,16 +1,14 @@
-import React from "react"
 
+const ADDRESS = "http://127.0.0.1:5000"
 
-const VideoPlayer = React.memo(() => {
-    
-    const videoUrl: string = localStorage.getItem("video") || ""
+const VideoPlayer = () => {
 
     // Classes
     const videoClasses = "rounded-3xl row-start-1 min-w-full"
 
     return (
-        <video className={videoClasses} src={videoUrl} controls />
+        <video className={videoClasses} src={`${ADDRESS}/api/v1/getVideo`} controls />
     )
-})
+}
 
 export default VideoPlayer

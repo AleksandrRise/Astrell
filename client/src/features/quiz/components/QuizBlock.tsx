@@ -2,7 +2,7 @@ import { useState } from "react";
 import Settings from "./Settings"
 import StartBtn from "./StartBtn"
 import Title from "./Title"
-import type { QuestionsType } from "../utils/QuestionsType";
+import type { QuestionsType } from "../utils/QuestionsType.ts";
 
 type QuizBlockProps = {
     setHasStarted: React.Dispatch<React.SetStateAction<boolean>>;
