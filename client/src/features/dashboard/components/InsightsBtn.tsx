@@ -8,9 +8,9 @@ type InsightsBtnProps = {
 
 
 export default function InsightsBtn({ btn, index, setChoiceClicked }: InsightsBtnProps) {
-    const btnClasses = "flex gap-2.5 items-center cursor-pointer"
-    const iconClasses = "size-7.5"
-    const btnTextClasses = "text-xl font-bold font-lato"
+    const btnClasses = "flex lg:gap-1 xl:gap-2.5 items-center cursor-pointer"
+    const iconClasses = "lg:size-5 xl:size-7.5"
+    const btnTextClasses = "lg:text-lg xl:text-xl font-bold font-lato"
 
     const handleClick = (index: number): void => {
         setChoiceClicked(index)

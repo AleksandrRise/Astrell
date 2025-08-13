@@ -30,12 +30,12 @@ export default function Insights({ setErrorText }: InsightsProps) {
     const [summarization, setSummarization] = useState<string>(localStorage.getItem("summarization") || "")
     const [highlights, setHighlights] = useState<string>(localStorage.getItem("highlights") || "")
 
-    // // Forbid page access manually
-    // useEffect(() => {
-    //     if (!transcript) {
-    //         navigate("/")
-    //     }
-    // }, [])
+    // Forbid manual page access
+    useEffect(() => {
+        if (!transcript) {
+            navigate("/")
+        }
+    }, [])
 
     // All insights buttons
     const buttons: ButtonType[] = [
@@ -83,19 +83,20 @@ export default function Insights({ setErrorText }: InsightsProps) {
     const wrapperClasses = "size-full z-1 rounded-3xl row-start-2 p-px \
         bg-gradient-to-tl from-[#333333] from-[75%] to-[#999999] to-[100%] min-h-0"
     const transcriptEnlarger = (isEnlarged ? "absolute inset-0" : "relative")
-    const innerWrapperClasses = "bg-blackBG rounded-3xl size-full pl-12 pr-15 py-8 flex flex-col"
+    const innerWrapperClasses = "bg-blackBG rounded-3xl size-full xl:pl-12 xl:pr-15 py-8 flex flex-col \
+        lg:px-5"
     const enlargeClasses = "opacity-30 absolute right-5 top-5 size-5 cursor-pointer"
     const btnsClasses = "flex gap-11 relative pb-4 w-full"
 
-    const underlineClasses = `h-[2px] w-2/9 bg-white/70 rounded-t-lg \
+    const underlineClasses = `h-[2px] bg-white/70 rounded-t-lg \
         absolute bottom-0 shadow-[0_0_12px_2px_#FFFFFF]/25 transition-all \
-        lg:w-40`
+        lg:w-34 xl:w-40`
     const underlinePosition = 
         choiceClicked === 0
             ? 'left-0'
             : choiceClicked === 1
-                ? 'left-47'
-                : 'left-89'
+                ? 'lg:left-40.5 xl:left-48'
+                : 'lg:left-77 xl:left-90.5'
 
     const lineClasses = "mb-4 w-19/20 h-px bg-white/5"
     const textWrapperClasses = "w-full pr-15 relative overflow-y-auto break-words \

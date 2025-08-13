@@ -2,7 +2,8 @@ import Logo from "../../../shared/components/Logo"
 
 export default function LogoSection() {
     // Classes
-    const wrapperClasses = "flex flex-wrap items-center text-3xl cursor-default pt-5 pb-2"
+    const wrapperClasses = "flex flex-wrap items-center xl:text-3xl cursor-default pt-5 pb-2 \
+        lg:text-2xl"
     const h1Classes = "pt-1 tracking-wider font-bold font-lato"
 
     return (
