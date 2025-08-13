@@ -15,12 +15,13 @@ export default function Feature({ name, icon, isActive, navigateTo }: FeaturesPr
                 hover:to-white/10 hover:to-60%"
         }`
     const btnClasses = `flex items-center gap-3.75 px-6 py-2.5 w-full rounded-lg \
+        lg:justify-center xl:justify-start \
         ${isActive
             ? "shadow-[0_1px_0_0_#333533_inset]"
             : "hover:shadow-[0_1px_0_0_#333533_inset]/50 cursor-pointer"
         }`
     const imgClasses = `w-7.5 h-7.5 ${isActive ? "opacity-90" : "opacity-50"}`
-    const spanClasses = ""
+    const spanClasses = "lg:hidden xl:inline"
 
     // Properties
     const altIcon = "Icon"
