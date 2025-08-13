@@ -1,7 +1,7 @@
 import { useState } from "react"
 import QuizBlock from "../features/quiz/components/QuizBlock"
 import QuizWrapper from "../features/quiz/components/QuizWrapper"
-import type { QuestionsType } from "../features/quiz/utils/QuestionsType"
+import type { QuestionsType } from "../features/quiz/utils/QuestionsType.ts"
 
 
 // Default value

@@ -26,7 +26,6 @@ export default function TimeBlock({ commonClasses, setTotalTime, hasTimer, setHa
     useEffect(() => {
         if (setTotalTime !== undefined) {
             const calculatedTime: number = (h * 3600 + m * 60 + s) * 1000
-            console.log(calculatedTime)
             setTotalTime(calculatedTime)
         }
     }, [h, m, s])

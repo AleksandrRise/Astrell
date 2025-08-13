@@ -8,7 +8,7 @@ import { ErrorMessageContext } from "../../../shared/utils/ErrorMessageContext.t
 
 export default function Main() {
 
-    const [errorText] = useContext(ErrorMessageContext)
+    const [errorText, setErrorText] = useContext(ErrorMessageContext)
 
 
     // Classes
@@ -22,7 +22,7 @@ export default function Main() {
             <main className={mainClasses}>
                 <div className={leftColClasses}>
                     <VideoPlayer />
-                    <Insights />
+                    <Insights setErrorText={setErrorText} />
                 </div>
 
                 <div className={rightColClasses}>

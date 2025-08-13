@@ -2,26 +2,28 @@ import transcriptIcon from "../assets/TranscriptIcon.png"
 import summaryIcon from "../assets/SummaryIcon.png"
 import highlightsIcon from "../assets/HighlightsIcon.png"
 import enlargeIcon from "../assets/EnlargeIcon.png"
-import { useState, useEffect, useContext } from "react"
-import { useLocation, useNavigate } from "react-router-dom"
+import { useState, useEffect } from "react"
 import type { ButtonType } from "../utils/ButtonType.tsx"
 import { insightsHandler } from "../utils/insightsHandler.ts"
 import InsightsBtn from "./InsightsBtn.tsx"
 import LoadingText from "../../../shared/components/LoadingText.tsx"
-import { ErrorMessageContext } from "../../../shared/utils/ErrorMessageContext.tsx"
+import React from "react"
 
 
-export default function Insights() {
+const ADDRESS: string = "http://127.0.0.1:5000"
 
-    // Other Hooks
-    const navigate = useNavigate()
-    const location = useLocation()
-    const [, setErrorText] = useContext(ErrorMessageContext)
+type InsightsProps = {
+    setErrorText: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export default function Insights({ setErrorText }: InsightsProps) {
+
+    const transcriptItem = localStorage.getItem("transcript") || ""
 
     // States
     const [choiceClicked, setChoiceClicked] = useState<number>(0)
     const [isEnlarged, setIsEnlarged] = useState<boolean>(false)
-    const [transcript] = useState<string>(location.state)
+    const [transcript] = useState<string>(transcriptItem)
     const [summarization, setSummarization] = useState<string>("")
     const [highlights, setHighlights] = useState<string>("")
 
@@ -31,8 +33,6 @@ export default function Insights() {
     //         navigate("/")
     //     }
     // }, [])
-
-    const ADDRESS: string = "http://127.0.0.1:5000"
 
     // All insights buttons
     const buttons: ButtonType[] = [
@@ -114,7 +114,9 @@ export default function Insights() {
 
                 <div className={textWrapperClasses}>
                     {choiceClicked === 0 
-                        ? (<p className={textClasses}>{transcript}</p>) 
+                        ? (transcript === "" 
+                            ? <LoadingText />
+                            : <p className={textClasses}>{transcript}</p>) 
                         : (choiceClicked === 1 
                             ? (summarization === "" 
                                 ? <LoadingText /> 
@@ -130,3 +132,6 @@ export default function Insights() {
         </article>
     )
 }
+
+
+
