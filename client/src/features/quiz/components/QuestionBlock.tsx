@@ -15,7 +15,7 @@ export default function QuestionBlock({ questions, correctArr, setCorrectArr }: 
     )
 
     // Classes
-    const wrapperClasses = `animate-[fadeIn_1s_1s_forwards] w-273 min-h-full bg-black/20 opacity-0 \
+    const wrapperClasses = `animate-[fadeIn_1s_1s_forwards] xl:w-273 lg:w-230 min-h-full bg-black/20 opacity-0 \
         rounded-3xl mt-8 ${handleBgColor(correctArr, activeIndex)} \
         p-[2px] backdrop-blur-[100px] \
         text-white`
