@@ -63,8 +63,13 @@ export default function Insights({ setErrorText }: InsightsProps) {
 
     // Processes Summarization and Highlights texts
     useEffect(() => {
-        const processData = async () => insightsHandler(ADDRESS, setSummarization, setHighlights, setErrorText)
-        processData()
+        if (localStorage.getItem("summarization") === null || localStorage.getItem("highlights") === null) {
+            const processData = async () => insightsHandler(ADDRESS, setSummarization, setHighlights, setErrorText)
+            processData()
+        } else {
+            setSummarization(localStorage.getItem("summarization")!)
+            setHighlights(localStorage.getItem("highlights")!)
+        }
     }, [])
 
     // Properties

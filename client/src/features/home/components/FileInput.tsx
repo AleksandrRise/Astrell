@@ -46,7 +46,6 @@ export default function FileInput({setIsLoading }: FileInputProps) {
 
             const formData: FormData = new FormData()
             formData.append("file", file)
-            const videoUrl: string = URL.createObjectURL(file)
 
             await axios.post('http://127.0.0.1:5000/api/v1/uploadVideo', formData, {
                 headers: {
@@ -54,9 +53,15 @@ export default function FileInput({setIsLoading }: FileInputProps) {
                 }
             })
                 .then(res => {
-                    localStorage.setItem("video", videoUrl)
-                    localStorage.setItem("transcript", res.data['text'])
-                    navigate("/dashboard")
+                    if (res.data['text']) {
+                        localStorage.setItem("transcript", res.data['text'])
+                        localStorage.removeItem("summarization")
+                        localStorage.removeItem("highlights")
+
+                        navigate("/dashboard")
+                    } else {
+                        throw new Error("Transcript was not found.")
+                    }
                 })
                 .catch(error => setErrorText(error['message'] || "Upload failed"))
                 .finally(() => setIsLoading(false))
