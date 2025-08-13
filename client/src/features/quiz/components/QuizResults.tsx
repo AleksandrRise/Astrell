@@ -42,7 +42,7 @@ export default function QuizResults({ correctArr, setHasEnded }: QuizResultsProp
                     </h3>
 
                     <span className={textClasses}>
-                        Your score is {correctNum}/10.
+                        Your score is {correctNum}/{correctArr.length}.
                     </span>
                     <button className={btnClasses} onClick={handleReturn}>Return</button>
                 </div>
