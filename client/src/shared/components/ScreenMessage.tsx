@@ -4,6 +4,7 @@ export default function ScreenMessage({ children }: {children: React.ReactNode})
     const wrapperClasses = "flex flex-col justify-center items-center \
         lg:hidden absolute top-0 left-0 size-full bg-white z-999 text-center \
         px-5"
+    const childrenClasses = "hidden lg:block"
     const titleClasses = "text-2xl mb-5 font-semibold"
     const textClasses = "max-w-100 text-md"
 
@@ -17,7 +18,7 @@ export default function ScreenMessage({ children }: {children: React.ReactNode})
                 </p>
             </div>    
 
-            {children}    
+            <div className={childrenClasses}>{children}</div>   
         </>
     )
 }
