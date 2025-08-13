@@ -5,15 +5,12 @@ import { handleBgColor } from "../utils/handleBgColor.ts"
 import type { QuestionsType } from "../utils/QuestionsType.ts"
 
 
-export default function QuestionBlock({ questions }: QuestionsType) {
+export default function QuestionBlock({ questions, correctArr, setCorrectArr }: QuestionsType) {
 
 
     // States
     const [ activeIndex, setActiveIndex ] = useState<number>(0)
     const [ ansChoiceArr, setAnsChoice ] = useState<Array<number | null>>(
-        new Array(questions.length).fill(null)
-    )
-    const [ correctArr, setCorrectArr ] = useState<Array<boolean | null>>(
         new Array(questions.length).fill(null)
     )
 

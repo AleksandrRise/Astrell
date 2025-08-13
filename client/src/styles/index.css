@@ -112,6 +112,14 @@
         animation-iteration-count: 1;
     }
 
+    .fadeInOpacity {
+        animation-name: fadeInOpacity;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: both;
+        animation-iteration-count: 1;        
+    }
+
     .logoGradient-bg {
         @apply relative;
     
@@ -290,5 +298,14 @@
     }
     100% {
         backdrop-filter: blur(10px);
+    }
+}
+
+@keyframes fadeInOpacity {
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
     }
 }

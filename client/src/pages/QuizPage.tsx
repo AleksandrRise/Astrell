@@ -26,6 +26,9 @@ export default function QuizPage() {
     const [ hasStarted, setHasStarted ] = useState<boolean>(false)
     const [ questionsState, setQuestions ] = useState<QuestionsType>(questionsDefault)
     const [ hasEnded, setHasEnded ] = useState<boolean>(false)
+    const [ correctArr, setCorrectArr ] = useState<Array<boolean | null>>(
+        new Array(questionsState.questions.length).fill(null)
+    )
 
     // Classes
     const mainClasses = "hero-bg w-full h-screen"
@@ -34,7 +37,7 @@ export default function QuizPage() {
 
     return (
         <main className={mainClasses}>
-            {hasEnded ? <QuizResults /> : null}
+            <QuizResults />
 
             <div className={containerClasses}>
 
@@ -44,7 +47,11 @@ export default function QuizPage() {
                             {(hasTimer && totalTime > 0) 
                                 ? <QuizWrapper.TimerBlock duration={totalTime} setHasEnded={setHasEnded} /> 
                                 : null}
-                            <QuizWrapper.QuestionBlock questions={questionsState.questions} />
+                            <QuizWrapper.QuestionBlock 
+                                questions={questionsState.questions} 
+                                correctArr={correctArr}
+                                setCorrectArr={setCorrectArr}
+                            />
                         </QuizWrapper>
 
                     : <QuizBlock 
