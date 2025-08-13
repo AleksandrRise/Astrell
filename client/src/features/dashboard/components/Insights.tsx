@@ -4,10 +4,11 @@ import highlightsIcon from "../assets/HighlightsIcon.png"
 import enlargeIcon from "../assets/EnlargeIcon.png"
 import { useState, useEffect } from "react"
 import type { ButtonType } from "../utils/ButtonType.tsx"
-import { insightsHandler } from "../utils/insightsHandler.ts"
 import InsightsBtn from "./InsightsBtn.tsx"
 import LoadingText from "../../../shared/components/LoadingText.tsx"
 import React from "react"
+import { handleSum } from "../utils/handleSum.ts"
+import { handleHighs } from "../utils/handleHighs.ts"
 
 
 const ADDRESS: string = "http://127.0.0.1:5000"
@@ -24,8 +25,8 @@ export default function Insights({ setErrorText }: InsightsProps) {
     const [choiceClicked, setChoiceClicked] = useState<number>(0)
     const [isEnlarged, setIsEnlarged] = useState<boolean>(false)
     const [transcript] = useState<string>(transcriptItem)
-    const [summarization, setSummarization] = useState<string>("")
-    const [highlights, setHighlights] = useState<string>("")
+    const [summarization, setSummarization] = useState<string>(localStorage.getItem("summarization") || "")
+    const [highlights, setHighlights] = useState<string>(localStorage.getItem("highlights") || "")
 
     // Forbid page access manually
     // useEffect(() => {
@@ -63,12 +64,13 @@ export default function Insights({ setErrorText }: InsightsProps) {
 
     // Processes Summarization and Highlights texts
     useEffect(() => {
-        if (localStorage.getItem("summarization") === null || localStorage.getItem("highlights") === null) {
-            const processData = async () => insightsHandler(ADDRESS, setSummarization, setHighlights, setErrorText)
+        if (localStorage.getItem("summarization") === null) {
+            const processData = async () => handleSum(ADDRESS, setSummarization, setErrorText)
             processData()
-        } else {
-            setSummarization(localStorage.getItem("summarization")!)
-            setHighlights(localStorage.getItem("highlights")!)
+        } 
+        if (localStorage.getItem("highlights") === null) {
+            const processData = async () => handleHighs(ADDRESS, setHighlights, setErrorText)
+            processData()
         }
     }, [])
 
