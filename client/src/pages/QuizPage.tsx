@@ -13,7 +13,9 @@ const questionsDefault: QuestionsType = {
             answer: "",
             correct: false
         }]
-    }]
+    }],
+    correctArr: [],
+    setCorrectArr: () => {},
 } 
 
 
