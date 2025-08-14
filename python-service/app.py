@@ -2,7 +2,6 @@ import whisper
 from flask import Flask, request, send_file
 from flask_cors import CORS
 from google import genai
-import os
 
 from commands import Commands
 
@@ -67,4 +66,4 @@ def getHighlight() -> str:
 
 
 if __name__ == "__main__":
-    app.run(port=5000)
+    app.run()
