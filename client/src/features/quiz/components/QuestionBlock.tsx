@@ -39,7 +39,7 @@ export default function QuestionBlock({ questions, correctArr, setCorrectArr }: 
                 </div>
 
                 <Circles>
-                    {questions.map((q, key) => 
+                    {questions.map((_, key) => 
                         <Circles.Circle 
                             index={key} 
                             activeIndex={activeIndex} 
