@@ -1,9 +1,7 @@
-version: '3.8'
-
 services:
   api:
     build:
       context: .
-      target: production
+      target: prod
     ports:
       - "5173:5173"

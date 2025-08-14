@@ -1,9 +1,10 @@
 services:
   app:
-    build: .
+    build:
+      context: .
+      target: prod
     ports:
       - "5001:5000"
     volumes:
       - .:/app
-    env_file:
-    - .env
+    env_file: ".env"

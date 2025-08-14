@@ -1,4 +1,4 @@
-FROM node:22.14-alpine as development
+FROM node:22.14-alpine as dev
 
 WORKDIR /usr/src/app
 
@@ -10,9 +10,9 @@ COPY . .
 
 RUN npm run build
 
-FROM nginx:stable-alpine as production
+FROM nginx:stable-alpine as prod
 
-COPY --from=development /usr/src/app/dist usr/share/nginx/html
+COPY --from=dev /usr/src/app/dist /usr/share/nginx/html
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 

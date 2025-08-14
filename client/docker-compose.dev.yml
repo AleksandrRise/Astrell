@@ -2,7 +2,7 @@ services:
   astrell_dev:
     build:
       context: .
-      target: development
+      target: dev
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules

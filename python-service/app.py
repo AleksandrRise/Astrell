@@ -1,15 +1,23 @@
+import os
+
 import whisper
 from flask import Flask, request, send_file
 from flask_cors import CORS
 from google import genai
+from dotenv import load_dotenv
 
 from commands import Commands
+
+load_dotenv()
+
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+
 
 app = Flask(__name__)
 origin = "http://localhost:5173"
 CORS(app, resources={r"*": {"origins": origin}})
 
-ai = genai.Client()
+ai = genai.Client(api_key=GEMINI_API_KEY)
 model = whisper.load_model("base")
 
 transcript = ""
