@@ -12,8 +12,6 @@ import { handleHighs } from "../utils/handleHighs.ts"
 import { useNavigate } from "react-router-dom"
 
 
-const ADDRESS: string = "http://127.0.0.1:5000"
-
 type InsightsProps = {
     setErrorText: React.Dispatch<React.SetStateAction<string>>;
 }
@@ -67,11 +65,11 @@ export default function Insights({ setErrorText }: InsightsProps) {
     // Processes Summarization and Highlights texts
     useEffect(() => {
         if (localStorage.getItem("summarization") === null) {
-            const processData = async () => handleSum(ADDRESS, setSummarization, setErrorText)
+            const processData = async () => handleSum(setSummarization, setErrorText)
             processData()
         } 
         if (localStorage.getItem("highlights") === null) {
-            const processData = async () => handleHighs(ADDRESS, setHighlights, setErrorText)
+            const processData = async () => handleHighs(setHighlights, setErrorText)
             processData()
         }
     }, [])

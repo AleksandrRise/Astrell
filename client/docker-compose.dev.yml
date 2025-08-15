@@ -1,5 +1,5 @@
 services:
-  astrell_dev:
+  client:
     build:
       context: .
       target: dev

@@ -1,5 +1,5 @@
 services:
-  api:
+  client:
     build:
       context: .
       target: prod

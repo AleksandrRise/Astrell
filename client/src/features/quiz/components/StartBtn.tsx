@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import type { QuestionsType } from "../utils/QuestionsType.ts";
 
 
-const ADDRESS: string = "http://127.0.0.1:5000"
-
 type StartBtnProps = {
     setHasStarted: React.Dispatch<React.SetStateAction<boolean>>;
     difficulty: string;
@@ -24,7 +22,7 @@ export default function StartBtn({ setHasStarted, difficulty, questionsNum, setQ
             const fetchData = async () => {
                 try {
                     const res = await axios.get<QuestionsType>(
-                        `${ADDRESS}/api/v1/getQuiz?difficulty=${difficulty}&questionsNum=${questionsNum}`
+                        `/api/v1/getQuiz?difficulty=${difficulty}&questionsNum=${questionsNum}`
                     ) 
 
                     setQuestions(res.data)

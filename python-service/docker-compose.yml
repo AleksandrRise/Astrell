@@ -1,10 +1,11 @@
 services:
-  app:
+  python-service:
     build:
       context: .
-      target: prod
     ports:
       - "5001:5000"
+    environment:
+      - FLASK_ENV=production
     volumes:
       - .:/app
     env_file: ".env"

@@ -14,8 +14,9 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 
 app = Flask(__name__)
-origin = "http://localhost:5173"
-CORS(app, resources={r"*": {"origins": origin}})
+origin1 = "http://localhost:5173"
+origin2 = "http://127.0.0.1:5173"
+CORS(app, resources={r"*": {"origins": [origin1, origin2]}})
 
 ai = genai.Client(api_key=GEMINI_API_KEY)
 model = whisper.load_model("base")
@@ -74,4 +75,4 @@ def getHighlight() -> str:
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0", port=5000, debug=False)
