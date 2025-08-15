@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react"
 import Aside from "../Aside"
-import { describe, it, expect, vi } from "vitest"
+import { describe, it, expect, vi, beforeEach } from "vitest"
 import userEvent from "@testing-library/user-event" 
 import "@testing-library/jest-dom/vitest"
 
@@ -14,9 +14,10 @@ vi.mock("react-router-dom", async (orig) => {
 
 describe("Aside", () => {
 
+    beforeEach(() => render(<Aside />))
+
     it("renders without crashing", () => {
-        const { getByText } = render(<Aside />)
-        expect(getByText(/Dashboard/i)).toBeInTheDocument()
+        expect(screen.getByText(/Dashboard/i)).toBeInTheDocument()
     })
 
     it("updates input", async () => {
