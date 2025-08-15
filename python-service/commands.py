@@ -27,6 +27,7 @@ class Commands:
 
         Constraints:
         - Each question is different from another.
+        - Randomize the position of the correct answer across different questions so that it is not consistently in the same answer slot.
         - Exactly {questionsNum} questions.
         - Difficulty: "{difficulty}".
         - Base ALL content strictly on this transcript: {self.transcript["text"]}
