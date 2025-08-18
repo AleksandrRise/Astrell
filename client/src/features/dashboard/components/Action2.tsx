@@ -9,9 +9,6 @@ export default function Action2() {
     // Hooks
     const [ isLoading, setIsLoading ] = useState<boolean>(false)
     const [ , setErrorText ] = useContext(ErrorMessageContext)
-
-    const ADDRESS: string = "http://127.0.0.1:5000"
-
     
 
     // Classes
@@ -26,7 +23,7 @@ export default function Action2() {
     const flashSubtextClasses = "xl:text-sm lg:text-xs italic ml-auto font-semibold"
 
     return (
-        <button disabled={true} className={btnClasses} onClick={() => fetchData(setIsLoading, ADDRESS, "getcard", setErrorText)}>
+        <button disabled={true} className={btnClasses} onClick={() => fetchData(setIsLoading, "getcard", setErrorText)}>
             <div className={flashContainerClasses}>
                 <img className={flashIconClasses} src={FlashIcon} alt={flashIconAlt} />
                 <span className={flashTextClasses}>Flashcards</span>

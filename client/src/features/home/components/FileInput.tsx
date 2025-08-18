@@ -47,7 +47,7 @@ export default function FileInput({setIsLoading }: FileInputProps) {
             const formData: FormData = new FormData()
             formData.append("file", file)
 
-            await axios.post('http://127.0.0.1:5000/api/v1/uploadVideo', formData, {
+            await axios.post('/api/v1/uploadVideo', formData, {
                 headers: {
                     "Content-Type":"multipart/form-data"
                 }

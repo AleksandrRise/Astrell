@@ -1,11 +1,18 @@
+networks:
+  appnet:
+
 services:
-  backend:
-    build:
-      context: ./python-service
-      dockerfile: Dockerfile
-    restart: unless-stopped
-  frontend:
-    build:
-      context: ./client
-      dockerfile: Dockerfile
-    restart: unless-stopped
+  python-service:
+    extends:
+      file: ./python-service/docker-compose.yml
+      service: python-service
+    networks:
+      - appnet
+  client:
+    extends:
+      file: ./client/docker-compose.yml
+      service: client
+    depends_on:
+      - python-service
+    networks:
+      - appnet

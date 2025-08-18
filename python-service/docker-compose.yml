@@ -1,8 +1,6 @@
 services:
-  app:
-    build:
-      context: .
-      target: prod
+  python-service:
+    build: .
     ports:
       - "5001:5000"
     volumes:
