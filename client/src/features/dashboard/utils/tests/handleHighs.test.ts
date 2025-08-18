@@ -10,13 +10,11 @@ describe("handleHighs", () => {
     const setHighlights = vi.fn()
     const setErrorText = vi.fn()
 
-    const ADDRESS = "http://127.0.0.5"
-
     it("request handle test", async () => {
         mockedAxios.get.mockResolvedValueOnce({ data: "some highlights"})
 
         try {
-            await handleHighs(ADDRESS, setHighlights, setErrorText)
+            await handleHighs(setHighlights, setErrorText)
 
             expect(localStorage.getItem("highlights")).to.equal("some highlights")
             expect(setHighlights).toBeCalledTimes(1)

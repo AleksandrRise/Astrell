@@ -10,13 +10,11 @@ describe("handleSum", () => {
     const setSummarization = vi.fn()
     const setErrorText = vi.fn()
 
-    const ADDRESS = "http://127.0.0.5"
-
     it("request handle test", async () => {
         mockedAxios.get.mockResolvedValueOnce({ data: "some sum"})
 
         try {
-            await handleSum(ADDRESS, setSummarization, setErrorText)
+            await handleSum(setSummarization, setErrorText)
 
             expect(localStorage.getItem("summarization")).to.equal("some sum")
             expect(setSummarization).toBeCalledTimes(1)

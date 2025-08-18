@@ -8,7 +8,6 @@ const mockedAxios = axios as Mocked<typeof axios>
 
 describe("fetchData", () => {
 
-    const ADDRESS = "http://127.0.0.5"
     const endpoint = "data"
 
     it("Mocking data fetch", async () => {
@@ -17,10 +16,10 @@ describe("fetchData", () => {
         const setIsLoading = vi.fn()
         const setErrorText = vi.fn()
 
-        await fetchData(setIsLoading, ADDRESS, endpoint, setErrorText)
+        await fetchData(setIsLoading, endpoint, setErrorText)
 
         expect(mockedAxios.get).toHaveBeenCalledWith(
-            `${ADDRESS}/api/v1/${endpoint}`
+            `/api/v1/${endpoint}`
         )
 
         expect(setIsLoading).toBeCalledTimes(2)

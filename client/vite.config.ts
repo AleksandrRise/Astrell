@@ -11,9 +11,9 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: "http://localhost:5001",
+        target: "http://python-service-1:5000",
         changeOrigin: true
-      }
+      },
     },
   }
 })
