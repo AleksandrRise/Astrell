@@ -1,11 +1,13 @@
 {
     "builds": [
         {"src": "client/package.json", "use": "@vercel/node"},
-        {"src": "python-service/app.py", "use": "@vercel/python"},
-        {"config": {
-            "distDir": "client/dist",
-            "memorySize": 1024
-        }}
+        {"src": "python-service/app.py", 
+            "use": "@vercel/python",
+            "config": {
+                "distDir": "client/dist",
+                "memorySize": 1024
+            }
+        }
     ],
     "routes": [
         {
