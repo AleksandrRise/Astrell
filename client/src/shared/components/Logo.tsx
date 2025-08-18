@@ -1,4 +1,4 @@
-import LogoSrc from "/../../assets/astrellogotransp.png"
+import logoSrc from "/assets/astrellogotransp.png"
 
 export default function Logo() {
 
@@ -7,6 +7,6 @@ export default function Logo() {
     const logoClasses = "w-25 h-25"
 
     return (
-        <img className={logoClasses} src={LogoSrc} alt={logoAlt} />
+        <img className={logoClasses} src={logoSrc} alt={logoAlt} />
     )
 }
