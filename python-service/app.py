@@ -21,7 +21,7 @@ CORS(app, resources={r"*": {"origins": [
 ]}})
 
 ai = genai.Client(api_key=GEMINI_API_KEY)
-model = whisper.load_model("base")
+model = whisper.load_model("tiny")
 
 transcript = ""
 video = ""
