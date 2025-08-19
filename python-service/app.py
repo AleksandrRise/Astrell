@@ -15,7 +15,6 @@ load_dotenv()
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
-
 app = Flask(__name__)
 
 CORS(app, resources={r"*": {"origins": [
