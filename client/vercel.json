@@ -1,6 +1,5 @@
 {
     "rewrites": [
-        { "source": "/(.*)", "destination": "/dist/index.html" },
-        { "source": "/api/(.*)", "destination": "https://astrell.vercel.app/api/$1" }
+        { "source": "/(.*)", "destination": "/dist/index.html" }
     ]
 }
