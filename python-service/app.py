@@ -21,6 +21,7 @@ CORS(app, resources={r"*": {"origins": [
 ]}})
 
 ai = genai.Client(api_key=GEMINI_API_KEY)
+model = whisper.load_model("base")
 
 transcript = ""
 video = ""
@@ -32,7 +33,6 @@ def uploadVideo() -> str:
     video = request.files['file']
     video.save("videos/temp")
 
-    model = whisper.load_model("tiny")
     global transcript
     transcript = model.transcribe("videos/temp")
 
