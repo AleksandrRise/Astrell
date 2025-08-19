@@ -17,11 +17,13 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 app = Flask(__name__)
 
-CORS(app, resources={r"*": {"origins": [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-    "https://astrell.net"
-]}})
+CORS(app, resources={r"*": {
+    "origins": [
+        "http://localhost:5173", "http://127.0.0.1:5173", "https://astrell.net", "https://www.astrell.net"
+    ],
+    "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    "allow_headers": ["Content-Type"]
+}})
 
 ai = genai.Client(api_key=GEMINI_API_KEY)
 model = vosk.Model("vosk-model-small-en-us-0.15")
