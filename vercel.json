@@ -15,11 +15,11 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "python-service/app.py"        
+      "dest": "/python-service/app.py"        
     },
     {
       "src": "/(.*)",
-      "dest": "client/dist"        
+      "dest": "/client/dist"        
     }  
   ]
 }
