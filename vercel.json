@@ -1,26 +1,21 @@
 {
-  "version": 2,
   "builds": [
-    {
-      "src": "python-service/index.js",
-      "use": "@vercel/python"
-    },
     {
       "src": "client/package.json",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "dist"
       }
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/python-service/app.py"
     },
     {
-      "source": "/(.*)",
-      "destination": "/python-service/app.py"
+      "src": "python-service/app.py",
+      "use": "@vercel/python"        
     }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/app.py"        
+    }    
   ]
 }
