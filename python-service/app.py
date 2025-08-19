@@ -1,6 +1,9 @@
 import os
+import subprocess
+import wave
+import json
 
-import whisper
+import vosk
 from flask import Flask, request, send_file
 from flask_cors import CORS
 from google import genai
@@ -21,7 +24,7 @@ CORS(app, resources={r"*": {"origins": [
 ]}})
 
 ai = genai.Client(api_key=GEMINI_API_KEY)
-model = whisper.load_model("base")
+model = vosk.Model("vosk-model-small-en-us-0.15")
 
 transcript = ""
 video = ""
@@ -33,8 +36,34 @@ def uploadVideo() -> str:
     video = request.files['file']
     video.save("videos/temp")
 
+    # MP4 -> WAV
+    subprocess.run([
+        'ffmpeg', '-i', 'videos/temp',
+        '-ar', '16000', '-ac', '1',
+        'temp_audio.wav', '-y'
+    ], capture_output=True)
+
+    # Transcribing
+    rec = vosk.KaldiRecognizer(model, 16000)
+
+    with wave.open('temp_audio.wav', 'rb') as wf:
+        transcript_text = ""
+        while True:
+            data = wf.readframes(4000)
+            if len(data) == 0:
+                break
+            if rec.AcceptWaveform(data):
+                result = json.loads(rec.Result())
+                transcript_text += result.get('text', '') + " "
+
+        final_result = json.loads(rec.FinalResult())
+        transcript_text += final_result.get('text', '')
+
+    if os.path.exists('temp_audio.wav'):
+        os.remove('temp_audio.wav')
+
     global transcript
-    transcript = model.transcribe("videos/temp")
+    transcript = transcript_text.strip()
 
     return transcript
 

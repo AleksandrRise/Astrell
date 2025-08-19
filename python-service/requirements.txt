@@ -1,7 +1,5 @@
 Flask
 Flask-Cors
-dotenv
-openai-whisper
-Werkzeug
+python-dotenv
 google-genai
-whisper
+vosk
