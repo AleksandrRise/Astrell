@@ -1,16 +1,8 @@
 {
-  "buildCommand": "cd client && npm run build",
-  "outputDirectory": "client/dist", 
-  "installCommand": "cd client && npm install",
-  "functions": {
-    "python-service/app.py": {
-      "runtime": "python@3.11"
-    }
-  },
-  "routes": [
-    {
-      "src": "/api/v1/(.*)",
-      "dest": "/python-service/app.py"
-    }
-  ]
+    "builds": [
+        {"src": "python-service/app.py", "use": "@vercel/python"}
+    ],
+    "routes": [
+        {"src": "/api/v1/(.*)", "dest": "python-service/app.py"}
+    ]
 }
