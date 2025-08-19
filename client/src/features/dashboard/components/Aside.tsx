@@ -2,10 +2,10 @@ import Features from "./Features";
 import LogoSection from "./LogoSection";
 import SearchBar from "../../../shared/components/SearchBar";
 import Profile from "./Profile"
-import dashboardIcon from "../assets/DashboardIcon.png"
-import settingsIcon from "../assets/SettingsIcon.png"
-import supportIcon from "../assets/SupportIcon.png"
-import lectureIcon from "../assets/BookmarkIcon.png"
+import dashboardIcon from "/public/assets/DashboardIcon.png"
+import settingsIcon from "/public/assets/SettingsIcon.png"
+import supportIcon from "/public/assets/SupportIcon.png"
+import lectureIcon from "/public/assets/BookmarkIcon.png"
 import type { FeaturesProps } from "../utils/FeaturesProps"
 import { useState } from "react";
 

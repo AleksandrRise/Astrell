@@ -1,4 +1,4 @@
-import FlashIcon from "../assets/FlashIcon.png"
+import FlashIcon from "/public/assets/FlashIcon.png"
 import { useState } from "react"
 import { fetchData } from "../utils/fetchData"
 import { useContext } from "react"

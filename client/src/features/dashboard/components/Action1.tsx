@@ -1,4 +1,4 @@
-import QuizIcon from "../assets/QuizIcon.png"
+import QuizIcon from "/public/assets/QuizIcon.png"
 import { useNavigate } from "react-router-dom"
 
 

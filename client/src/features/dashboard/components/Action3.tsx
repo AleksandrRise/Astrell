@@ -1,4 +1,4 @@
-import AIIcon from "../assets/AIIcon.png"
+import AIIcon from "/public/assets/AIIcon.png"
 
 
 export default function Action3() {

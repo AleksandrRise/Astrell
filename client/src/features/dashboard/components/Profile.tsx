@@ -1,4 +1,4 @@
-import profileIcon from "../assets/ProfileIcon.png"
+import profileIcon from "/public/assets/ProfileIcon.png"
 
 export default function Profile() {
 
