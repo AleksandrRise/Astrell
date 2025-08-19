@@ -2,6 +2,9 @@ import { useContext, useEffect, useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import { ErrorMessageContext } from "../../../shared/utils/ErrorMessageContext";
+import { APP_BACKEND_BASE } from "../../../shared/utils/APP_BACKEND_BASE"
+
+
 
 type FileInputProps = {
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -47,7 +50,7 @@ export default function FileInput({setIsLoading }: FileInputProps) {
             const formData: FormData = new FormData()
             formData.append("file", file)
 
-            await axios.post('/api/v1/uploadVideo', formData, {
+            await axios.post(`${APP_BACKEND_BASE}/api/v1/uploadVideo`, formData, {
                 headers: {
                     "Content-Type":"multipart/form-data"
                 }

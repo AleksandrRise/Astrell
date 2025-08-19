@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default ({ mode }: any) => {
   process.env = {...process.env, ...loadEnv(mode, process.cwd())};
 
-  const API_URL = `${process.env.APP_BACKEND_BASEURL ?? 'http://localhost:3000'}`;
+  const API_URL = `${process.env.APP_BACKEND_BASEURL ?? 'http://localhost:5000'}`;
 
   return defineConfig({
     plugins: [react(), tailwindcss()],
