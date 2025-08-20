@@ -12,7 +12,7 @@ export default function HintBlock() {
             <div className={innerWrapperClasses}>
                 <span className={spanClasses}>How to Start Working With the AI?</span>
                 <p className={pClasses}>
-                    Drag a video file (lecture) downloaded on your 
+                    Drag a video file downloaded on your 
                     computer to the center of the page.
                 </p>
             </div>
