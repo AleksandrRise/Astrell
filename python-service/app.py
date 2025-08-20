@@ -1,10 +1,8 @@
 import os
 from moviepy.editor import *
-import whisper
 from flask import Flask, request, send_file
 from flask_cors import CORS
 from google import genai
-import torch
 from dotenv import load_dotenv
 
 from commands import Commands
@@ -24,8 +22,6 @@ CORS(app, resources={r"*": {
 }})
 
 ai = genai.Client(api_key=GEMINI_API_KEY)
-device = "cuda" if torch.cuda.is_available() else "cpu"
-modelWhisper = whisper.load_model(name="tiny", device=device)
 
 transcript = ""
 videoFile = ""
@@ -43,7 +39,10 @@ def uploadVideo() -> str:
 
     # Transcribing
     global transcript
-    transcript = modelWhisper.transcribe("videos/temp.mp3")
+
+    audioFile = ai.files.upload(file="videos/temp.mp3")
+    commands = Commands(transcript, ai)
+    transcript = commands.getTranscript(audioFile)
 
     return transcript
 

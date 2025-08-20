@@ -56,8 +56,8 @@ export default function FileInput({setIsLoading }: FileInputProps) {
                 }
             })
                 .then(res => {
-                    if (res.data['text']) {
-                        localStorage.setItem("transcript", res.data['text'])
+                    if (res.data) {
+                        localStorage.setItem("transcript", res.data)
                         localStorage.removeItem("summarization")
                         localStorage.removeItem("highlights")
 
