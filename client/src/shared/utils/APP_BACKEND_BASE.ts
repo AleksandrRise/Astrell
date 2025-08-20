@@ -1,1 +1,1 @@
-export const APP_BACKEND_BASE = import.meta.env.VITE_APP_BACKEND_BASE ?? ""
+export const APP_BACKEND_BASE = import.meta.env.VITE_APP_BACKEND_BASE ?? "http://0.0.0.0:5000"

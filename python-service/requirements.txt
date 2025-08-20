@@ -1,5 +1,7 @@
-Flask
+Flask~=3.1.1
 Flask-Cors
-python-dotenv
+python-dotenv~=1.1.1
 google-genai
-vosk
+moviepy~=1.0.3
+whisper
+dotenv~=0.9.9

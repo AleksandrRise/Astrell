@@ -1,4 +1,5 @@
 import axios from "axios"
+import { APP_BACKEND_BASE } from "../../../shared/utils/APP_BACKEND_BASE"
 
 export async function fetchData(
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
@@ -8,7 +9,7 @@ export async function fetchData(
     
     setIsLoading(true)
 
-    await axios.get(`/api/v1/${endpoint}`)
+    await axios.get(`${APP_BACKEND_BASE}/api/v1/${endpoint}`)
         .then(res => console.log(res.data))
         .catch(error => setErrorText(error.message))
 

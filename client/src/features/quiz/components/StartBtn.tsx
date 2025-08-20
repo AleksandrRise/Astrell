@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react";
 import type { QuestionsType } from "../utils/QuestionsType.ts";
+import { APP_BACKEND_BASE } from "../../../shared/utils/APP_BACKEND_BASE.ts";
 
 
 type StartBtnProps = {
@@ -22,7 +23,7 @@ export default function StartBtn({ setHasStarted, difficulty, questionsNum, setQ
             const fetchData = async () => {
                 try {
                     const res = await axios.get<QuestionsType>(
-                        `/api/v1/getQuiz?difficulty=${difficulty}&questionsNum=${questionsNum}`
+                        `${APP_BACKEND_BASE}/api/v1/getQuiz?difficulty=${difficulty}&questionsNum=${questionsNum}`
                     ) 
 
                     setQuestions(res.data)

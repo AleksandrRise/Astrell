@@ -1,12 +1,10 @@
 import os
-import subprocess
-import wave
-import json
-
-import vosk
+from moviepy.editor import *
+import whisper
 from flask import Flask, request, send_file
 from flask_cors import CORS
 from google import genai
+import torch
 from dotenv import load_dotenv
 
 from commands import Commands
@@ -26,53 +24,33 @@ CORS(app, resources={r"*": {
 }})
 
 ai = genai.Client(api_key=GEMINI_API_KEY)
-model = vosk.Model("vosk-model-small-en-us-0.15")
+device = "cuda" if torch.cuda.is_available() else "cpu"
+modelWhisper = whisper.load_model(name="tiny", device=device)
 
 transcript = ""
-video = ""
+videoFile = ""
 
 
 @app.route('/api/v1/uploadVideo', methods=['POST'])
 def uploadVideo() -> str:
-    global video
-    video = request.files['file']
-    video.save("videos/temp")
+    global videoFile
+    videoFile = request.files['file']
+    videoFile.save("videos/temp.mp4")
 
-    # MP4 -> WAV
-    subprocess.run([
-        'ffmpeg', '-i', 'videos/temp',
-        '-ar', '16000', '-ac', '1',
-        'temp_audio.wav', '-y'
-    ], capture_output=True)
+    # MP4 -> MP3
+    video = VideoFileClip(os.path.join("videos", "temp.mp4"))
+    video.audio.write_audiofile(os.path.join("videos", "temp.mp3"))
 
     # Transcribing
-    rec = vosk.KaldiRecognizer(model, 16000)
-
-    with wave.open('temp_audio.wav', 'rb') as wf:
-        transcript_text = ""
-        while True:
-            data = wf.readframes(4000)
-            if len(data) == 0:
-                break
-            if rec.AcceptWaveform(data):
-                result = json.loads(rec.Result())
-                transcript_text += result.get('text', '') + " "
-
-        final_result = json.loads(rec.FinalResult())
-        transcript_text += final_result.get('text', '')
-
-    if os.path.exists('temp_audio.wav'):
-        os.remove('temp_audio.wav')
-
     global transcript
-    transcript = transcript_text.strip()
+    transcript = modelWhisper.transcribe("videos/temp.mp3")
 
     return transcript
 
 
 @app.route('/api/v1/getVideo', methods=['GET'])
 def getVideo():
-    return send_file("videos/temp", "video/mp4")
+    return send_file("videos/temp.mp4", "video/mp4")
 
 
 @app.route('/api/v1/summarize', methods=['GET'])
@@ -108,4 +86,4 @@ def getHighlight() -> str:
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", port=5000)
