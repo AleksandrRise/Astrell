@@ -1,5 +1,5 @@
 import os
-from moviepy.editor import *
+from moviepy.editor import VideoFileClip
 from flask import Flask, request, send_file
 from flask_cors import CORS
 from google import genai
