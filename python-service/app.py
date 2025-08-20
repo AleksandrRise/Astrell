@@ -25,7 +25,7 @@ CORS(app, resources={r"*": {
 
 ai = genai.Client(api_key=GEMINI_API_KEY)
 device = "cuda" if torch.cuda.is_available() else "cpu"
-modelWhisper = whisper.load_model(name="turbo", device=device)
+modelWhisper = whisper.load_model(name="tiny", device=device)
 
 transcript = ""
 videoFile = ""
