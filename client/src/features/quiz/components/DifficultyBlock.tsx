@@ -1,5 +1,5 @@
 import type { CommonClassesProps } from "../utils/CommonClassesProps"
-import chartIcon from "/public/assets/chartIcon.png"
+import chartIcon from "/assets/chartIcon.png"
 
 type OptionsType = {
     value: string;

@@ -1,4 +1,4 @@
-import arrowIcon from "/public/assets/arrow.png"
+import arrowIcon from "/assets/arrow.png"
 import { useNavigate } from "react-router-dom"
 
 export default function Title() {

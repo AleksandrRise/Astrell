@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import infoSrc from "/public/assets/Information.png"
+import infoSrc from "/assets/Information.png"
 import HintBlock from "../../features/home/components/HintBlock";
 
 type InfoProps = {

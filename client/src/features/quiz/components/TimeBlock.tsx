@@ -1,5 +1,5 @@
 import type { CommonClassesProps } from "../utils/CommonClassesProps"
-import timerIcon from "/public/assets/timerIcon.png"
+import timerIcon from "/assets/timerIcon.png"
 import { useEffect, useState } from "react";
 
 type TimeBtnType = {

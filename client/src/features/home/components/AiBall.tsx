@@ -1,4 +1,4 @@
-import imgSrc from "/public/assets/aithinkingball.png"
+import imgSrc from "/assets/aithinkingball.png"
 import FileInput from "./FileInput";
 import Text from "./Text"
 

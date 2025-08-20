@@ -6,7 +6,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url("/public/assets/fonts/Lato/Lato-Regular.ttf") format("truetype");
+    src: url("/assets/fonts/Lato/Lato-Regular.ttf") format("truetype");
 }
 
 /* Bold 700 */
@@ -15,7 +15,7 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url("/public/assets/fonts/Lato/Lato-Bold.ttf") format("truetype");
+    src: url("/assets/fonts/Lato/Lato-Bold.ttf") format("truetype");
 }
 
 /* Italic 400 */
@@ -24,7 +24,7 @@
     font-style: italic;
     font-weight: 400;
     font-display: swap;
-    src: url("/public/assets/fonts/Lato/Lato-Italic.ttf") format("truetype");
+    src: url("/assets/fonts/Lato/Lato-Italic.ttf") format("truetype");
 }
 
 /* Bold Italic 700 */
@@ -33,7 +33,7 @@
     font-style: italic;
     font-weight: 700;
     font-display: swap;
-    src: url("/public/assets/fonts/Lato/Lato-BoldItalic.ttf") format("truetype");
+    src: url("/assets/fonts/Lato/Lato-BoldItalic.ttf") format("truetype");
 }
 
 
@@ -45,7 +45,7 @@
     }
 
     .hero-bg {
-        background: url("/public/assets/Background.png");
+        background: url("/assets/Background.png");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
