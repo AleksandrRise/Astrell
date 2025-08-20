@@ -99,9 +99,11 @@
     .fadeIn:nth-child(1) {
         animation-delay: 1s;
     }
-
     .fadeIn:nth-child(2) {
         animation-delay: 1.4s;
+    }
+    .fadeIn:nth-child(3) {
+        animation-delay: 1.8s;
     }
 
     .zoomIn {

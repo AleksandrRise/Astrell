@@ -5,6 +5,7 @@ export default function TextOriginal() {
     const hClasses = "text-white/80 text-base fadeIn"
     const spanClasses = "text-white"
     const pClasses = "text-2xl mt-5 fadeIn"
+    const subTextClasses = "text-md text-white/50 fadeIn mt-5"
 
     return (
         <div className={divClasses}>
@@ -13,6 +14,7 @@ export default function TextOriginal() {
                 Paste your lecture here, so we<br />
                 could work on that together.
             </p>
+            <p className={subTextClasses}>Currently, limited to 1-2 minutes.</p>
         </div>
     )
 }
