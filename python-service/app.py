@@ -31,16 +31,16 @@ videoFile = ""
 def uploadVideo() -> str:
     global videoFile
     videoFile = request.files['file']
-    videoFile.save("videos/temp.mp4")
+    videoFile.save("tmp/temp.mp4")
 
     # MP4 -> MP3
-    video = VideoFileClip(os.path.join("videos", "temp.mp4"))
-    video.audio.write_audiofile(os.path.join("videos", "temp.mp3"))
+    video = VideoFileClip(os.path.join("tmp", "temp.mp4"))
+    video.audio.write_audiofile(os.path.join("tmp", "temp.mp3"))
 
     # Transcribing
     global transcript
 
-    audioFile = ai.files.upload(file="videos/temp.mp3")
+    audioFile = ai.files.upload(file="tmp/temp.mp3")
     commands = Commands(transcript, ai)
     transcript = commands.getTranscript(audioFile)
 
@@ -49,7 +49,7 @@ def uploadVideo() -> str:
 
 @app.route('/api/v1/getVideo', methods=['GET'])
 def getVideo():
-    return send_file("videos/temp.mp4", "video/mp4")
+    return send_file("tmp/temp.mp4", "video/mp4")
 
 
 @app.route('/api/v1/summarize', methods=['GET'])
