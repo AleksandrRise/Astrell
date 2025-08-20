@@ -36,4 +36,4 @@ Thumbs.db
 .env
 
 # Temporary videos
-/python-service/videos/*
+/python-service/tmp/*

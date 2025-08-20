@@ -23,13 +23,10 @@ CORS(app, resources={r"*": {
 
 ai = genai.Client(api_key=GEMINI_API_KEY)
 
-transcript = ""
-videoFile = ""
-
 
 @app.route('/api/v1/uploadVideo', methods=['POST'])
 def uploadVideo() -> str:
-    global videoFile
+
     videoFile = request.files['file']
     videoFile.save("/tmp/temp.mp4")
 
@@ -38,13 +35,9 @@ def uploadVideo() -> str:
     video.audio.write_audiofile(os.path.join("/tmp", "temp.mp3"))
 
     # Transcribing
-    global transcript
-
     audioFile = ai.files.upload(file="/tmp/temp.mp3")
-    commands = Commands(transcript, ai)
-    transcript = commands.getTranscript(audioFile)
-
-    return transcript
+    commands = Commands("", ai)
+    return commands.getTranscript(audioFile)
 
 
 @app.route('/api/v1/getVideo', methods=['GET'])
@@ -54,12 +47,15 @@ def getVideo():
 
 @app.route('/api/v1/summarize', methods=['GET'])
 def summarize() -> str:
+    transcript = request.args.get("transcript")
     commands = Commands(transcript, ai)
     return commands.getSummarizeStr()
 
 
 @app.route('/api/v1/getQuiz', methods=['GET'])
 def getQuiz():
+    transcript = request.args.get("transcript")
+
     difficulty = request.args.get('difficulty')
     questionsNum = request.args.get('questionsNum')
 
@@ -74,12 +70,14 @@ def getQuiz():
 
 @app.route('/api/v1/getCard', methods=['GET'])
 def getExam():
+    transcript = request.args.get("transcript")
     commands = Commands(transcript, ai)
     return commands.getCardJSON()
 
 
 @app.route('/api/v1/gethighlight', methods=['GET'])
 def getHighlight() -> str:
+    transcript = request.args.get("transcript")
     commands = Commands(transcript, ai)
     return commands.getHighlightStr()
 
