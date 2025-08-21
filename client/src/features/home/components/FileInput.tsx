@@ -41,6 +41,7 @@ export default function FileInput({setIsLoading }: FileInputProps) {
         setFile(droppedFile)
     }
 
+    // Sending Dragged File to Python
     useEffect(() => {
         if (!file) return
 
