@@ -6,6 +6,7 @@ import FlashcardsPage from "./pages/FlashcardsPage";
 import { ErrorMessageContext } from "./shared/utils/ErrorMessageContext";
 import { useContext, useEffect } from "react";
 import { errorMessageTimer } from "./shared/utils/errorMessageTimer";
+import { Analytics } from '@vercel/analytics/react'
 
 function App() {
 
@@ -16,12 +17,16 @@ function App() {
   }, [errorText])
 
   return (
+    <>
+      <Analytics />
+
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/flashcards" element={<FlashcardsPage />} />
         <Route path="/quiz" element={<QuizPage />} />
       </Routes>
+    </>
   )
 }
 

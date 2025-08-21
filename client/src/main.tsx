@@ -7,13 +7,13 @@ import ErrorMessageProvider from './shared/components/ErrorMessageProvider.tsx'
 import ScreenMessage from './shared/components/ScreenMessage.tsx'
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <ErrorMessageProvider>
-      <ScreenMessage>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </ScreenMessage>
-    </ErrorMessageProvider>
-  </StrictMode>,
+    <StrictMode>
+      <ErrorMessageProvider>
+        <ScreenMessage>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </ScreenMessage>
+      </ErrorMessageProvider>
+    </StrictMode>
 )
