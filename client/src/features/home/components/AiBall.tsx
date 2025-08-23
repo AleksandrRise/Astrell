@@ -1,6 +1,6 @@
-import imgSrc from "/assets/aithinkingball.png"
 import Text from "./Text.tsx"
 import FileInputByDrag from "./FileInputByDrag.tsx";
+import FileInputByClick from "./FileInputByClick.tsx";
 
 type AiBallType = {
     children: React.ReactNode;
@@ -11,9 +11,6 @@ type AiBallType = {
 export default function AiBall({ children, isLoading, setIsLoading }: AiBallType) {
 
     // Classes
-    const imgAlt = "AI Thinking Ball"
-    const figClasses = "zoomIn"
-    const imgClasses = "aiball-animation"
     const sectionClasses = "m-auto"
 
     return (
@@ -25,9 +22,7 @@ export default function AiBall({ children, isLoading, setIsLoading }: AiBallType
                 />
             }
 
-            <figure className={figClasses}>
-                <img className={imgClasses} width="450px" height="450px" src={imgSrc} alt={imgAlt} />
-            </figure>
+            <FileInputByClick />
 
             {children}
         </section>
