@@ -2,7 +2,7 @@ export default function TextOriginal() {
 
     // Classes
     const divClasses = "text-white text-center tracking-wider -mt-20"
-    const hClasses = "text-white/80 text-base fadeIn"
+    const hClasses = "text-white/80 lg:text-base text-md fadeIn"
     const spanClasses = "text-white"
     const pClasses = "text-2xl mt-5 fadeIn"
     const subTextClasses = "text-md text-white/50 fadeIn mt-5"
