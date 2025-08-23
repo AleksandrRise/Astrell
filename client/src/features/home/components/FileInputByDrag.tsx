@@ -59,8 +59,9 @@ export default function FileInputByDrag({ isLoading, setIsLoading }: FileInputBy
 
     // Classes
     const wrapperClasses = `absolute w-3/4 h-3/4 bg-white/20 rounded-4xl \
-        top-0 bottom-0 left-0 right-0 m-auto flex justify-center items-center z-1 \
-        border-5 border-dashed border-white/30 transition ${!isDragged && "opacity-0"}`
+        top-0 bottom-0 left-0 right-0 m-auto justify-center items-center z-1 \
+        border-5 border-dashed border-white/30 transition ${!isDragged && "opacity-0"} \
+        hidden lg:flex`
     const spanClasses = "text-white font-bold tracking-wider text-3xl"
 
     return (
