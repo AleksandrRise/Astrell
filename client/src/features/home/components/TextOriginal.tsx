@@ -1,3 +1,5 @@
+import useWindowDimensions from "../../../shared/utils/useWindowDimensions"
+
 export default function TextOriginal() {
 
     // Classes
