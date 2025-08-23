@@ -21,7 +21,7 @@ export default function HomePage() {
                 </Navbar.Info>
             </Navbar>
 
-            <AiBall setIsLoading={setIsLoading}>
+            <AiBall isLoading={isLoading} setIsLoading={setIsLoading}>
                 <AiBall.Text isLoading={isLoading} />
             </AiBall>
 

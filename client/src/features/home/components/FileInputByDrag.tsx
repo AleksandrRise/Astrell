@@ -1,16 +1,15 @@
 import { useContext, useEffect, useState } from "react"
-import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import { ErrorMessageContext } from "../../../shared/utils/ErrorMessageContext";
-import { APP_BACKEND_BASE } from "../../../shared/utils/APP_BACKEND_BASE"
+import { videoUpload } from "../utils/videoUpload";
 
 
-
-type FileInputProps = {
+type FileInputByDragProps = {
+    isLoading: boolean;
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function FileInput({setIsLoading }: FileInputProps) {
+export default function FileInputByDrag({ isLoading, setIsLoading }: FileInputByDragProps) {
 
     // Other hooks
     const [, setErrorText] = useContext(ErrorMessageContext)
@@ -51,24 +50,8 @@ export default function FileInput({setIsLoading }: FileInputProps) {
             const formData: FormData = new FormData()
             formData.append("file", file)
 
-            await axios.post(`${APP_BACKEND_BASE}/api/v1/uploadVideo`, formData, {
-                headers: {
-                    "Content-Type":"multipart/form-data"
-                }
-            })
-                .then(res => {
-                    if (res.data) {
-                        localStorage.setItem("transcript", res.data)
-                        localStorage.removeItem("summarization")
-                        localStorage.removeItem("highlights")
-
-                        navigate("/dashboard")
-                    } else {
-                        throw new Error("Transcript was not found.")
-                    }
-                })
-                .catch(error => setErrorText(error['message'] || "Upload failed"))
-                .finally(() => setIsLoading(false))
+            await videoUpload(formData, isLoading, setErrorText, navigate)
+            setIsLoading(false);
         }
 
         upload()
