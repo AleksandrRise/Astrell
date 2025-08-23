@@ -25,7 +25,7 @@ export default function Info({ children }: InfoProps) {
     // Classes
     const infoAlt = "Info"
     const wrapperClasses = `rounded-full ${!isOpen && "hover:bg-white/50"} bg-white/30 w-17.5 h-17.5 flex cursor-pointer \
-    transition fadeIn opacity-0 relative ${isOpen && "hint-open"}`
+    transition fadeIn opacity-0 relative ${isOpen && "hint-open"} hidden lg:block`
     const imgClasses = "w-10 h-10 m-auto"
 
     return (
