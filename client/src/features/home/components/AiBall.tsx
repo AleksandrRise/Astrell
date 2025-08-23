@@ -18,7 +18,12 @@ export default function AiBall({ children, isLoading, setIsLoading }: AiBallType
 
     return (
         <section className={sectionClasses}>
-            <FileInputByDrag isLoading={isLoading} setIsLoading={setIsLoading} />
+            {!isLoading && 
+                <FileInputByDrag 
+                    isLoading={isLoading} 
+                    setIsLoading={setIsLoading} 
+                />
+            }
 
             <figure className={figClasses}>
                 <img className={imgClasses} width="450px" height="450px" src={imgSrc} alt={imgAlt} />
