@@ -22,7 +22,10 @@ export default function AiBall({ children, isLoading, setIsLoading }: AiBallType
                 />
             }
 
-            <FileInputByClick />
+            <FileInputByClick
+                isLoading={isLoading} 
+                setIsLoading={setIsLoading} 
+            />
 
             {children}
         </section>

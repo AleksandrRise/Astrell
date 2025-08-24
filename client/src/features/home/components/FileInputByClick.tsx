@@ -1,6 +1,34 @@
+import { useNavigate } from "react-router-dom";
+import { videoUpload } from "../utils/videoUpload"
 import imgSrc from "/assets/aithinkingball.png"
+import { useContext } from "react";
+import { ErrorMessageContext } from "../../../shared/utils/ErrorMessageContext";
 
-export default function FileInputByClick() {
+type FileInputByClickProps = {
+    isLoading: boolean;
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function FileInputByClick({ isLoading, setIsLoading }: FileInputByClickProps) {
+
+    // Other Hooks
+    const [, setErrorText] = useContext(ErrorMessageContext)
+    const navigate = useNavigate()
+
+    // Handles file submission
+    const sendFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.currentTarget.files![0] === null) return;
+
+        setIsLoading(true)
+
+        const fileToSend: File = e.currentTarget.files![0]
+        const formData: FormData = new FormData()
+        formData.append("file", fileToSend)
+
+        await videoUpload(formData, isLoading, setErrorText, navigate)
+        
+        setIsLoading(false);
+    }
 
     // Attributes
     const inputType = "file"
@@ -28,7 +56,13 @@ export default function FileInputByClick() {
                 </figure>
             </label>
 
-            <input className={inputClasses} type={inputType} id={inputId} accept={acceptSettings}/>
+            <input 
+                className={inputClasses} 
+                type={inputType} 
+                id={inputId} 
+                accept={acceptSettings}
+                onChange={(e) => sendFile(e)}
+            />
         </>
     )
 }
