@@ -15,11 +15,11 @@ export default function TextOriginal() {
     }
 
     // Classes
-    const divClasses = "text-white text-center tracking-wider -mt-10 lg:-mt-20"
-    const hClasses = "text-white/80 lg:text-base text-sm fadeIn"
+    const divClasses = "text-white text-center tracking-wider -mt-10 md:-mt-20"
+    const hClasses = "text-white/80 md:text-base text-sm fadeIn"
     const spanClasses = "text-white"
-    const pClasses = "lg:text-2xl text-md font-bold lg:mt-5 mt-3 fadeIn"
-    const subTextClasses = "lg:text-md text-xs text-white/50 fadeIn lg:mt-5 mt-1"
+    const pClasses = "md:text-2xl text-md font-bold md:mt-5 mt-3 fadeIn"
+    const subTextClasses = "md:text-md text-xs text-white/50 fadeIn md:mt-5 mt-1"
 
     return (
         <div className={divClasses}>
