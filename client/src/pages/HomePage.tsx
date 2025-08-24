@@ -13,7 +13,7 @@ export default function HomePage() {
     const [errorText] = useContext(ErrorMessageContext)
 
     return (
-        <main className="w-full h-screen hero-bg flex flex-col pb-30 relative">
+        <main className="w-full h-screen hero-bg flex flex-col pb-30 relative overflow-hidden">
             <Navbar>
                 <Navbar.MenuBtn />
                 <Navbar.Info>
