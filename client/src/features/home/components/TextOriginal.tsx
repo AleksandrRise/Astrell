@@ -15,7 +15,7 @@ export default function TextOriginal() {
     }
 
     // Classes
-    const divClasses = "text-white text-center tracking-wider -mt-10 md:-mt-20"
+    const divClasses = "text-white text-center tracking-wider -mt-15 md:-mt-20"
     const hClasses = "text-white/80 md:text-base text-sm fadeIn"
     const spanClasses = "text-white"
     const pClasses = "md:text-2xl text-md font-bold md:mt-5 mt-3 fadeIn"
