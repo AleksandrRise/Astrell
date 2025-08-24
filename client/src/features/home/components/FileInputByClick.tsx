@@ -7,6 +7,7 @@ export default function FileInputByClick() {
     const inputId = "fileInputByClick"
     const imgSize = "450px"
     const imgAlt = "AI Thinking Ball"
+    const acceptSettings = "video/mp4"
 
     // Classes
     const labelClasses = "size-fit md:pointer-events-none"
@@ -27,7 +28,7 @@ export default function FileInputByClick() {
                 </figure>
             </label>
 
-            <input className={inputClasses} type={inputType} id={inputId}/>
+            <input className={inputClasses} type={inputType} id={inputId} accept={acceptSettings}/>
         </>
     )
 }
