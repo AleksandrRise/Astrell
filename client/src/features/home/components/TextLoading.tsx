@@ -1,8 +1,8 @@
 export default function TextLoading() {
 
     // Classes
-    const divClasses = "text-white/70 text-center tracking-wider -mt-20"
-    const pClasses = "text-2xl fadeIn"
+    const divClasses = "text-white/70 text-center tracking-wider -mt-15"
+    const pClasses = "md:text-2xl text-lg fadeIn"
 
     return (
         <div className={divClasses}>
