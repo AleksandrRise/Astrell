@@ -7,7 +7,7 @@ export default function MenuBtn() {
     const transcript = localStorage.getItem("transcript")
 
     // Classes
-    const buttonClasses = `cursor-pointer p-2 fadeIn ${!transcript && "invisible"}`
+    const buttonClasses = `cursor-pointer md:p-2 -ml-5 fadeIn ${!transcript && "invisible"}`
     const upperLineClasses = `w-12.5 h-[2px] bg-white`
     const lowerLineClasses = `w-10 h-[1px] bg-white mt-3.75`
 
