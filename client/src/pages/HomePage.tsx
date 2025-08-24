@@ -4,6 +4,7 @@ import AiBall from "../features/home/components/AiBall"
 import Info from "../shared/components/Info"
 import ErrorMessage from "../shared/components/ErrorMessage"
 import { ErrorMessageContext } from "../shared/utils/ErrorMessageContext.tsx"
+import GlowCircles from "../features/home/components/GlowCircles.tsx"
 
 export default function HomePage() {
 
@@ -24,6 +25,8 @@ export default function HomePage() {
             <AiBall isLoading={isLoading} setIsLoading={setIsLoading}>
                 <AiBall.Text isLoading={isLoading} />
             </AiBall>
+
+            <GlowCircles />
 
             {errorText ? <ErrorMessage message={errorText} /> : null}
         </main>
