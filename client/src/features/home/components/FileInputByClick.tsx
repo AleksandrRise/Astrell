@@ -9,7 +9,7 @@ export default function FileInputByClick() {
     const imgAlt = "AI Thinking Ball"
 
     // Classes
-    const labelClasses = "size-fit"
+    const labelClasses = "size-fit md:pointer-events-none"
     const figClasses = "zoomIn size-90 md:size-auto"
     const imgClasses = "aiball-animation"
     const inputClasses = "hidden"
