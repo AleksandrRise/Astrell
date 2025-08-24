@@ -17,11 +17,12 @@ export default function FileInputByClick({ isLoading, setIsLoading }: FileInputB
 
     // Handles file submission
     const sendFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.currentTarget.files![0] === null) return;
-
+        if (!e.currentTarget.files) return;
+        
         setIsLoading(true)
 
-        const fileToSend: File = e.currentTarget.files![0]
+        const fileToSend: File = e.currentTarget.files[0]
+        e.currentTarget.value = ""
         const formData: FormData = new FormData()
         formData.append("file", fileToSend)
 
