@@ -10,7 +10,7 @@ export default function FileInputByClick() {
 
     // Classes
     const labelClasses = "size-fit"
-    const figClasses = "zoomIn size-80 md:size-auto"
+    const figClasses = "zoomIn size-90 md:size-auto"
     const imgClasses = "aiball-animation"
     const inputClasses = "hidden"
 
