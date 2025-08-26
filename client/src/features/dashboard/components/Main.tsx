@@ -13,7 +13,7 @@ export default function Main() {
 
     // Classes
     const mainClasses = "relative p-10 flex md:flex-row flex-col w-full h-screen \
-        justify-center items-center gap-8 overflow-hidden"
+        justify-center items-center gap-8 md:overflow-hidden overflow-y-auto"
     const leftColClasses = "grid grid-rows-[auto_2fr] flex-2 size-full gap-4"
     const rightColClasses = "grid grid-rows-[2fr_1fr] flex-1 size-full gap-6"
 
