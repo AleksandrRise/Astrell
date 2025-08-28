@@ -18,6 +18,7 @@ type InsightsProps = {
 
 export default function Insights({ setErrorText }: InsightsProps) {
 
+    // Receive a transcript from localStorage
     const transcriptItem = localStorage.getItem("transcript") || ""
     const navigate = useNavigate()
 
