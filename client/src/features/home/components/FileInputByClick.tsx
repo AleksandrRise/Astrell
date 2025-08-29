@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { videoUpload } from "../utils/videoUpload"
 import imgSrc from "/assets/aithinkingball.png"
-import { useContext } from "react";
+import { useCallback, useContext, useRef } from "react";
 import { ErrorMessageContext } from "../../../shared/utils/ErrorMessageContext";
 
 type FileInputByClickProps = {
@@ -9,34 +9,61 @@ type FileInputByClickProps = {
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+const MAX_SIZE_MB: number = 1024
+const ALLOWED_TYPES: string[] = ["video/mp4"]
+
 export default function FileInputByClick({ isLoading, setIsLoading }: FileInputByClickProps) {
 
     // Other Hooks
     const [, setErrorText] = useContext(ErrorMessageContext)
     const navigate = useNavigate()
+    const inputRef = useRef<HTMLInputElement | null>(null)
+
+    const validate = (file: File) => {
+        if (!ALLOWED_TYPES.includes(file.type)) {
+            throw new Error("Unsupported file type. Please select an MP4 video.")
+        }
+        const sizeMb = file.size / (1024 * 1024)
+        if (sizeMb > MAX_SIZE_MB) {
+            throw new Error(`File too large. Limit is ${MAX_SIZE_MB} MB.`)
+        }
+    }
+
+    // Resets file input
+    const resetInput = () => {
+        if (inputRef.current) inputRef.current.value = ""
+    }
 
     // Handles file submission
-    const sendFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (!e.currentTarget.files) return;
-        
-        setIsLoading(true)
+    const sendFile = useCallback(
+        async (e: React.ChangeEvent<HTMLInputElement>) => {
+            const file = e.currentTarget.files?.[0]
+            if (!file || isLoading) return;
 
-        const fileToSend: File = e.currentTarget.files[0]
-        e.currentTarget.value = ""
-        const formData: FormData = new FormData()
-        formData.append("file", fileToSend)
+            try {
+                validate(file)
+                setIsLoading(true)
 
-        await videoUpload(formData, isLoading, setErrorText, navigate)
-        
-        setIsLoading(false);
-    }
+                const formData: FormData = new FormData()
+                formData.append("file", file)
+
+                await videoUpload(formData, isLoading, setErrorText, navigate)
+            } catch (err) {
+                const msg = err instanceof Error ? "err.message" : "Upload failed."
+                setErrorText(msg)
+            } finally {
+                resetInput()
+                setIsLoading(false)
+            }
+        }, 
+        [isLoading, navigate, setErrorText, setIsLoading]
+    )
 
     // Attributes
     const inputType = "file"
     const inputId = "fileInputByClick"
     const imgSize = "450px"
     const imgAlt = "AI Thinking Ball"
-    const acceptSettings = "video/mp4"
 
     // Classes
     const labelClasses = "size-fit md:pointer-events-none"
@@ -58,11 +85,12 @@ export default function FileInputByClick({ isLoading, setIsLoading }: FileInputB
             </label>
 
             <input 
+                ref={inputRef}
                 className={inputClasses} 
                 type={inputType} 
                 id={inputId} 
-                accept={acceptSettings}
-                onChange={(e) => sendFile(e)}
+                accept={ALLOWED_TYPES.join(",")}
+                onChange={sendFile}
             />
         </>
     )
