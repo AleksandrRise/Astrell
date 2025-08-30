@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { ErrorMessageContext } from "../../../shared/utils/ErrorMessageContext";
 import { videoUpload } from "../utils/videoUpload";
@@ -8,6 +8,9 @@ type FileInputByDragProps = {
     isLoading: boolean;
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+const MAX_SIZE_MB: number = 1024
+const ALLOWED_TYPES: string[] = ["video/mp4"]
 
 export default function FileInputByDrag({ isLoading, setIsLoading }: FileInputByDragProps) {
 
@@ -20,17 +23,17 @@ export default function FileInputByDrag({ isLoading, setIsLoading }: FileInputBy
     const [file, setFile] = useState<File | null>(null)
 
     // Functions
-    const handleDragOver = useCallback((e: React.DragEvent<HTMLDivElement>) => {
+    const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault()
         if (!isLoading) setIsDragged(true)
-    }, [isLoading])
+    }
 
-    const handleDragLeave = useCallback((e: React.DragEvent<HTMLDivElement>) => {
+    const handleDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault()
         setIsDragged(false)
-    }, [])
+    }
 
-    const handleDrop = useCallback((e: React.DragEvent<HTMLDivElement>) => {
+    const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault()
         setIsDragged(false)
         if (isLoading) return
@@ -39,7 +42,7 @@ export default function FileInputByDrag({ isLoading, setIsLoading }: FileInputBy
         if (!droppedFile) return
 
         setFile(droppedFile)
-    }, [isLoading])
+    }
 
     // Upload when a file is dropped
     useEffect(() => {

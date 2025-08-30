@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { videoUpload } from "../utils/videoUpload"
 import imgSrc from "/assets/aithinkingball.png"
-import { useCallback, useContext, useRef } from "react";
+import { useContext, useRef } from "react";
 import { ErrorMessageContext } from "../../../shared/utils/ErrorMessageContext";
 
 type FileInputByClickProps = {
@@ -36,29 +36,26 @@ export default function FileInputByClick({ isLoading, setIsLoading }: FileInputB
     }
 
     // Handles file submission
-    const sendFile = useCallback(
-        async (e: React.ChangeEvent<HTMLInputElement>) => {
-            const file = e.currentTarget.files?.[0]
-            if (!file || isLoading) return;
+    const sendFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.currentTarget.files?.[0]
+        if (!file || isLoading) return;
 
-            try {
-                validate(file)
-                setIsLoading(true)
+        try {
+            validate(file)
+            setIsLoading(true)
 
-                const formData: FormData = new FormData()
-                formData.append("file", file)
+            const formData: FormData = new FormData()
+            formData.append("file", file)
 
-                await videoUpload(formData, isLoading, setErrorText, navigate)
-            } catch (err) {
-                const msg = err instanceof Error ? "err.message" : "Upload failed."
-                setErrorText(msg)
-            } finally {
-                resetInput()
-                setIsLoading(false)
-            }
-        }, 
-        [isLoading, navigate, setErrorText, setIsLoading]
-    )
+            await videoUpload(formData, isLoading, setErrorText, navigate)
+        } catch (err) {
+            const msg = err instanceof Error ? "err.message" : "Upload failed."
+            setErrorText(msg)
+        } finally {
+            resetInput()
+            setIsLoading(false)
+        }
+    }
 
     // Attributes
     const inputType = "file"
