@@ -20,15 +20,15 @@ export default function FileInputByDrag({ isLoading, setIsLoading }: FileInputBy
     const [file, setFile] = useState<File | null>(null)
 
     // Functions
-    const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    const handleDragOver = useCallback((e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault()
-        setIsDragged(true)
-    }
+        if (!isLoading) setIsDragged(true)
+    }, [isLoading])
 
-    const handleDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
+    const handleDragLeave = useCallback((e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault()
         setIsDragged(false)
-    }
+    }, [])
 
     const handleDrop = useCallback((e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault()
