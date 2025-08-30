@@ -19,6 +19,7 @@ export default function FileInputByClick({ isLoading, setIsLoading }: FileInputB
     const navigate = useNavigate()
     const inputRef = useRef<HTMLInputElement | null>(null)
 
+    // Validates a submitted file
     const validate = (file: File) => {
         if (!ALLOWED_TYPES.includes(file.type)) {
             throw new Error("Unsupported file type. Please select an MP4 video.")
