@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useCallback, useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { ErrorMessageContext } from "../../../shared/utils/ErrorMessageContext";
 import { videoUpload } from "../utils/videoUpload";
@@ -30,17 +30,18 @@ export default function FileInputByDrag({ isLoading, setIsLoading }: FileInputBy
         setIsDragged(false)
     }
 
-    const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    const handleDrop = useCallback((e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault()
         setIsDragged(false)
+        if (isLoading) return
 
         const droppedFile: File = e.dataTransfer.files[0]
         if (!droppedFile) return
 
         setFile(droppedFile)
-    }
+    }, [isLoading])
 
-    // Sending Dragged File to Python
+    // Upload when a file is dropped
     useEffect(() => {
         if (!file) return
 
