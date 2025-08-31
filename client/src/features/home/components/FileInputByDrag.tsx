@@ -58,18 +58,26 @@ export default function FileInputByDrag({ isLoading, setIsLoading }: FileInputBy
     useEffect(() => {
         if (!file) return
 
-        const upload = async () => {
-            setIsLoading(true);
+        (async () => {
+            try {
+                validate(file)
+                setIsLoading(true);
 
-            const formData: FormData = new FormData()
-            formData.append("file", file)
+                const formData: FormData = new FormData()
+                formData.append("file", file)
 
-            await videoUpload(formData, isLoading, setErrorText, navigate)
-            setIsLoading(false);
-        }
+                await videoUpload(formData, isLoading, setErrorText, navigate)
+                setIsLoading(false);
+            } catch (err) {
+                const msg = err instanceof Error ? err.message : "Upload failed."
+                setErrorText(msg)
+            } finally {
+                setIsLoading(false)
+            }
+        })
 
-        upload()
-    }, [file])
+        return () => {}
+    }, [file, isLoading])
 
     // Classes
     const wrapperClasses = `absolute w-3/4 h-3/4 bg-white/20 rounded-4xl \
