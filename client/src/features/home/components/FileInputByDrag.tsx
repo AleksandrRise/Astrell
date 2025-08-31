@@ -58,7 +58,7 @@ export default function FileInputByDrag({ isLoading, setIsLoading }: FileInputBy
     useEffect(() => {
         if (!file) return
 
-        (async () => {
+        const upload = async () => {
             try {
                 validate(file)
                 setIsLoading(true);
@@ -74,10 +74,10 @@ export default function FileInputByDrag({ isLoading, setIsLoading }: FileInputBy
             } finally {
                 setIsLoading(false)
             }
-        })
+        }
+        upload()
 
-        return () => {}
-    }, [file, isLoading])
+    }, [file])
 
     // Classes
     const wrapperClasses = `absolute w-3/4 h-3/4 bg-white/20 rounded-4xl \
