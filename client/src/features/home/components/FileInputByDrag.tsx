@@ -22,7 +22,17 @@ export default function FileInputByDrag({ isLoading, setIsLoading }: FileInputBy
     const [isDragged, setIsDragged] = useState<boolean>(false)
     const [file, setFile] = useState<File | null>(null)
 
-    // Functions
+    // Validate a file
+    const validate = (f: File) => {
+        if (!ALLOWED_TYPES.includes(f.type)) {
+            throw new Error("Unsupported file type. Please select an MP4 video.")
+        }
+        const sizeMb = f.size / (1024 * 1024)
+        if (sizeMb > MAX_SIZE_MB) {
+            throw new Error(`File too large. Limit is ${MAX_SIZE_MB} MB.`)
+        }
+    }
+
     const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault()
         if (!isLoading) setIsDragged(true)
