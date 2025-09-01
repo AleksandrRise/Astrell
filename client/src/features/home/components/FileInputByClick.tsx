@@ -89,6 +89,7 @@ export default function FileInputByClick({ isLoading, setIsLoading }: FileInputB
                 id={inputId} 
                 accept={ALLOWED_TYPES.join(",")}
                 onChange={sendFile}
+                data-testid="file-input"
             />
         </>
     )
