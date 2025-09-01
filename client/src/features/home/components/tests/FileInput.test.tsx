@@ -49,6 +49,7 @@ describe("File click", () => {
             <FileInputByDrag isLoading={false} setIsLoading={setIsLoading} />
         </MemoryRouter>
     )
+    
     const fileInput = document.getElementById("fileInputByClick")!
 
     it("Small file", async () => {
