@@ -33,7 +33,7 @@ export default function Aside() {
     const h2Classes = "tracking-wide text-white/60 text-base font-bold font-lato mt-9.5 ml-2"
 
     return (
-        <aside className={asideClasses}>
+        <aside className={asideClasses} aria-label="Sidebar">
             <LogoSection />
 
             <hr className={separatorClasses}></hr>
