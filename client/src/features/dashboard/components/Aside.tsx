@@ -24,7 +24,7 @@ const others: FeaturesProps[] = [
 export default function Aside() {
 
     // States
-    const [ searchRes, setSearchRes ] = useState<FeaturesProps[]>(features)
+    const [ searchRes, setSearchRes ] = useState<FeaturesProps[]>([...features])
 
     // Classes
     const asideClasses = "text-white xl:min-w-85 h-screen bg-blackBG border-r-3 \
