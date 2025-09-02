@@ -29,14 +29,14 @@ export default function Aside() {
     // Classes
     const asideClasses = "text-white xl:min-w-85 h-screen bg-blackBG border-r-3 \
     border-white/5 xl:px-8.5 lg:px-4 px-5 flex flex-col lg:w-40"
-    const divClasses = "bg-white/5 h-0.5 w-full mb-5.5"
+    const separatorClasses = "bg-white/5 h-0.5 w-full mb-5.5"
     const h2Classes = "tracking-wide text-white/60 text-base font-bold font-lato mt-9.5 ml-2"
 
     return (
         <aside className={asideClasses}>
             <LogoSection />
 
-            <div className={divClasses}></div>
+            <hr className={separatorClasses}></hr>
             
             <SearchBar features={features} setSearchRes={setSearchRes} />
 
@@ -54,7 +54,7 @@ export default function Aside() {
                 )}
             </Features>
 
-            <div className={divClasses + " mt-auto"}></div>
+            <hr className={separatorClasses + " mt-auto"}></hr>
 
             <Features>
                 {others.map((other, index) => 
