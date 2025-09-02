@@ -10,19 +10,18 @@ import type { FeaturesProps } from "../utils/FeaturesProps"
 import { useState } from "react";
 
 
+// Features arrays
+const features: FeaturesProps[] = [
+    { name: "Dashboard", icon: dashboardIcon, isActive: true},
+    { name: "New Lecture", icon: lectureIcon, isActive: false, navigateTo: "/"},
+]
+
+const others: FeaturesProps[] = [
+    { name: "Settings (n/a)", icon: settingsIcon, isActive: false},
+    { name: "Support (n/a)", icon: supportIcon, isActive: false},
+]
+
 export default function Aside() {
-
-
-    // Features arrays
-    const features = [
-        { name: "Dashboard", icon: dashboardIcon, isActive: true},
-        { name: "New Lecture", icon: lectureIcon, isActive: false, navigateTo: "/"},
-    ]
-
-    const others = [
-        { name: "Settings (n/a)", icon: settingsIcon, isActive: false},
-        { name: "Support (n/a)", icon: supportIcon, isActive: false},
-    ]
 
     // States
     const [ searchRes, setSearchRes ] = useState<FeaturesProps[]>(features)
