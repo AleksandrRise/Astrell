@@ -1,6 +1,8 @@
 import { describe, it, expect, vi, type Mocked } from "vitest";
 import { fetchData } from "../fetchData";
 import axios from "axios"
+import { APP_BACKEND_BASE } from "../../../../shared/utils/APP_BACKEND_BASE"
+import { getTranscript } from "../../../../shared/utils/getTranscript";
 
 
 vi.mock("axios")
@@ -16,10 +18,12 @@ describe("fetchData", () => {
         const setIsLoading = vi.fn()
         const setErrorText = vi.fn()
 
+        const transcript = getTranscript()
+
         await fetchData(setIsLoading, endpoint, setErrorText)
 
         expect(mockedAxios.get).toHaveBeenCalledWith(
-            `/api/v1/${endpoint}`
+            `${APP_BACKEND_BASE}/api/v1/${endpoint}?transcript=${transcript}`
         )
 
         expect(setIsLoading).toBeCalledTimes(2)

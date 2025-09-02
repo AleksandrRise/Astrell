@@ -1,11 +1,9 @@
 import { describe, expect, it, vi } from "vitest"
 import FileInputByDrag from "../FileInputByDrag.tsx"
 import { fireEvent, render, screen } from "@testing-library/react"
-import userEvent from "@testing-library/user-event"
 import "@testing-library/jest-dom"
 import { MemoryRouter } from "react-router-dom"
 import FileInputByClick from "../FileInputByClick.tsx"
-import { beforeEach } from "node:test"
 
 // Mock mp4 file
 function makeMp4File(sizeInBytes: number, name = "video.mp4") {
