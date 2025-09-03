@@ -1,10 +1,10 @@
-import { describe, expect, it, vi } from "vitest"
+import { beforeEach, describe, expect, it, vi } from "vitest"
 import FileInputByDrag from "../FileInputByDrag.tsx"
 import { fireEvent, render, screen } from "@testing-library/react"
 import "@testing-library/jest-dom"
 import { MemoryRouter } from "react-router-dom"
 import FileInputByClick from "../FileInputByClick.tsx"
-import userEvent from "@testing-library/user-event"
+import userEvent, { type UserEvent } from "@testing-library/user-event"
 
 // Mock mp4 file
 function makeMp4File(sizeInBytes: number, name = "video.mp4") {
@@ -44,9 +44,12 @@ describe("File drop", () => {
 })
 
 describe("File click", () => {
+    let setIsLoading: ReturnType<typeof vi.fn> 
+    let user: UserEvent
+    let fileInput: HTMLElement
 
-    it("Small file", async () => {
-        const setIsLoading = vi.fn()
+    beforeEach(() => {
+        setIsLoading = vi.fn()
 
         render(
             <MemoryRouter>
@@ -54,9 +57,12 @@ describe("File click", () => {
             </MemoryRouter>
         )
 
-        const user = userEvent.setup()
-        const fileInput = screen.getByTestId("file-input")
+        user = userEvent.setup()
+        fileInput = screen.getByTestId("file-input")
         expect(fileInput).toBeInTheDocument()
+    })
+
+    it("Small file", async () => {
 
         const file = makeMp4File(1024 * 100, "small.mp4")
 
