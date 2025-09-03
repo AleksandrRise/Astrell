@@ -71,7 +71,11 @@ describe("File click", () => {
         expect(setIsLoading).toHaveBeenCalledWith(false)
     })
 
-    it("Huge file", () => {
-        
+    it("Huge file", async () => {
+        const file = makeMp4File(1024 * 1024 * 1024 * 1, "large.mp4")
+
+        await user.upload(fileInput, [file])
+
+        expect(setIsLoading).toHaveBeenCalledWith(false)        
     })    
 })
