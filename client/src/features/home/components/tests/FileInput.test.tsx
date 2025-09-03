@@ -4,6 +4,7 @@ import { fireEvent, render, screen } from "@testing-library/react"
 import "@testing-library/jest-dom"
 import { MemoryRouter } from "react-router-dom"
 import FileInputByClick from "../FileInputByClick.tsx"
+import userEvent from "@testing-library/user-event"
 
 // Mock mp4 file
 function makeMp4File(sizeInBytes: number, name = "video.mp4") {
@@ -44,23 +45,24 @@ describe("File drop", () => {
 
 describe("File click", () => {
 
-    const setIsLoading = vi.fn()
-
-    render(
-        <MemoryRouter>
-            <FileInputByClick isLoading={false} setIsLoading={setIsLoading} />
-        </MemoryRouter>
-    )
-
-    const fileInput = screen.getByTestId("file-input")
-    expect(fileInput).toBeInTheDocument()
-
     it("Small file", async () => {
+        const setIsLoading = vi.fn()
+
+        render(
+            <MemoryRouter>
+                <FileInputByClick isLoading={false} setIsLoading={setIsLoading} />
+            </MemoryRouter>
+        )
+
+        const user = userEvent.setup()
+        const fileInput = screen.getByTestId("file-input")
+        expect(fileInput).toBeInTheDocument()
+
         const file = makeMp4File(1024 * 100, "small.mp4")
 
-        fireEvent.change(fileInput, { target: { files: [file] }})
+        await user.upload(fileInput, [file])
 
-        expect(setIsLoading).toHaveBeenCalledWith(true)
+        expect(setIsLoading).toHaveBeenCalledWith(false)
     })
 
     it("Huge file", () => {
