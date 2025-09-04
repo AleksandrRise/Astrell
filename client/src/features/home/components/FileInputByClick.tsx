@@ -3,7 +3,7 @@ import { videoUpload } from "../utils/videoUpload"
 import imgSrc from "/assets/aithinkingball.png"
 import { useContext, useRef } from "react";
 import { ErrorMessageContext } from "../../../shared/utils/ErrorMessageContext";
-import { useAnimOnce } from "../utils/useAnimOnce";
+import { useAnimOnce } from "../../../shared/utils/useAnimOnce";
 
 type FileInputByClickProps = {
     isLoading: boolean;
@@ -58,7 +58,7 @@ export default function FileInputByClick({ isLoading, setIsLoading }: FileInputB
         }
     }
 
-    const useZoomInOnce = useAnimOnce("zoomIn")
+    const zoomInClass = useAnimOnce("zoomIn:FileInputByClick")
 
     // Attributes
     const inputType = "file"
@@ -68,7 +68,7 @@ export default function FileInputByClick({ isLoading, setIsLoading }: FileInputB
 
     // Classes
     const labelClasses = "size-fit md:pointer-events-none"
-    const figClasses = `${useZoomInOnce} size-90 md:size-auto`
+    const figClasses = `${zoomInClass} size-90 md:size-auto`
     const imgClasses = "aiball-animation"
     const inputClasses = "hidden"
 

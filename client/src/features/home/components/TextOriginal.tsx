@@ -1,5 +1,5 @@
 import useWindowDimensions from "../../../shared/utils/useWindowDimensions"
-import { useAnimOnce } from "../utils/useAnimOnce"
+import { useAnimOnce } from "../../../shared/utils/useAnimOnce"
 
 export default function TextOriginal() {
 
@@ -15,14 +15,14 @@ export default function TextOriginal() {
         }
     }
 
-    const useFadeInOnce = useAnimOnce("fadeIn")
+    const fadeInClass = useAnimOnce("fadeIn:TextOriginal")
 
     // Classes
     const divClasses = "text-white text-center tracking-wider -mt-15 md:-mt-20"
-    const hClasses = `text-white/80 md:text-base text-sm ${useFadeInOnce}`
+    const hClasses = `text-white/80 md:text-base text-sm ${fadeInClass}`
     const spanClasses = "text-white"
-    const pClasses = `md:text-2xl text-md font-bold md:mt-5 mt-3 ${useFadeInOnce}`
-    const subTextClasses = `md:text-md text-xs text-white/50 ${useFadeInOnce} md:mt-5 mt-1`
+    const pClasses = `md:text-2xl text-md font-bold md:mt-5 mt-3 ${fadeInClass}`
+    const subTextClasses = `md:text-md text-xs text-white/50 ${fadeInClass} md:mt-5 mt-1`
 
     return (
         <div className={divClasses}>

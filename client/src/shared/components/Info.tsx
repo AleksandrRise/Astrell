@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import infoSrc from "/assets/Information.png"
 import HintBlock from "../../features/home/components/HintBlock";
+import { useAnimOnce } from "../utils/useAnimOnce";
 
 type InfoProps = {
     children: React.ReactNode
@@ -22,10 +23,12 @@ export default function Info({ children }: InfoProps) {
         document.addEventListener('mousedown', handler)
     }, [])
 
+    const fadeInClass = useAnimOnce("fadeIn:Info")
+
     // Classes
     const infoAlt = "Info"
     const wrapperClasses = `rounded-full ${!isOpen && "hover:bg-white/50"} bg-white/30 w-17.5 h-17.5 flex cursor-pointer \
-    transition fadeIn opacity-0 relative ${isOpen && "hint-open"} hidden lg:block`
+    transition ${fadeInClass} opacity-0 relative ${isOpen && "hint-open"} hidden lg:block`
     const imgClasses = "w-10 h-10 m-auto"
 
     return (
