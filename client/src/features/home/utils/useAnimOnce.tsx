@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react"
 
-export function useFadeInOnce() {
-    const animationKey = "fadeInKey"
-    const animation = "fadeIn"
+export function useAnimOnce(animation: string) {
+    const animationKey = `${animation}Key`
 
     const [cls, setCls] = useState<string>("")
 
