@@ -15,12 +15,14 @@ export default function TextOriginal() {
         }
     }
 
+    const fadeInOnce = useFadeInOnce()
+
     // Classes
     const divClasses = "text-white text-center tracking-wider -mt-15 md:-mt-20"
     const hClasses = "text-white/80 md:text-base text-sm fadeIn"
     const spanClasses = "text-white"
-    const pClasses = `md:text-2xl text-md font-bold md:mt-5 mt-3 ${fadeInHandle()}`
-    const subTextClasses = `md:text-md text-xs text-white/50 ${fadeInHandle()} md:mt-5 mt-1`
+    const pClasses = `md:text-2xl text-md font-bold md:mt-5 mt-3 ${fadeInOnce}`
+    const subTextClasses = `md:text-md text-xs text-white/50 ${fadeInOnce} md:mt-5 mt-1`
 
     return (
         <div className={divClasses}>
