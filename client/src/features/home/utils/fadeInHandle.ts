@@ -1,15 +1,13 @@
-export function fadeInHandle(elementId: string) {
+export function fadeInHandle() {
     const animationKey = "fadeInKey"
-    const element = document.getElementById(elementId)
+    const animation = "fadeIn"
 
     window.addEventListener("load", () => {
-        if (!sessionStorage.getItem(animationKey) && element) {
-            element.classList.add("fadeIn")
+        if (!sessionStorage.getItem(animationKey)) {
             sessionStorage.setItem(animationKey, 'true')
-        } else if (element) {
-            element.classList.remove("fadeIn")
-            element.style.opacity = '1'
-            element.style.transform = 'translateY(0)'
+            return animation
+        } else {
+            return ""
         }
     })
 }
