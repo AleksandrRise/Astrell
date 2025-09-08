@@ -1,4 +1,4 @@
-import type { CommonClassesProps } from "../utils/commonClassesProps"
+import type { CommonClassesProps } from "../utils/common-classes-props"
 import chartIcon from "/assets/chart-icon.png"
 
 type OptionsType = {
