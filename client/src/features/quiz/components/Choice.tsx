@@ -1,5 +1,3 @@
-
-
 type ChoiceProps = {
     index: number;
     questionNum: number;
