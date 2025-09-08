@@ -1,5 +1,5 @@
 import Choice from "./Choice";
-import { submitQuestion } from "../utils/submitQuestion.ts"
+import { submitQuestion } from "../utils/submitQuestion"
 
 type QuestionsProps = {
     question: {

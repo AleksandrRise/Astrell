@@ -1,8 +1,8 @@
 import { useState } from "react"
-import Question from "./Question.tsx"
+import Question from "./Question"
 import Circles from "./Circles"
-import { handleBgColor } from "../utils/handleBgColor.ts"
-import type { QuestionsType } from "../utils/QuestionsType.ts"
+import { handleBgColor } from "../utils/handleBgColor"
+import type { QuestionsType } from "../utils/QuestionsType"
 
 
 export default function QuestionBlock({ questions, correctArr, setCorrectArr }: QuestionsType) {

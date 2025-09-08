@@ -1,8 +1,8 @@
 import axios from "axios"
 import { useEffect, useState } from "react";
-import type { QuestionsType } from "../utils/QuestionsType.ts";
-import { APP_BACKEND_BASE } from "../../../shared/utils/APP_BACKEND_BASE.ts";
-import { getTranscript } from "../../../shared/utils/getTranscript.ts";
+import type { QuestionsType } from "../utils/QuestionsType";
+import { APP_BACKEND_BASE } from "../../../shared/utils/APP_BACKEND_BASE";
+import { getTranscript } from "../../../shared/utils/getTranscript";
 
 
 type StartBtnProps = {
