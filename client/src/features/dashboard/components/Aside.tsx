@@ -2,10 +2,10 @@ import Features from "./Features";
 import LogoSection from "./LogoSection";
 import SearchBar from "../../../shared/components/SearchBar";
 import Profile from "./Profile"
-import dashboardIcon from "/assets/DashboardIcon.png"
-import settingsIcon from "/assets/SettingsIcon.png"
-import supportIcon from "/assets/SupportIcon.png"
-import lectureIcon from "/assets/BookmarkIcon.png"
+import dashboardIcon from "/assets/dashboard-icon.png"
+import settingsIcon from "/assets/settings-icon.png"
+import supportIcon from "/assets/support-icon.png"
+import bookmarkIcon from "/assets/bookmark-icon.png"
 import type { FeaturesProps } from "../utils/FeaturesProps"
 import { useState } from "react";
 
@@ -13,7 +13,7 @@ import { useState } from "react";
 // Features arrays
 const features: FeaturesProps[] = [
     { name: "Dashboard", icon: dashboardIcon, isActive: true},
-    { name: "New Lecture", icon: lectureIcon, isActive: false, navigateTo: "/"},
+    { name: "New Lecture", icon: bookmarkIcon, isActive: false, navigateTo: "/"},
 ]
 
 const others: FeaturesProps[] = [

@@ -1,4 +1,4 @@
-import FlashIcon from "/assets/FlashIcon.png"
+import flashIcon from "/assets/flashcards-icon.png"
 import { useState } from "react"
 import { fetchData } from "../utils/fetchData"
 import { useContext } from "react"
@@ -25,7 +25,7 @@ export default function Action2() {
     return (
         <button disabled={true} className={btnClasses} onClick={() => fetchData(setIsLoading, "getcard", setErrorText)}>
             <div className={flashContainerClasses}>
-                <img className={flashIconClasses} src={FlashIcon} alt={flashIconAlt} />
+                <img className={flashIconClasses} src={flashIcon} alt={flashIconAlt} />
                 <span className={flashTextClasses}>Flashcards</span>
                 <span className={flashSubtextClasses}>Make</span>
             </div>

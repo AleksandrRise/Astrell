@@ -1,4 +1,4 @@
-import AIIcon from "/assets/AIIcon.png"
+import robotIcon from "/assets/robot-icon.png"
 
 
 export default function Action3() {
@@ -30,7 +30,7 @@ export default function Action3() {
                     <span className={aiTextClasses}>AI</span>
                 </div>
                 <div className={aiInputWrapperClasses}>
-                    <img className={aiIconClasses} src={AIIcon} alt={aiIconAlt} />
+                    <img className={aiIconClasses} src={robotIcon} alt={aiIconAlt} />
                     <input disabled={true} className={aiInputClasses} type="text" name={htmlFor} id={htmlFor} />
                 </div>
             </div>
