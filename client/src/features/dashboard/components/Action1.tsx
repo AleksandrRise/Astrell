@@ -1,4 +1,4 @@
-import QuizIcon from "/assets/QuizIcon.png"
+import quizIcon from "/assets/quiz-icon.png"
 import { useNavigate } from "react-router-dom"
 
 
@@ -24,7 +24,7 @@ export default function Action1() {
             <div className={quizContainerClasses}>
                 <span className={quizSubtextClasses}>Make a</span>
                 <div className={quizHolderClasses}>
-                    <img className={quizIconClasses} src={QuizIcon} alt={quizIconAlt} />
+                    <img className={quizIconClasses} src={quizIcon} alt={quizIconAlt} />
                     <span className={quizTextClasses}>Quiz</span>
                 </div>
             </div>
