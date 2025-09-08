@@ -1,5 +1,5 @@
 import type { CommonClassesProps } from "../utils/CommonClassesProps"
-import questionIcon from "/assets/questionIcon.png"
+import questionIcon from "/assets/question-icon.png"
 
 interface QuestionsNumBlock extends CommonClassesProps {
     setQuestionsNum: React.Dispatch<React.SetStateAction<number>>;
