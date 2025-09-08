@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { videoUpload } from "../utils/videoUpload"
-import imgSrc from "/assets/aithinkingball.png"
+import aiThinkingBall from "/assets/ai-thinking-ball.png"
 import { useContext, useRef } from "react";
 import { ErrorMessageContext } from "../../../shared/utils/ErrorMessageContext";
 import { useAnimOnce } from "../../../shared/utils/useAnimOnce";
@@ -79,7 +79,7 @@ export default function FileInputByClick({ isLoading, setIsLoading }: FileInputB
                     <img className={imgClasses} 
                         width={imgSize} 
                         height={imgSize} 
-                        src={imgSrc} 
+                        src={aiThinkingBall} 
                         alt={imgAlt} 
                     />
                 </figure>
