@@ -1,10 +1,10 @@
-import Insights from "./Insights.tsx"
-import VideoPlayer from "./VideoPlayer.tsx"
-import Notes from "./Notes.tsx"
-import Actions from "./Actions.tsx"
-import ErrorMessage from "../../../shared/components/ErrorMessage.tsx"
+import Insights from "./Insights"
+import VideoPlayer from "./VideoPlayer"
+import Notes from "./Notes"
+import Actions from "./Actions"
+import ErrorMessage from "../../../shared/components/ErrorMessage"
 import { useContext } from "react"
-import { ErrorMessageContext } from "../../../shared/utils/ErrorMessageContext.tsx"
+import { ErrorMessageContext } from "../../../shared/utils/ErrorMessageContext"
 
 export default function Main() {
 
