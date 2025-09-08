@@ -1,9 +1,9 @@
 import { beforeEach, describe, expect, it, vi } from "vitest"
-import FileInputByDrag from "../FileInputByDrag.tsx"
+import FileInputByDrag from "../FileInputByDrag"
 import { fireEvent, render, screen } from "@testing-library/react"
 import "@testing-library/jest-dom"
 import { MemoryRouter } from "react-router-dom"
-import FileInputByClick from "../FileInputByClick.tsx"
+import FileInputByClick from "../FileInputByClick"
 import userEvent, { type UserEvent } from "@testing-library/user-event"
 
 // Mock mp4 file
