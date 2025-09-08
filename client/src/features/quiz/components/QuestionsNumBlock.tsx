@@ -1,4 +1,4 @@
-import type { CommonClassesProps } from "../utils/CommonClassesProps"
+import type { CommonClassesProps } from "../utils/commonClassesProps"
 import questionIcon from "/assets/question-icon.png"
 
 interface QuestionsNumBlock extends CommonClassesProps {

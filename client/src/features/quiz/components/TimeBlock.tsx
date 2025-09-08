@@ -1,4 +1,4 @@
-import type { CommonClassesProps } from "../utils/CommonClassesProps"
+import type { CommonClassesProps } from "../utils/commonClassesProps"
 import timerIcon from "/assets/timer-icon.png"
 import { useEffect, useState } from "react";
 
