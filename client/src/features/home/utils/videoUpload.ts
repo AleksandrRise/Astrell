@@ -15,7 +15,7 @@ export async function videoUpload(
             "Content-Type":"multipart/form-data"
         }
     })
-        .then(res => {
+        .then(res => { // If successful, storing a new transcript into a localstorage
             if (res.data) {
                 localStorage.setItem("transcript", res.data)
                 localStorage.removeItem("summarization")

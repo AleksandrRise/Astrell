@@ -48,6 +48,7 @@ export default function Question({
             <div className={containerClasses}>
                 <h3 className={questionSubtitleClasses}>{question.question}</h3>
 
+                {/* Answer Options */}
                 <ul className={answersClasses}>
                     {question.answers.map((ans, key) => 
                         <Choice 
@@ -62,6 +63,7 @@ export default function Question({
                     )}
                 </ul>
 
+                {/* Buttons (Submit / Next)  */}
                 <div className={btnsClasses}>
                     <button 
                         className={submitClasses} 
