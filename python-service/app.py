@@ -34,7 +34,7 @@ def uploadVideo() -> str:
     video = VideoFileClip(os.path.join("/tmp", "temp.mp4"))
     video.audio.write_audiofile(os.path.join("/tmp", "temp.mp3"))
 
-    # Transcribing
+    # Transcribe an audio
     audioFile = ai.files.upload(file="/tmp/temp.mp3")
     commands = Commands("", ai)
     return commands.getTranscript(audioFile)
@@ -61,6 +61,7 @@ def getQuiz():
 
     commands = Commands(transcript, ai)
 
+    # Check if difficulty and number of questions were received
     if difficulty and questionsNum:
         quiz = commands.getQuizJSON(difficulty, questionsNum)
         return quiz
