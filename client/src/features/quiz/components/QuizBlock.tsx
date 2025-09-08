@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Settings from "./Settings"
-import StartBtn from "./StartBtn"
+import StartButton from "./StartButton"
 import Title from "./Title"
 import type { QuestionsType } from "../utils/QuestionsType";
 import { useNavigate } from "react-router-dom";
@@ -57,7 +57,7 @@ export default function QuizBlock({ setHasStarted, setTotalTime, hasTimer, setHa
                     <Settings.QuestionsNumBlock commonClasses={commonClasses} setQuestionsNum={setQuestionsNum} />
                 </Settings>
 
-                <StartBtn setHasStarted={setHasStarted} difficulty={difficulty} questionsNum={questionsNum} setQuestions={setQuestions}/>
+                <StartButton setHasStarted={setHasStarted} difficulty={difficulty} questionsNum={questionsNum} setQuestions={setQuestions}/>
             </div>
         </section>
     )
