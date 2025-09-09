@@ -1,6 +1,6 @@
 import { type SetStateAction } from "react";
 import type { FeaturesProps } from "../../features/dashboard/utils/FeaturesProps"
-import searchIcon from "/assets/Search.png"
+import searchIcon from "/assets/search-icon.png"
 
 type SearchBarProps = {
     features: FeaturesProps[];

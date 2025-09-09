@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import infoSrc from "/assets/Information.png"
+import infoSrc from "/assets/information.png"
 import HintBlock from "../../features/home/components/HintBlock";
 import { useAnimOnce } from "../utils/useAnimOnce";
 

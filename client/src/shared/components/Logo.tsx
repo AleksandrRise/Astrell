@@ -1,4 +1,4 @@
-import LogoSrc from "/assets/astrellogotransp.png"
+import LogoSrc from "/assets/astrell-logo-transparent.png"
 
 export default function Logo() {
 
