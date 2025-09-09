@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { ErrorMessageContext } from "../../../shared/utils/ErrorMessageContext";
-import { videoUpload } from "../utils/videoUpload";
+import { ErrorMessageContext } from "../../../../shared/utils/ErrorMessageContext";
+import { videoUpload } from "../../utils/videoUpload";
 
 
 type FileInputByDragProps = {

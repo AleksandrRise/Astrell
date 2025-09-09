@@ -1,10 +1,10 @@
 import { useState, useContext } from "react"
 import Navbar from "../shared/components/Navbar"
-import AiBall from "../features/home/components/AiBall"
+import AiBall from "../features/home/components/aiball/AiBall.tsx"
 import Info from "../shared/components/Info"
 import ErrorMessage from "../shared/components/ErrorMessage"
 import { ErrorMessageContext } from "../shared/utils/ErrorMessageContext.tsx"
-import GlowCircles from "../features/home/components/GlowCircles.tsx"
+import GlowCircles from "../features/home/components/glowcircles/GlowCircles.tsx"
 
 export default function HomePage() {
 

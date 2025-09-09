@@ -1,5 +1,5 @@
-import useWindowDimensions from "../../../shared/utils/useWindowDimensions"
-import { useAnimOnce } from "../../../shared/utils/useAnimOnce"
+import useWindowDimensions from "../../../../shared/utils/useWindowDimensions"
+import { useAnimOnce } from "../../../../shared/utils/useAnimOnce"
 
 export default function TextOriginal() {
 

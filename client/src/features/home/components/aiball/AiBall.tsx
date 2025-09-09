@@ -1,6 +1,6 @@
-import Text from "./Text"
-import FileInputByDrag from "./FileInputByDrag";
-import FileInputByClick from "./FileInputByClick";
+import Text from "../text/Text"
+import FileInputByDrag from "../fileinput/FileInputByDrag";
+import FileInputByClick from "../fileinput/FileInputByClick";
 
 type AiBallType = {
     children: React.ReactNode;
