@@ -9,6 +9,7 @@ type FileInputByDragProps = {
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+// Restrictions for a submitted file
 const MAX_SIZE_MB: number = 1024
 const ALLOWED_TYPES: string[] = ["video/mp4"]
 
