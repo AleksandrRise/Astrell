@@ -9,6 +9,7 @@ type CircleProps = {
     correctArr: Array<boolean | null>;
 }
 
+// Returns a circle button that indicates a reference to a certain quiz question
 export default function Circle({ index, activeIndex, setActiveIndex, ansChoice, correctArr }: CircleProps) {
 
     const [ isActive, setIsActive ] = useState<boolean>(index === activeIndex)

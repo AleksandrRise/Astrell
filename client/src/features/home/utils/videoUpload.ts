@@ -2,6 +2,7 @@ import axios from "axios"
 import { APP_BACKEND_BASE } from "../../../shared/utils/APP_BACKEND_BASE"
 import type { NavigateFunction } from "react-router-dom"
 
+
 // A function for sending a video file to backend
 export async function videoUpload(
     formData: FormData, 
