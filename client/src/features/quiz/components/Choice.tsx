@@ -7,6 +7,7 @@ type ChoiceProps = {
     isDisabled: boolean;
 }
 
+// Represents an answer choice for a quiz question
 export default function Choice({ index, questionNum, ans, ansChoiceArr, setAnsChoice, isDisabled }: ChoiceProps) {
 
     const updatedArray = (prev: Array<number | null>): Array<number | null> => {
