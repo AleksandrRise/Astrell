@@ -11,6 +11,7 @@ interface DifficultyBlockProps extends CommonClassesProps {
 
 export default function DifficultyBlock({ commonClasses, setDifficulty }: DifficultyBlockProps) {
 
+    // Difficulty options represented here
     const options: Array<OptionsType> = [
         { value: "easy", text: "Easy" },
         { value: "medium", text: "Medium" },
