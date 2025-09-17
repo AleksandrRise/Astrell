@@ -25,6 +25,8 @@ export default function QuestionBlock({ questions, correctArr, setCorrectArr }: 
     return (
         <section className={wrapperClasses}>
             <div className={containerClasses}>
+
+                {/* Represents a question with answer options */}
                 <div className={questionsClasses}>
                     <Question 
                         question={questions[activeIndex]}
@@ -38,6 +40,7 @@ export default function QuestionBlock({ questions, correctArr, setCorrectArr }: 
                     />
                 </div>
 
+                {/* Represents a list of pages in a quiz */}
                 <Circles>
                     {questions.map((_, key) => 
                         <Circles.Circle 
