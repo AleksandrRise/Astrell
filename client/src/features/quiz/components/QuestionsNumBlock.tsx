@@ -27,11 +27,13 @@ export default function QuestionsNumBlock({ commonClasses, setQuestionsNum }: Qu
     return (
         <div className={`${commonClasses} ${wrapperClasses}`}>
             <div className={containerClasses}>
+
                 <div className={topClasses}>
                     <img className={iconClasses} src={questionIcon} alt={questionAlt} />
                     <span className={textClasses}>Number of questions</span>
                 </div>
 
+                {/* Sets a number of questions for the quiz */}
                 <input 
                     className={inputClasses} 
                     type={inputType} 
