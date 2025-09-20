@@ -46,6 +46,7 @@ export default function QuizBlock({ setHasStarted, setTotalTime, hasTimer, setHa
 
                 <span className={descClasses}>Choose your quiz preferences.</span>
 
+                {/* Holds settings for a quiz: time, difficulty, number of questions */}
                 <Settings>
                     <Settings.TimeBlock 
                         commonClasses={commonClasses} 
