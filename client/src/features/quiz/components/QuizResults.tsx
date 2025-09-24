@@ -12,6 +12,7 @@ export default function QuizResults({ correctArr, setHasEnded }: QuizResultsProp
     const [ correctNum, setCorrectNum ] = useState<number>(0)
     const navigate = useNavigate()
 
+    // Sets a number of correct questions
     useEffect(() => {
         setCorrectNum(correctArr.filter(correctAns => correctAns).length)
     }, [correctArr])
