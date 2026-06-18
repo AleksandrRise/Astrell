@@ -64,4 +64,4 @@ flask run
 The project is not open-source yet, but soon it will be.
 
 ## License
-GPL-3.0 License. Check out `LICENSE.txt` for more information.
+MIT License. Check out `LICENSE.txt` for more information.
