@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 from commands import Commands
 
-load_dotenv()
+load_dotenv(dotenv_path="../.env")
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
