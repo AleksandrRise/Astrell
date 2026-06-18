@@ -1,5 +1,9 @@
 {
   "devDependencies": {
     "concurrently": "^10.0.3"
+  },
+  "scripts": {
+    "dev": "concurrently \"cd client && npm run dev\" \"cd python-service && flask run\"",
+    "setup": "npm install && cd client && npm install && cd ../python-service && pip install -r requirements.txt"
   }
 }
