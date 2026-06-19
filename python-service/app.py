@@ -26,7 +26,6 @@ ai = genai.Client(api_key=GEMINI_API_KEY)
 
 @app.route('/api/v1/uploadVideo', methods=['POST'])
 def uploadVideo() -> str:
-
     videoFile = request.files['file']
     videoFile.save("/tmp/temp.mp4")
 
