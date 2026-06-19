@@ -24,7 +24,9 @@ video_service = VideoService()
 
 
 def handle_llm_error(error):
-    if error.status_code == 429:
+    error_code = getattr(error, "code", None)
+
+    if error_code == 429 or "429" in str(error) or "RESOURCE_EXHAUSTED" in str(error):
         return jsonify({"error": "LLM quota exceeded. Try again later."}), 429
 
     return jsonify({"error": "LLM service failed."}), 502
