@@ -1,85 +1,118 @@
-import os
-from moviepy.editor import VideoFileClip
-from flask import Flask, request, send_file
+from flask import Flask, jsonify, request, send_file
 from flask_cors import CORS
-from google import genai
-from dotenv import load_dotenv
+from google.genai.errors import ClientError
 
-from commands import Commands
+from services.llms.llm_service import LLMService
+from services.video_service import VideoService
 
-load_dotenv(dotenv_path="../.env")
-
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 app = Flask(__name__)
 
 CORS(app, resources={r"*": {
     "origins": [
-        "http://localhost:5173", "http://127.0.0.1:5173", "https://astrell.net", "https://www.astrell.net"
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "https://astrell.net",
+        "https://www.astrell.net",
     ],
-    "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    "allow_headers": ["Content-Type"]
+    "methods": ["GET", "POST", "OPTIONS"],
+    "allow_headers": ["Content-Type"],
 }})
 
-ai = genai.Client(api_key=GEMINI_API_KEY)
+llm_service = LLMService()
+video_service = VideoService()
 
 
-@app.route('/api/v1/uploadVideo', methods=['POST'])
-def uploadVideo() -> str:
-    videoFile = request.files['file']
-    videoFile.save("/tmp/temp.mp4")
+def handle_llm_error(error):
+    if error.status_code == 429:
+        return jsonify({"error": "LLM quota exceeded. Try again later."}), 429
 
-    # MP4 -> MP3
-    video = VideoFileClip(os.path.join("/tmp", "temp.mp4"))
-    video.audio.write_audiofile(os.path.join("/tmp", "temp.mp3"))
-
-    # Transcribing
-    audioFile = ai.files.upload(file="/tmp/temp.mp3")
-    commands = Commands("", ai)
-    return commands.getTranscript(audioFile)
+    return jsonify({"error": "LLM service failed."}), 502
 
 
-@app.route('/api/v1/getVideo', methods=['GET'])
-def getVideo():
-    return send_file("/tmp/temp.mp4", "video/mp4")
+@app.route("/api/v1/uploadVideo", methods=["POST"])
+def upload_video():
+    video_file = request.files.get("file")
+
+    if not video_file:
+        return jsonify({"error": "No video file provided."}), 400
+
+    try:
+        video_path = video_service.save_video(video_file)
+        audio_path = video_service.extract_audio(video_path)
+        transcript = llm_service.transcribe(audio_path)
+
+        return transcript
+
+    except ClientError as error:
+        return handle_llm_error(error)
+
+    except Exception:
+        return jsonify({"error": "Video upload failed."}), 500
+    
+
+@app.route("/api/v1/getVideo", methods=["GET"])
+def get_video():
+    return send_file(video_service.video_path, mimetype="video/mp4")
 
 
-@app.route('/api/v1/summarize', methods=['GET'])
-def summarize() -> str:
+@app.route("/api/v1/summarize", methods=["GET"])
+def summarize():
     transcript = request.args.get("transcript")
-    commands = Commands(transcript, ai)
-    return commands.getSummarizeStr()
 
+    if not transcript:
+        return jsonify({"error": "Missing transcript."}), 400
 
-@app.route('/api/v1/getQuiz', methods=['GET'])
-def getQuiz():
+    try:
+        return llm_service.summarize(transcript)
+
+    except ClientError as error:
+        return handle_llm_error(error)
+    
+
+@app.route("/api/v1/gethighlight", methods=["GET"])
+def get_highlight():
     transcript = request.args.get("transcript")
 
-    difficulty = request.args.get('difficulty')
-    questionsNum = request.args.get('questionsNum')
+    if not transcript:
+        return jsonify({"error": "Missing transcript."}), 400
 
-    commands = Commands(transcript, ai)
+    try:
+        return llm_service.get_highlight(transcript)
 
-    if difficulty and questionsNum:
-        quiz = commands.getQuizJSON(difficulty, questionsNum)
-        return quiz
+    except ClientError as error:
+        return handle_llm_error(error)
+    
 
-    return "Bad request. Invalid input provided.", 400
-
-
-@app.route('/api/v1/getCard', methods=['GET'])
-def getExam():
+@app.route("/api/v1/getQuiz", methods=["GET"])
+def get_quiz():
     transcript = request.args.get("transcript")
-    commands = Commands(transcript, ai)
-    return commands.getCardJSON()
+    difficulty = request.args.get("difficulty")
+    questions_num = request.args.get("questionsNum")
 
+    if not transcript or not difficulty or not questions_num:
+        return jsonify({"error": "Invalid input provided."}), 400
 
-@app.route('/api/v1/gethighlight', methods=['GET'])
-def getHighlight() -> str:
+    try:
+        return jsonify(llm_service.get_quiz(transcript, difficulty, questions_num))
+
+    except ClientError as error:
+        return handle_llm_error(error)
+    
+
+@app.route("/api/v1/getCard", methods=["GET"])
+def get_card():
     transcript = request.args.get("transcript")
-    commands = Commands(transcript, ai)
-    return commands.getHighlightStr()
 
+    if not transcript:
+        return jsonify({"error": "Missing transcript."}), 400
+
+    try:
+        return jsonify(llm_service.get_card(transcript))
+
+    except ClientError as error:
+        return handle_llm_error(error)
+    
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=5000)
