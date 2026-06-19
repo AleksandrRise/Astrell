@@ -9,7 +9,7 @@ class Commands:
     def getTranscript(self, audioFile) -> str:
         prompt = "Generate a transcript of the speech. No extra commentary."
         return self.ai.models.generate_content(
-            model='gemini-2.5-flash',
+            model='gemini-2.0-flash',
             contents=[prompt, audioFile]
         ).text
 
