@@ -60,17 +60,16 @@ function UploadHero({ children, setIsLoading }: UploadHeroProps) {
     } 
 
     return (
-        <section className={sectionClasses}>
-            <FileInput setIsLoading={setIsLoading} />
+        <section className="m-auto">
+            <VideoDropzone onFileDrop={handleFileDrop} />
 
-            <figure className={figClasses}>
+            <figure className="zoomIn">
                 <img
-                    className={imgClasses}
+                    className="aiball-animation"
                     width={450}
                     height={450}
                     src={imgSrc}
-                    alt={imgAlt}
-                    aria-hidden="true"
+                    alt="AI thinking animation"
                     decoding="async"
                 />
             </figure>
