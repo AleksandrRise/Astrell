@@ -1,20 +1,10 @@
-import TextLoading from "./UploadLoadingText";
-import TextOriginal from "./UploadIntroText";
+import UploadLoadingText from "./UploadLoadingText";
+import UploadIntroText from "./UploadIntroText";
 
-type TextProps = {
+type UploadStatusTextProps = {
     isLoading: boolean;
+};
+
+export default function UploadStatusText({ isLoading }: UploadStatusTextProps) {
+    return isLoading ? <UploadLoadingText /> : <UploadIntroText />;
 }
-
-export default function Text({ isLoading }: TextProps) {
-
-
-    return (
-        (isLoading 
-            ? <Text.TextLoading />
-            : <Text.TextOriginal />
-        )
-    )
-}
-
-Text.TextOriginal = TextOriginal
-Text.TextLoading = TextLoading
