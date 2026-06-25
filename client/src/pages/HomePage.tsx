@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import Navbar from "../shared/components/Navbar";
 import Info from "../shared/components/Info";
 import ErrorMessage from "../shared/components/ErrorMessage";
+import UploadHint from "../features/home/components/UploadHint";
 import UploadHero from "../features/home/components/UploadHero";
 import UploadStatusText from "../features/home/components/UploadStatusText";
 import { ErrorMessageContext } from "../shared/utils/ErrorMessageContext";
@@ -16,7 +17,9 @@ export default function HomePage() {
             <Navbar>
                 <Navbar.MenuBtn />
                 <Navbar.Info>
-                <Info.HintBlock />
+                    <Info>
+                        <UploadHint />
+                    </Info>
                 </Navbar.Info>
             </Navbar>
 
