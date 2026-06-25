@@ -1,5 +1,5 @@
-import TextLoading from "./TextLoading";
-import TextOriginal from "./TextOriginal";
+import TextLoading from "./UploadLoadingText";
+import TextOriginal from "./UploadIntroText";
 
 type TextProps = {
     isLoading: boolean;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import infoSrc from "/assets/Information.png"
-import HintBlock from "../../features/home/components/HintBlock";
+import HintBlock from "../../features/home/components/UploadHint";
 
 type InfoProps = {
     children: React.ReactNode

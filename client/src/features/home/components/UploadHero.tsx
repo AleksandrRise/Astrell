@@ -1,8 +1,8 @@
 import type { ReactNode, Dispatch, SetStateAction } from "react";
 
 import imgSrc from "/assets/aithinkingball.png"
-import FileInput from "./FileInput";
-import Text from "./Text"
+import FileInput from "./VideoDropzone";
+import Text from "./UploadStatusText"
 
 type AiBallType = {
     children: ReactNode; 

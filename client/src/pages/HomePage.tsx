@@ -1,6 +1,6 @@
 import { useState, useContext } from "react"
 import Navbar from "../shared/components/Navbar"
-import AiBall from "../features/home/components/AiBall"
+import AiBall from "../features/home/components/UploadHero.tsx"
 import Info from "../shared/components/Info"
 import ErrorMessage from "../shared/components/ErrorMessage"
 import { ErrorMessageContext } from "../shared/utils/ErrorMessageContext.tsx"
