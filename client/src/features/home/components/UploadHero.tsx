@@ -5,7 +5,6 @@ import axios from "axios";
 
 import imgSrc from "/assets/aithinkingball.png";
 import VideoDropzone from "./VideoDropzone";
-import UploadStatusText from "./UploadStatusText";
 import { ErrorMessageContext } from "../../../shared/utils/ErrorMessageContext";
 import { APP_BACKEND_BASE } from "../../../shared/utils/APP_BACKEND_BASE";
 
@@ -96,7 +95,5 @@ function UploadHero({ children, setIsLoading }: UploadHeroProps) {
         </section>
     )
 }
-
-UploadHero.Text = UploadStatusText;
 
 export default UploadHero;
