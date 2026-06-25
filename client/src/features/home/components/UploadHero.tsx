@@ -26,10 +26,11 @@ type UploadHeroProps = {
   setIsLoading: Dispatch<SetStateAction<boolean>>;
 };
 
-function UploadHero({ children, setIsLoading }: UploadHeroProps) {
-    const MAX_FILE_SIZE_MB = 50;
-    const maxFileSize = MAX_FILE_SIZE_MB * 1024 * 1024;
+// Maximum file size in megabytes
+const MAX_FILE_SIZE_MB = 50;
+const maxFileSize = MAX_FILE_SIZE_MB * 1024 * 1024;
 
+function UploadHero({ children, setIsLoading }: UploadHeroProps) {
     const [, setErrorText] = useContext(ErrorMessageContext);
     const navigate = useNavigate();
 
