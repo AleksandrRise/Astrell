@@ -28,7 +28,7 @@ type UploadHeroProps = {
 
 // Maximum file size in megabytes
 const MAX_FILE_SIZE_MB = 50;
-const maxFileSize = MAX_FILE_SIZE_MB * 1024 * 1024;
+const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024;
 
 function UploadHero({ children, setIsLoading }: UploadHeroProps) {
     const [, setErrorText] = useContext(ErrorMessageContext);
@@ -40,7 +40,7 @@ function UploadHero({ children, setIsLoading }: UploadHeroProps) {
             return;
         }
 
-        if (file.size > maxFileSize) {
+        if (file.size > MAX_FILE_SIZE_BYTES) {
             setErrorText(`Video must be smaller than ${MAX_FILE_SIZE_MB}MB.`);
             return;
         }
