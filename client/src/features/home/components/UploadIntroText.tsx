@@ -1,20 +1,18 @@
-export default function TextOriginal() {
-
-    // Classes
-    const divClasses = "text-white text-center tracking-wider -mt-20"
-    const hClasses = "text-white/80 text-base fadeIn"
-    const spanClasses = "text-white"
-    const pClasses = "text-2xl mt-5 fadeIn"
-    const subTextClasses = "text-md text-white/50 fadeIn mt-5"
-
+export default function UploadIntroText() {
     return (
-        <div className={divClasses}>
-            <h3 className={hClasses}>Hi there! I am <span className={spanClasses}>Astrell.</span></h3>
-            <p className={pClasses}>
-                Paste your lecture here, so we<br />
-                could work on that together.
+        <div className="text-white text-center tracking-wider -mt-20">
+            <h3 className="text-white/80 text-base fadeIn">
+                Hi there! I am <span className="text-white">Astrell.</span>
+            </h3>
+
+            <p className="text-2xl mt-5 fadeIn">
+                Drop your lecture video here, so we<br />
+                can work on it together.
             </p>
-            <p className={subTextClasses}>Currently, limited to 1-2 minutes.</p>
+
+            <p className="text-md text-white/50 fadeIn mt-5">
+                Currently limited to 1-2 minutes.
+            </p>
         </div>
-    )
+    );
 }
