@@ -9,6 +9,18 @@ import UploadStatusText from "./UploadStatusText";
 import { ErrorMessageContext } from "../../../shared/utils/ErrorMessageContext";
 import { APP_BACKEND_BASE } from "../../../shared/utils/APP_BACKEND_BASE";
 
+function getUploadErrorMessage(error: unknown) {
+    if (axios.isAxiosError(error)) {
+        return error.response?.data?.error || error.message || "Upload failed.";
+    }
+
+    if (error instanceof Error) {
+        return error.message;
+    }
+
+    return "Upload failed.";
+}
+
 type UploadHeroProps = {
   children: ReactNode;
   setIsLoading: Dispatch<SetStateAction<boolean>>;
@@ -58,10 +70,7 @@ function UploadHero({ children, setIsLoading }: UploadHeroProps) {
 
             navigate("/dashboard");
         } catch (error) {
-            const message =
-                error instanceof Error ? error.message : "Upload failed.";
-
-            setErrorText(message);
+            setErrorText(getUploadErrorMessage(error));
         } finally {
             setIsLoading(false);
         }
