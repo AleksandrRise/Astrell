@@ -82,7 +82,7 @@ function UploadHero({ children, setIsLoading }: UploadHeroProps) {
 
             <figure className="zoomIn">
                 <img
-                    className="aiball-animation"
+                    className="upload-hero-animation"
                     width={450}
                     height={450}
                     src={imgSrc}
