@@ -1,74 +1,75 @@
-import Features from "./SidebarNavSection";
-import LogoSection from "./SidebarBrand";
-import SearchBar from "../../../shared/components/SearchBar";
-import Profile from "./SidebarProfileButton"
-import dashboardIcon from "/assets/DashboardIcon.png"
-import settingsIcon from "/assets/SettingsIcon.png"
-import supportIcon from "/assets/SupportIcon.png"
-import lectureIcon from "/assets/BookmarkIcon.png"
-import type { FeaturesProps } from "../utils/SidebarNavItemConfig"
 import { useState } from "react";
 
+import SearchBar from "../../../shared/components/SearchBar";
+import SidebarBrand from "./SidebarBrand";
+import SidebarNavSection from "./SidebarNavSection";
+import SidebarNavItem from "./SidebarNavItem";
+import SidebarProfileButton from "./SidebarProfileButton";
 
-export default function Aside() {
+import dashboardIcon from "/assets/DashboardIcon.png";
+import settingsIcon from "/assets/SettingsIcon.png";
+import supportIcon from "/assets/SupportIcon.png";
+import lectureIcon from "/assets/BookmarkIcon.png";
 
+import type { SidebarNavItemConfig } from "../utils/SidebarNavItemConfig";
 
-    // Features arrays
-    const features = [
-        { name: "Dashboard", icon: dashboardIcon, isActive: true},
-        { name: "New Lecture", icon: lectureIcon, isActive: false, navigateTo: "/"},
-    ]
+const MAIN_NAV_ITEMS: SidebarNavItemConfig[] = [
+    { name: "Dashboard", icon: dashboardIcon, isActive: true },
+    { name: "New Lecture", icon: lectureIcon, isActive: false, navigateTo: "/" },
+];
 
-    const others = [
-        { name: "Settings (n/a)", icon: settingsIcon, isActive: false},
-        { name: "Support (n/a)", icon: supportIcon, isActive: false},
-    ]
+const SECONDARY_NAV_ITEMS: SidebarNavItemConfig[] = [
+    { name: "Settings (n/a)", icon: settingsIcon, isActive: false },
+    { name: "Support (n/a)", icon: supportIcon, isActive: false },
+];
+
+export default function DashboardSidebar() {
 
     // States
-    const [ searchRes, setSearchRes ] = useState<FeaturesProps[]>(features)
+    const [filteredNavItems, setFilteredNavItems] =
+        useState<SidebarNavItemConfig[]>(MAIN_NAV_ITEMS);
 
     // Classes
-    const asideClasses = "text-white xl:min-w-85 h-screen bg-blackBG border-r-3 \
-    border-white/5 xl:px-8.5 lg:px-4 flex flex-col lg:w-40"
-    const divClasses = "bg-white/5 h-0.5 w-full mb-5.5"
-    const h2Classes = "tracking-wide text-white/60 text-base font-bold font-lato mt-9.5 ml-2"
+    const asideClasses = "text-white xl:min-w-85 h-screen bg-blackBG border-r-3 border-white/5 xl:px-8.5 lg:px-4 flex flex-col lg:w-40";
 
     return (
         <aside className={asideClasses}>
-            <LogoSection />
+            <SidebarBrand />
 
-            <div className={divClasses}></div>
-            
-            <SearchBar features={features} setSearchRes={setSearchRes} />
+            <div className="bg-white/5 h-0.5 w-full mb-5.5" />
 
-            <Features>
-                <h2 className={h2Classes}>Features</h2>
+            <SearchBar
+                features={MAIN_NAV_ITEMS}
+                setSearchRes={setFilteredNavItems}
+            />
 
-                {searchRes.map((featureEl, index) => 
-                    <Features.Feature 
-                        name={featureEl.name} 
-                        icon={featureEl.icon} 
-                        isActive={featureEl.isActive}
-                        navigateTo={featureEl.navigateTo}
-                        key={index}
+            <SidebarNavSection title="Features">
+                {filteredNavItems.map((item) => (
+                    <SidebarNavItem
+                        key={item.name}
+                        name={item.name}
+                        icon={item.icon}
+                        isActive={item.isActive}
+                        navigateTo={item.navigateTo}
                     />
-                )}
-            </Features>
+                ))}
+            </SidebarNavSection>
 
-            <div className={divClasses + " mt-auto"}></div>
+            <div className="bg-white/5 h-0.5 w-full mb-5.5 mt-auto" />
 
-            <Features>
-                {others.map((other, index) => 
-                    <Features.Feature
-                        name={other.name}
-                        icon={other.icon} 
-                        isActive={other.isActive}
-                        key={index}
-                    />                     
-                )}
-            </Features>
-            
-            <Profile />
+            <SidebarNavSection>
+                {SECONDARY_NAV_ITEMS.map((item) => (
+                    <SidebarNavItem
+                        key={item.name}
+                        name={item.name}
+                        icon={item.icon}
+                        isActive={item.isActive}
+                        navigateTo={item.navigateTo}
+                    />
+                ))}
+            </SidebarNavSection>
+
+            <SidebarProfileButton />
         </aside>
-    )
+    );
 }
