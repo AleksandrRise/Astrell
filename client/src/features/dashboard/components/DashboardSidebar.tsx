@@ -6,7 +6,7 @@ import dashboardIcon from "/assets/DashboardIcon.png"
 import settingsIcon from "/assets/SettingsIcon.png"
 import supportIcon from "/assets/SupportIcon.png"
 import lectureIcon from "/assets/BookmarkIcon.png"
-import type { FeaturesProps } from "../utils/FeaturesProps"
+import type { FeaturesProps } from "../utils/SidebarNavItemConfig"
 import { useState } from "react";
 
 

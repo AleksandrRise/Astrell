@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import SearchBar from "../SearchBar";
 import { render, screen } from "@testing-library/react";
-import type { FeaturesProps } from "../../../features/dashboard/utils/FeaturesProps";
+import type { FeaturesProps } from "../../../features/dashboard/utils/SidebarNavItemConfig";
 import userEvent from "@testing-library/user-event";
 import '@testing-library/jest-dom';
 
