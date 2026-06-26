@@ -1,34 +1,35 @@
-import FlashIcon from "/assets/FlashIcon.png"
-import { useState } from "react"
-import { fetchData } from "../utils/fetchData"
-import { useContext } from "react"
-import { ErrorMessageContext } from "../../../shared/utils/ErrorMessageContext"
+import flashIcon from "/assets/FlashIcon.png";
 
-export default function Action2() {
-
-    // Hooks
-    const [ isLoading, setIsLoading ] = useState<boolean>(false)
-    const [ , setErrorText ] = useContext(ErrorMessageContext)
-    
+export default function FlashcardsActionCard() {
 
     // Classes
-    const btnClasses = `rounded-3xl logoGradient-bg p-[2px] flex flex-col text-start \
-        justify-center items-center ${isLoading && "animate-pulse"} \
-        opacity-40`
-    const flashContainerClasses = "flex flex-col"
-    const flashIconClasses = "size-7"
-    const flashIconAlt = "FlashcardsIcon"
-    const flashTextClasses = "xl:text-3xl lg:text-2xl font-bold italic bg-clip-text text-transparent \
-        bg-linear-to-l from-[#999999] to-white tracking-wide"
-    const flashSubtextClasses = "xl:text-sm lg:text-xs italic ml-auto font-semibold"
+    const buttonClasses = ["rounded-3xl", "logoGradient-bg", "p-[2px]",
+        "flex", "flex-col", "text-start", "justify-center", "items-center",
+        "opacity-40"].join(" ");
+    const spanClasses1 = ["xl:text-3xl", "lg:text-2xl", "font-bold", "italic",
+        "bg-clip-text", "text-transparent", "bg-linear-to-l", "from-[#999999]",
+        "to-white", "tracking-wide"].join(" ");
+    const spanClasses2 = ["xl:text-sm", "lg:text-xs", "italic", "ml-auto",
+        "font-semibold"].join(" ");
 
     return (
-        <button disabled={true} className={btnClasses} onClick={() => fetchData(setIsLoading, "getcard", setErrorText)}>
-            <div className={flashContainerClasses}>
-                <img className={flashIconClasses} src={FlashIcon} alt={flashIconAlt} />
-                <span className={flashTextClasses}>Flashcards</span>
-                <span className={flashSubtextClasses}>Make</span>
+        <button
+            type="button"
+            disabled
+            className={buttonClasses}
+            aria-label="Make flashcards unavailable"
+        >
+            <div className="flex flex-col">
+                <img className="size-7" src={flashIcon} alt="Flashcards Icon" />
+
+                <span className={spanClasses1}>
+                    Flashcards
+                </span>
+
+                <span className={spanClasses2}>
+                    Make
+                </span>
             </div>
         </button>
-    )
+    );
 }
