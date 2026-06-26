@@ -1,27 +1,31 @@
-import type { ButtonType } from "../utils/ButtonType"
+type StudyInsightTabProps = {
+    name: string;
+    icon: string;
+    alt: string;
+    isActive: boolean;
+    onClick: () => void;
+};
 
-type InsightsBtnProps = {
-    btn: ButtonType;
-    index: number;
-    setChoiceClicked: React.Dispatch<React.SetStateAction<number>>;
-}   
-
-
-export default function InsightsBtn({ btn, index, setChoiceClicked }: InsightsBtnProps) {
-    const btnClasses = "flex lg:gap-1 xl:gap-2.5 items-center cursor-pointer"
-    const iconClasses = "lg:size-5 xl:size-7.5"
-    const btnTextClasses = "lg:text-lg xl:text-xl font-bold font-lato"
-
-    const handleClick = (index: number): void => {
-        setChoiceClicked(index)
-    }
-
+export default function StudyInsightTab({
+    name,
+    icon,
+    alt,
+    isActive,
+    onClick,
+}: StudyInsightTabProps) {
     return (
-        <button className={btnClasses + (btn.isActive ? " opacity-90" : " opacity-50")}
-            key={index} onClick={() => handleClick(index)}
+        <button
+            type="button"
+            className={`flex lg:gap-1 xl:gap-2.5 items-center cursor-pointer ${
+                isActive ? "opacity-90" : "opacity-50"
+            }`}
+            onClick={onClick}
+            aria-pressed={isActive}
         >
-            <img className={iconClasses} src={btn.icon} alt={btn.alt}/>
-            <span className={btnTextClasses}>{btn.name}</span>
+            <img className="lg:size-5 xl:size-7.5" src={icon} alt={alt} />
+            <span className="lg:text-lg xl:text-xl font-bold font-lato">
+                {name}
+            </span>
         </button>
-    )
+    );
 }
