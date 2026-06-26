@@ -1,25 +1,32 @@
-import React from "react"
-import Feature from "./SidebarNavItem"
+import type { ReactNode } from "react";
 
-type FeaturesProps = {
-    children: React.ReactNode;
-}
+type SidebarNavSectionProps = {
+    title?: string;
+    children: ReactNode;
+};
 
-export default function Features({ children }: FeaturesProps) {
+export default function SidebarNavSection({
+    title,
+    children,
+}: SidebarNavSectionProps) {
 
     // Classes
-    const wrapperClasses = ""
-    const ulClasses = "flex flex-col gap-4 text-base font-semibold font-lato"
+    const h2Classes = ["tracking-wide", "text-white/60", "text-base", 
+        "font-bold", "font-lato", "mt-9.5", "ml-2"].join(" ");
 
     return (
-        <section className={wrapperClasses}>            
-            <nav>
-                <ul className={ulClasses}>
+        <section>
+            {title ? (
+                <h2 className={h2Classes}>
+                    {title}
+                </h2>
+            ) : null}
+
+            <nav aria-label={title ?? "Sidebar navigation"}>
+                <ul className="flex flex-col gap-4 text-base font-semibold font-lato">
                     {children}
                 </ul>
             </nav>
         </section>
-    )
+    );
 }
-
-Features.Feature = Feature
