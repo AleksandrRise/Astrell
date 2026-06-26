@@ -28,7 +28,7 @@ export default function Info({ children }: InfoProps) {
     }, []);
 
   return (
-    <div ref={wrapperRef} className="relative fadeIn opacity-0">
+    <div ref={wrapperRef} className="relative z-50 fadeIn opacity-0">
         <button
             type="button"
             className={`rounded-full bg-white/30 w-17.5 h-17.5 flex cursor-pointer transition ${

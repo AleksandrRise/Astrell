@@ -16,11 +16,9 @@ export default function HomePage() {
         <main className="w-full h-screen hero-bg flex flex-col pb-30 relative">
             <Navbar>
                 <Navbar.MenuBtn />
-                <Navbar.Info>
-                    <Info>
-                        <UploadHint />
-                    </Info>
-                </Navbar.Info>
+                <Info>
+                    <UploadHint />
+                </Info>
             </Navbar>
 
             <UploadHero setIsLoading={setIsLoading}>
