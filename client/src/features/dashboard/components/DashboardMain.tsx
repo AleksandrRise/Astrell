@@ -1,37 +1,37 @@
-import Insights from "./StudyInsightsPanel.tsx"
-import VideoPlayer from "./UploadedVideoPlayer.tsx"
-import Notes from "./NotesPreviewCard.tsx"
-import Actions from "./StudyActionsPanel.tsx"
-import ErrorMessage from "../../../shared/components/ErrorMessage.tsx"
-import { useContext } from "react"
-import { ErrorMessageContext } from "../../../shared/utils/ErrorMessageContext.tsx"
+import { useContext } from "react";
 
-export default function Main() {
+import ErrorMessage from "../../../shared/components/ErrorMessage";
+import { ErrorMessageContext } from "../../../shared/utils/ErrorMessageContext";
 
-    const [errorText, setErrorText] = useContext(ErrorMessageContext)
+import UploadedVideoPlayer from "./UploadedVideoPlayer";
+import StudyInsightsPanel from "./StudyInsightsPanel";
+import NotesPreviewCard from "./NotesPreviewCard";
+import StudyActionsPanel from "./StudyActionsPanel";
 
+export default function DashboardMain() {
+
+    // States
+    const [errorText, setErrorText] = useContext(ErrorMessageContext);
 
     // Classes
-    const mainClasses = "relative p-10 flex w-full h-screen \
-        justify-center items-center gap-8 overflow-hidden"
-    const leftColClasses = "grid grid-rows-[auto_2fr] flex-2 size-full gap-4"
-    const rightColClasses = "grid grid-rows-[2fr_1fr] flex-1 size-full gap-6"
+    const mainClasses = ["relative", "p-10", "flex", "w-full", "h-screen", 
+        "justify-center", "items-center", "gap-8", "overflow-hidden"].join(" ");
 
     return (
         <>
             <main className={mainClasses}>
-                <div className={leftColClasses}>
-                    <VideoPlayer />
-                    <Insights setErrorText={setErrorText} />
+                <div className="grid grid-rows-[auto_2fr] flex-2 size-full gap-4">
+                    <UploadedVideoPlayer />
+                    <StudyInsightsPanel setErrorText={setErrorText} />
                 </div>
 
-                <div className={rightColClasses}>
-                    <Notes />
-                    <Actions />
+                <div className="grid grid-rows-[2fr_1fr] flex-1 size-full gap-6">
+                    <NotesPreviewCard />
+                    <StudyActionsPanel />
                 </div>
             </main>
 
-            {errorText !== "" && <ErrorMessage message={errorText} />}
+            {errorText ? <ErrorMessage message={errorText} /> : null}
         </>
-    )
+    );
 }
