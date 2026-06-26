@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react"
-import Aside from "../Aside"
+import Aside from "../DashboardSidebar"
 import { describe, it, expect, vi, beforeEach } from "vitest"
 import userEvent from "@testing-library/user-event" 
 import "@testing-library/jest-dom/vitest"

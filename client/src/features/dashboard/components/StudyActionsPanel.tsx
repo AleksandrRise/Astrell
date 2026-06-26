@@ -1,6 +1,6 @@
-import Action1 from "./Action1"
-import Action2 from "./Action2"
-import Action3 from "./Action3"
+import Action1 from "./QuizActionCard"
+import Action2 from "./FlashcardsActionCard"
+import Action3 from "./AskAiActionCard"
 
 export default function Actions() {
 

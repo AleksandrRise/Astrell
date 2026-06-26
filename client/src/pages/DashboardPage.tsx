@@ -1,5 +1,5 @@
-import Aside from "../features/dashboard/components/Aside"
-import Main from "../features/dashboard/components/Main"
+import Aside from "../features/dashboard/components/DashboardSidebar"
+import Main from "../features/dashboard/components/DashboardMain"
 
 export default function Test() {
 
