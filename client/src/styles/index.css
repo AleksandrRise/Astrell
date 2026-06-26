@@ -81,8 +81,8 @@
         animation-fill-mode: both;
     }
 
-    .aiball-animation {
-        animation-name: aiball-keyframes;
+    .upload-hero-animation {
+        animation-name: upload-hero-keyframes;
         animation-duration: 5s;
         animation-timing-function: ease-in-out;
         animation-iteration-count: infinite;
@@ -241,7 +241,7 @@
 }
 
 
-@keyframes aiball-keyframes {
+@keyframes upload-hero-keyframes {
     0% {
         transform: rotate(0deg);
     }
