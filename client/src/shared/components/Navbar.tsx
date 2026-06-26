@@ -1,6 +1,5 @@
 import MenuBtn from "./MenuBtn"
 import Logo from "./Logo"
-import Info from "./Info"
 
 type NavbarProps = {
     children: React.ReactNode;
@@ -18,4 +17,3 @@ export default function Navbar({ children }: NavbarProps) {
 
 Navbar.MenuBtn = MenuBtn
 Navbar.Logo = Logo
-Navbar.Info = Info
