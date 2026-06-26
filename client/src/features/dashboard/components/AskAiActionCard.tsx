@@ -2,6 +2,8 @@ import aiIcon from "/assets/AIIcon.png";
 
 export default function AskAiActionCard() {
 
+    const htmlFor = "ask-ai";
+
     // Classes
     const labelClasses = ["logoGradient-bg", "p-[5px]", "rounded-3xl", "col-span-2",
         "flex", "justify-center", "items-center", "opacity-40"].join(" ");
@@ -16,7 +18,7 @@ export default function AskAiActionCard() {
     return (
         <label
             className={labelClasses}
-            htmlFor="ask-ai"
+            htmlFor={htmlFor}
             aria-label="Ask AI unavailable"
         >
             <div className="flex items-end xl:gap-5.5 lg:gap-3.5">
@@ -34,15 +36,15 @@ export default function AskAiActionCard() {
                     <img
                         className="xl:size-7 lg:size-6 absolute xl:bottom-1.5 lg:bottom-1 right-2.5"
                         src={aiIcon}
-                        alt=""
+                        alt="Ask AI Icon"
                     />
 
                     <input
                         disabled
                         className={inputClasses}
                         type="text"
-                        name="ask-ai"
-                        id="ask-ai"
+                        name={htmlFor}
+                        id={htmlFor}
                     />
                 </div>
             </div>
