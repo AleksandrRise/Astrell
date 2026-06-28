@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, type Mocked } from "vitest";
-import { fetchData } from "../fetchData";
+import { fetchData } from "../fetchSummary";
 import axios from "axios"
 
 
