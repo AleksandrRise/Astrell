@@ -1,19 +1,20 @@
-import axios from "axios"
-import { APP_BACKEND_BASE } from "../../../shared/utils/APP_BACKEND_BASE"
-import { getTranscript } from "../../../shared/utils/getTranscript"
+import type { Dispatch, SetStateAction } from "react";
 
-export async function fetchData(
-    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
-    endpoint: string,
-    setErrorText: React.Dispatch<React.SetStateAction<string>>
+import { fetchDashboardText } from "./dashboardApi";
+
+export async function fetchSummary(
+    setSummary: Dispatch<SetStateAction<string>>,
+    setErrorText: Dispatch<SetStateAction<string>>
 ) {
-    const transcript = getTranscript()
-    
-    setIsLoading(true)
+    try {
+        const summary = await fetchDashboardText("summarize");
 
-    await axios.get(`${APP_BACKEND_BASE}/api/v1/${endpoint}?transcript=${transcript}`)
-        .then(res => res.data)
-        .catch(error => setErrorText(error.message))
+        localStorage.setItem("summarization", summary);
+        setSummary(summary);
+    } catch (error) {
+        const message =
+            error instanceof Error ? error.message : "Failed to fetch summary";
 
-    setIsLoading(false)
+        setErrorText(message);
+    }
 }
