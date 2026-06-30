@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import type { Dispatch, SetStateAction } from "react";
 
 import { handleSum } from "../utils/handleSum";
-import { handleHighs } from "../utils/handleHighs";
+import { handleHighs } from "./fetchHighlights";
 
 export type InsightTab = "transcript" | "summary" | "highlights";
 

@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, type Mocked } from "vitest";
 import axios from "axios"
-import { handleHighs } from "../handleHighs";
+import { handleHighs } from "../fetchHighlights";
 
 vi.mock("axios")
 const mockedAxios = axios as Mocked<typeof axios>
