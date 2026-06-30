@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import type { Dispatch, SetStateAction } from "react";
 
-import { handleSum } from "../utils/handleSum";
-import { handleHighs } from "./fetchHighlights";
+import { fetchSummary } from "../utils/fetchSummary";
+import { fetchHighlights } from "../utils/fetchHighlights";
 
 export type InsightTab = "transcript" | "summary" | "highlights";
 
@@ -29,11 +29,11 @@ export function useStudyInsights({ setErrorText }: UseStudyInsightsParams) {
 
     useEffect(() => {
         if (!localStorage.getItem("summarization")) {
-            void handleSum(setSummary, setErrorText);
+            void fetchSummary(setSummary, setErrorText);
         }
 
         if (!localStorage.getItem("highlights")) {
-            void handleHighs(setHighlights, setErrorText);
+            void fetchHighlights(setHighlights, setErrorText);
         }
     }, [setErrorText]);
 
